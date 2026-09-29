@@ -22,7 +22,8 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "start:mock": "tsx mock-server/server.ts",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm run test"
   },
   "dependencies": {
     "@hookform/resolvers": "5.9.1",

@@ -110,3 +110,8 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | S17 | shadcn "nova" preset (Radix base, neutral colours) as placeholder tokens; its Geist font removed, system font stack until design tokens are decided | 2026-09-29 |
 | S18 | Dark token block removed (P11). The class-based `dark` variant is kept so `dark:` classes in shadcn components never follow the OS setting | 2026-09-29 |
 | S19 | Path aliases are mirrored in the root `tsconfig.json` so the shadcn CLI resolves them | 2026-09-29 |
+| S20 | Mock server serves everything under `/api` (same base path as the app, so the proxy forwards unchanged); `db.json` is created from the seed on first start if missing | 2026-09-29 |
+| S21 | E2E runs reset the mock database from the seed before starting the mock server | 2026-09-29 |
+| S22 | Vitest configured inside `vite.config.ts` (shares plugins and aliases); explicit imports, no test globals | 2026-09-29 |
+| S23 | `react-refresh/only-export-components` off for route files: the TanStack Router plugin code-splits route components and handles their HMR | 2026-09-29 |
+| S24 | TanStack Query default options kept for now; tuned when the data hooks are built | 2026-09-29 |
