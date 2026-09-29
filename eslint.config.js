@@ -115,13 +115,11 @@ export default defineConfig([
     },
   },
   {
-    // Route files export `Route` alongside their components
+    // Route files export `Route`, not components. The TanStack Router plugin
+    // code-splits route components and handles their HMR itself.
     files: ["src/routes/**/*.tsx"],
     rules: {
-      "react-refresh/only-export-components": [
-        "error",
-        { allowExportNames: ["Route"] },
-      ],
+      "react-refresh/only-export-components": "off",
     },
   },
   {
