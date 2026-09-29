@@ -134,3 +134,13 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | V12 | Inter self-hosted via `@fontsource-variable/inter`; no Google Fonts | 2026-09-29 |
 | V13 | Two preset neutrals changed to pass WCAG: `muted-foreground` `oklch(0.52 0 0)` (preset failed at 4.34:1 on muted) and `input` borders `oklch(0.64 0 0)` (3:1 for form fields). Preset sidebar and chart tokens removed | 2026-09-29 |
 | V14 | Team colours are CSS variables (`--team`, `--team-foreground`, `--team-secondary`, `--team-secondary-foreground`) set inline from `franchise.colors` on the workspace root and each picker card; they default to teal when no franchise is in scope | 2026-09-29 |
+
+## Foundation
+
+| ID | Decision | Date |
+|---|---|---|
+| N1 | Provisional starter seed until the full dataset is verified: CSK and RCB only, their real retained players, and about 20 real auction-pool players (mix of roles, overseas/Indian, capped/uncapped, sold and notable unsold). Player list and sources reviewed by the owner before writing | 2026-09-29 |
+| N2 | Dev latency and failure simulation in the mock server via environment flags (e.g. `MOCK_DELAY`, `MOCK_FAIL_RATE`), off by default, with npm scripts to run with them on | 2026-09-29 |
+| N3 | A seed validation script checks `db.seed.json` against the shared Zod contracts; it runs as part of the reset step and in tests | 2026-09-29 |
+| N4 | TanStack Query defaults: read-only data (auction, franchises, players, retentions, pool) uses `staleTime: Infinity` and no refetch on window focus; plans use normal freshness with refetch on window focus. Reads retry 1–2 times; autosave mutations don't retry (roll back and show an error). Supersedes S24 | 2026-09-29 |
+| N5 | Foundation order, one commit per step: (1) shared Zod contracts incl. `Franchise.colors` (V11); (2) starter seed + validation + reset scripts; (3) `domain/`, fully unit-tested; (4) mock server `/pool` route with tests; (5) API client, query key factories, query/mutation hooks per resource | 2026-09-29 |
