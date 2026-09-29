@@ -144,3 +144,12 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | N3 | A seed validation script checks `db.seed.json` against the shared Zod contracts; it runs as part of the reset step and in tests | 2026-09-29 |
 | N4 | TanStack Query defaults: read-only data (auction, franchises, players, retentions, pool) uses `staleTime: Infinity` and no refetch on window focus; plans use normal freshness with refetch on window focus. Reads retry 1–2 times; autosave mutations don't retry (roll back and show an error). Supersedes S24 | 2026-09-29 |
 | N5 | Foundation order, one commit per step: (1) shared Zod contracts incl. `Franchise.colors` (V11); (2) starter seed + validation + reset scripts; (3) `domain/`, fully unit-tested; (4) mock server `/pool` route with tests; (5) API client, query key factories, query/mutation hooks per resource | 2026-09-29 |
+| N6 | IDs are lowercase kebab-case and immutable (never recalculated from a changed name): franchise = short name (`csk`), player = name slug (`virat-kohli`, `-2` on a clash), auction entry = season + player slug (`2026-virat-kohli`) | 2026-09-29 |
+| N7 | Franchise colours are `#RRGGBB` hex strings | 2026-09-29 |
+| N8 | Enum values are lowercase kebab codes (`all-rounder`, `left-arm-wrist-spin`); display labels live in `domain/`. Nationality codes are uppercase; provisional list = the 12 ICC Full Members, confirmed after the data is compiled | 2026-09-29 |
+| N9 | Contract schemas strip unknown keys (the app's response parsing). Seed validation and the mock server use `toStrict()`, which rejects unknown keys at every depth | 2026-09-29 |
+| N10 | Pool role and bowling-style filters are multi-select, sent comma-separated; OR within a filter, AND across filters. Batting hand stays single-select | 2026-09-29 |
+| N11 | Default pool sort: base price, highest first. Without `order`: base price desc, name asc, age asc (youngest first) | 2026-09-29 |
+| N12 | `Plan.updatedAt` is null on seeded plans and set by the mock server on every save. The PUT body (`SavePlanRequest`) omits `updatedAt` | 2026-09-29 |
+| N13 | Pool rows nest the player (`{ id, basePriceLakh, player }`); age and overseas are not in rows (derived in `domain/`). `HOME_NATIONALITY = "IND"` lives in the contracts so the server filter and `domain/` share it. Pool `pageSize` capped at 100 | 2026-09-29 |
+| N14 | Franchise colour-pair contrast (WCAG AA, 4.5:1) is enforced by seed validation, not by the contract, so the app never rejects a response over styling | 2026-09-29 |

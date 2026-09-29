@@ -85,7 +85,7 @@ Player       { id, name, dateOfBirth, nationality, role, battingHand, bowlingSty
 Retention    { franchiseId, playerId }
 AuctionEntry { id, playerId, basePriceLakh }                          // a pool listing
 AuctionResult{ auctionEntryId, status: 'sold' | 'unsold', franchiseId?, priceLakh? }  // not fetched in v1
-Plan         { id /* = franchiseId */, franchiseId, targets: Target[], updatedAt }
+Plan         { id /* = franchiseId */, franchiseId, targets: Target[], updatedAt }  // updatedAt: set by the server on each save; null until the first save
 Target       { auctionEntryId, expectedPriceLakh }
 ```
 
@@ -111,7 +111,7 @@ Target       { auctionEntryId, expectedPriceLakh }
 - Below base price: **blocked** at the input (add dialog and inline edit).
 - Above the remaining purse: allowed, flagged by warnings.
 - Plan-level rule breaks never block; they produce warnings.
-- Autosave: add and remove save immediately; inline price edits save on blur or Enter. Saves are optimistic with rollback on failure and are sent one at a time in order, so an older save never overwrites a newer one.
+- Autosave: add and remove save immediately; inline price edits save on blur or Enter. Saves are optimistic with rollback on failure and are sent one at a time in order, so an older save never overwrites a newer one. The client sends the plan without `updatedAt`; the server sets it.
 
 ## 7. Summary metrics, warnings and note
 
@@ -156,7 +156,7 @@ Resources in the database: `auction`, `franchises`, `players`, `retentions`, `au
 | `GET /pool` | **Custom route.** Filtered, joined, sorted, paginated pool |
 | `GET /plans` | Picker plan status |
 | `GET /plans/:franchiseId` | Workspace plan |
-| `PUT /plans/:franchiseId` | Autosave (whole plan) |
+| `PUT /plans/:franchiseId` | Autosave (whole plan without `updatedAt`; the server sets it and returns the saved plan) |
 
 **`GET /pool`**
 ```
@@ -166,9 +166,11 @@ Resources in the database: `auction`, `franchises`, `players`, `retentions`, `au
 ```
 - `PoolRow` = auction entry joined with player details.
 - Filters: name search, role, overseas/Indian, capped/uncapped, batting hand, bowling style, base-price range.
+- Role and bowling style are multi-select, sent comma-separated (`role=batter,bowler`). Values within a filter combine with OR; filters combine with AND.
 - Sort: name, base price, age (age sorts by date of birth; youngest first = newest date of birth first).
+- Default sort: base price, highest first. When `order` is omitted: base price descending, name A–Z, age youngest first.
 - Tie-break: name, then id, so pages never repeat or skip rows.
-- Page size: 25.
+- Page size: 25 (maximum 100).
 
 Request/response shapes are Zod schemas in `shared/contracts`, used by both the mock server and the app.
 
