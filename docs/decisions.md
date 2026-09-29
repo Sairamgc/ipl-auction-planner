@@ -1,0 +1,88 @@
+# Decision log
+
+Every decision is agreed with the project owner before it is applied. Add new entries at the bottom; when a decision changes, add a new entry that references the old one instead of editing it.
+
+## Product
+
+| ID | Decision | Date |
+|---|---|---|
+| P1 | The product is a strategy tool for franchise teams, not a game | 2026-09-28 |
+| P2 | v1 = minimal features, production-grade engineering and UI | 2026-09-28 |
+| P3 | Proper team picker as the entry step; the app always opens on it | 2026-09-29 |
+| P4 | One user can plan for multiple franchises; one plan per franchise in v1 | 2026-09-29 |
+| P5 | Replay the latest real mini auction (2026 season); one auction in the data | 2026-09-29 |
+| P6 | Retained players, purses and squad rules are fixed seed data served by the mock backend | 2026-09-29 |
+| P7 | Pool = actually sold players + unsold players with base price ₹1 Cr and above | 2026-09-29 |
+| P8 | Pool is read-only in v1 | 2026-09-29 |
+| P9 | Plan-level rule breaks warn, never block | 2026-09-29 |
+| P10 | Fully responsive: three panels (desktop), two columns (tablet), tabs (mobile) | 2026-09-29 |
+| P11 | Light mode only in v1 | 2026-09-29 |
+| P12 | Rival purses shown read-only at the bottom of the summary; always the official pre-auction values | 2026-09-29 |
+| P13 | Picker shows a preview per franchise; in-workspace team switcher | 2026-09-29 |
+| P14 | Real team logos, supplied by the owner; initials badge as fallback | 2026-09-29 |
+| P15 | No player photos in v1; initials avatars | 2026-09-29 |
+| P16 | Separate read-only detail dialog and add dialog. Detail opens from a pool row click or a plan item; add opens only from a pool row's Add button | 2026-09-29 |
+| P17 | Real auction results stored for a future "plan vs reality" feature, not used in v1 | 2026-09-29 |
+
+## Tech stack
+
+| ID | Decision | Date |
+|---|---|---|
+| T1 | React + TypeScript on Vite | 2026-09-28 |
+| T2 | TanStack Router, file-based routing | 2026-09-28 / 29 |
+| T3 | TanStack Query for server state | 2026-09-28 |
+| T4 | Zustand for client/UI state | 2026-09-28 |
+| T5 | Zod for validation at every boundary; types derived with `z.infer` | 2026-09-28 |
+| T6 | React Hook Form + Zod for forms | 2026-09-28 |
+| T7 | Radix primitives via shadcn/ui | 2026-09-28 |
+| T8 | Tailwind CSS with design tokens | 2026-09-28 |
+| T9 | TanStack Table + TanStack Virtual for the pool | 2026-09-28 |
+| T10 | json-server as mock backend (chosen over MSW + IndexedDB) | 2026-09-28 |
+| T11 | Plain `fetch` in a typed API client (no Axios in v1) | 2026-09-28 |
+| T12 | Vitest + React Testing Library; Playwright for E2E | 2026-09-28 |
+
+## Domain
+
+| ID | Decision | Date |
+|---|---|---|
+| D1 | `Player` (the person) is separate from `AuctionEntry` (the pool listing) | 2026-09-29 |
+| D2 | Money stored and entered as whole lakh integers | 2026-09-29 |
+| D3 | Nationality = fixed list of cricket-nation codes; overseas = not `IND` | 2026-09-29 |
+| D4 | Targets embedded in the plan; autosave sends the whole plan | 2026-09-29 |
+| D5 | Max safe bid = (purse − spend) − max(0, min − (count + 1)) × lowest base price; negative shows ₹0 plus warning | 2026-09-29 |
+| D6 | Warnings: over purse, over max squad, over overseas cap, target above max safe bid, not enough purse for minimum squad. Below minimum squad = informational note | 2026-09-29 |
+| D7 | Plan targets grouped by role; within a role, highest expected price first | 2026-09-29 |
+| D8 | Pool filters: name search, role, overseas, capped, batting hand, bowling style, base-price range. Sorts: name, base price, age | 2026-09-29 |
+| D9 | Age derived from date of birth as of the auction date | 2026-09-29 |
+| D10 | Expected price required, pre-filled with base price, blocked below base price, any whole-lakh value, above purse allowed with warning | 2026-09-29 |
+| D11 | Retained players count toward squad size, overseas count and role breakdown | 2026-09-29 |
+| D12 | Money display: ₹X.XX Cr at ₹1 Cr and above (always 2 decimals); ₹N L below | 2026-09-29 |
+
+## API
+
+| ID | Decision | Date |
+|---|---|---|
+| A1 | Auction results in a separate resource v1 never fetches | 2026-09-29 |
+| A2 | Plans seeded empty per franchise; plan id = franchise id | 2026-09-29 |
+| A3 | Pool search, filter, sort and pagination done server-side | 2026-09-29 |
+| A4 | Inline price edits save on blur or Enter; saves are sequential | 2026-09-29 |
+| A5 | Invalid inline price shows an error and is not saved | 2026-09-29 |
+| A6 | json-server as a Node module plus a custom `/pool` route implementing the contract | 2026-09-29 |
+| A7 | Infinite scroll for the pool | 2026-09-29 |
+| A8 | Search debounced by 300 ms | 2026-09-29 |
+| A9 | Age sort implemented as date-of-birth sort | 2026-09-29 |
+| I1 | Page size 25 | 2026-09-29 |
+| I2 | Sort tie-break: name, then id | 2026-09-29 |
+| I3 | Auto-load at the bottom plus a "Load more" button | 2026-09-29 |
+
+## Structure
+
+| ID | Decision | Date |
+|---|---|---|
+| F1 | Organise code by feature | 2026-09-29 |
+| F2 | Shared Zod contracts in `shared/contracts`, used by the mock server and the app | 2026-09-29 |
+| F3 | TanStack Router file-based routing | 2026-09-29 |
+| F4 | Zustand stores live inside the feature that owns them | 2026-09-29 |
+| F5 | Tests next to the file they test | 2026-09-29 |
+| F6 | Each feature exposes an `index.ts` public API | 2026-09-29 |
+| F7 | One npm package, no monorepo | 2026-09-29 |
