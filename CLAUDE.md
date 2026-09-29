@@ -19,6 +19,23 @@ React + TypeScript (strict) · Vite · TanStack Router (file-based) · TanStack 
 
 Pin versions at setup and check each tool's current docs before using version-specific APIs (especially json-server, Tailwind v4, TanStack Router, shadcn CLI).
 
+## Commands
+
+| Command | What it does |
+|---|---|
+| `npm run dev` | App (Vite, :5173) and mock server (:3001) together; the app reaches the server via the `/api` proxy |
+| `npm run dev:app` / `npm run dev:mock` | Run one side only (`dev:mock` restarts on change) |
+| `npm run db:reset` | Restore `mock-server/db.json` from `db.seed.json` |
+| `npm run check` | Typecheck, lint, format check and unit tests; run before every commit |
+| `npm run typecheck` | `tsc -b` across app, node config and mock server projects |
+| `npm run lint` / `npm run lint:fix` | ESLint, including architecture boundary rules |
+| `npm run format` / `npm run format:check` | Prettier (Markdown and `routeTree.gen.ts` excluded) |
+| `npm test` / `npm run test:watch` / `npm run test:coverage` | Vitest unit and component tests |
+| `npm run test:e2e` | Playwright (desktop + mobile); starts both servers and resets the database from the seed |
+| `npm run build` / `npm run preview` | Production build and local preview |
+
+Add shadcn components with `npx shadcn@4.21.0 add <name>` (pinned CLI version), then run `npm run format` and `npm run lint`.
+
 ## Project structure
 
 ```
