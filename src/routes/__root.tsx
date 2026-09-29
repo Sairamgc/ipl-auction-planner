@@ -1,7 +1,9 @@
-import { createRootRoute, Outlet } from "@tanstack/react-router";
+import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
-export const Route = createRootRoute({
+import type { RouterContext } from "@/app/router";
+
+export const Route = createRootRouteWithContext<RouterContext>()({
   component: RootLayout,
   // Placeholder until the UI is designed
   notFoundComponent: () => <p className="p-4">Page not found.</p>,
