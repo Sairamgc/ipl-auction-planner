@@ -106,3 +106,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | S13 | Vitest runs in jsdom; Playwright runs Chromium desktop plus one mobile viewport | 2026-09-29 |
 | S14 | `noUncheckedIndexedAccess` on in tsconfig | 2026-09-29 |
 | S15 | No git hooks (husky/lint-staged) in v1; a single `check` script runs typecheck, lint and tests | 2026-09-29 |
+| S16 | `cn()` comes from shadcn's `cn` package (replaces clsx + tailwind-merge; generated components import it directly). App code imports it via `@/lib/utils` | 2026-09-29 |
+| S17 | shadcn "nova" preset (Radix base, neutral colours) as placeholder tokens; its Geist font removed, system font stack until design tokens are decided | 2026-09-29 |
+| S18 | Dark token block removed (P11). The class-based `dark` variant is kept so `dark:` classes in shadcn components never follow the OS setting | 2026-09-29 |
+| S19 | Path aliases are mirrored in the root `tsconfig.json` so the shadcn CLI resolves them | 2026-09-29 |
