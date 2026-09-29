@@ -20,7 +20,9 @@
     "db:reset": "tsx mock-server/reset-db.ts",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "start:mock": "tsx mock-server/server.ts",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@hookform/resolvers": "5.9.1",
@@ -40,6 +42,7 @@
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "@playwright/test": "1.63.0",
     "@tailwindcss/vite": "4.3.3",
     "@tanstack/eslint-plugin-query": "5.104.0",
     "@tanstack/eslint-plugin-router": "1.162.0",
