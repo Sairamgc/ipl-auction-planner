@@ -53,7 +53,7 @@ const allowedDependencies = {
   "mock-server": ["contracts"],
 };
 
-const boundaryRules = [
+const boundaryPolicies = [
   ...Object.entries(allowedDependencies).map(([from, to]) => ({
     from: { element: { type: from } },
     allow: { to: { element: { types: { anyOf: [from, ...to] } } } },
@@ -135,7 +135,7 @@ export default defineConfig([
     rules: {
       "boundaries/dependencies": [
         "error",
-        { default: "disallow", rules: boundaryRules },
+        { default: "disallow", policies: boundaryPolicies },
       ],
     },
   },
