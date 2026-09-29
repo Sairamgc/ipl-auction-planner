@@ -64,13 +64,13 @@ A UI-only auction strategy tool. A franchise picks its team, reviews its squad b
 
 ## 4. Responsive layout
 
-| Screen | Layout |
-|---|---|
-| Desktop | Three panels: pool, plan, summary |
-| Tablet | Two columns (pool and plan); summary as a sticky strip that expands |
-| Mobile | Tabs: Pool / Plan / Summary; sticky mini-summary bar (purse left, max safe bid, warning count). Active tab kept in the URL. |
+| Screen | Width | Layout |
+|---|---|---|
+| Desktop | 1280px and up | Three panels: pool, plan, summary |
+| Tablet | 768–1279px | Two columns (pool and plan); summary as a sticky strip that expands |
+| Mobile | Below 768px | Tabs: Pool / Plan / Summary; sticky mini-summary bar (purse left, max safe bid, warning count). Active tab kept in the URL. |
 
-Exact breakpoint widths: to be decided when building the UI.
+On touch devices (tablets included), tappable elements are at least 44px (decision V6).
 
 ## 5. Domain model
 
@@ -79,7 +79,8 @@ All money is stored as **whole lakh integers** (₹2.40 Cr = 240).
 ```ts
 Auction      { id, name, season, auctionDate, rules: SquadRules }
 SquadRules   { minSquadSize, maxSquadSize, maxOverseas, lowestBasePriceLakh }
-Franchise    { id, name, shortName, logoPath?, purseRemainingLakh }   // official pre-auction purse
+Franchise    { id, name, shortName, logoPath?, purseRemainingLakh, colors: FranchiseColors }  // official pre-auction purse
+FranchiseColors { primary, onPrimary, secondary, onSecondary }      // team accent + paired text colours (V10, V11)
 Player       { id, name, dateOfBirth, nationality, role, battingHand, bowlingStyle, isCapped }
 Retention    { franchiseId, playerId }
 AuctionEntry { id, playerId, basePriceLakh }                          // a pool listing
@@ -195,10 +196,12 @@ Request/response shapes are Zod schemas in `shared/contracts`, used by both the 
 - Team logos: real logos, added by the project owner to `public/logos/`. Missing file → colour and initials badge. Franchise logos are trademarked: fine while private; revisit before any public deployment.
 - Player images: none in v1; initials avatars.
 - Theme: light mode only.
+- Design tokens (decisions V1–V14):
+  - Neutral base with a teal accent for buttons, links, focus rings and selected rows.
+  - Team colours (`Franchise.colors`) appear only on the workspace header, team badge, active mobile tab and picker card accent; the secondary colour only as a thin stripe or border in the header and on the badge. Team colours are fills only, never body text; each has a paired text colour meeting WCAG AA.
+  - Status colours: warnings amber, note blue, errors red, within limits green.
+  - Font: Inter (self-hosted), tabular figures for all numbers. Radius 8px. Compact density, 14px base text.
 
 ## 12. Still to decide (during the build)
 
-- Design tokens: colours, font, radius, spacing density
-- Exact breakpoint widths
-- ~~json-server version~~ → 0.17.4 (decision S3)
 - Final list of nationality codes (from the compiled data)

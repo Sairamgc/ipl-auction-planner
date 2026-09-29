@@ -1,43 +1,64 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+/* Self-hosted Inter, variable weight (V4, V12). Subsets load on demand via
+   unicode-range; ₹ (U+20B9) is in latin-ext. */
+@import "@fontsource-variable/inter";
 
 /* Light mode only (P11): `dark:` applies only under a `.dark` class, which the app never sets */
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * Design tokens (decisions V1–V14). Light mode only.
+ * Values are Tailwind v4 palette steps; each text/background pair is checked
+ * for WCAG AA (text 4.5:1; focus rings, icons and input borders 3:1).
+ * Breakpoints are Tailwind's defaults: layout uses only md (768px, tablet)
+ * and xl (1280px, desktop) (V8).
+ */
 @theme inline {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --color-foreground: var(--foreground);
+
   --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-subtle: var(--destructive-subtle);
+  --color-destructive-subtle-foreground: var(--destructive-subtle-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-subtle: var(--warning-subtle);
+  --color-warning-subtle-foreground: var(--warning-subtle-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-subtle: var(--success-subtle);
+  --color-success-subtle-foreground: var(--success-subtle-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-subtle: var(--info-subtle);
+  --color-info-subtle-foreground: var(--info-subtle-foreground);
+
+  --color-team: var(--team);
+  --color-team-foreground: var(--team-foreground);
+  --color-team-secondary: var(--team-secondary);
+  --color-team-secondary-foreground: var(--team-secondary-foreground);
+
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -48,48 +69,87 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  /* Neutral base (V1) */
+  --background: oklch(1 0 0); /* white */
+  --foreground: oklch(0.145 0 0); /* neutral-950: 19.8:1 on white */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --secondary: oklch(0.97 0 0); /* neutral-100 */
+  --secondary-foreground: oklch(0.205 0 0); /* neutral-900 */
+  --muted: oklch(0.97 0 0); /* neutral-100 */
+  /* 5.05:1 on muted, 5.51:1 on white (V13) */
+  --muted-foreground: oklch(0.52 0 0);
+  --border: oklch(0.922 0 0); /* neutral-200, decorative dividers */
+  /* field borders: 3.36:1 on white, 3.08:1 on muted (V13) */
+  --input: oklch(0.64 0 0);
+
+  /* Teal accent (V2): buttons, links, focus rings, hover and selected rows */
+  /* teal-700: 5.39:1 with white; as link text 5.39:1 on white */
+  --primary: oklch(0.511 0.096 186.391);
+  --primary-foreground: oklch(1 0 0);
+  /* teal-600: 3.66:1 on white, 3.35:1 on muted */
+  --ring: oklch(0.6 0.118 184.704);
+  --accent: oklch(0.984 0.014 180.72); /* teal-50 */
+  /* teal-900: 9.08:1 on accent */
+  --accent-foreground: oklch(0.386 0.063 188.416);
+
+  /* Status colours (V7). Base = icons, borders, solid fills (3:1 on white);
+     -foreground = text on the solid fill; -subtle = tinted background;
+     -subtle-foreground = text on the tint */
+  --destructive: oklch(0.577 0.245 27.325); /* red-600 */
+  --destructive-foreground: oklch(1 0 0); /* 4.76:1 */
+  --destructive-subtle: oklch(0.971 0.013 17.38); /* red-50 */
+  /* red-700: 5.88:1 */
+  --destructive-subtle-foreground: oklch(0.505 0.213 27.518);
+  --warning: oklch(0.666 0.179 58.318); /* amber-600: 3.19:1 on white */
+  --warning-foreground: oklch(0.279 0.077 45.635); /* amber-950: 4.70:1 */
+  --warning-subtle: oklch(0.987 0.022 95.277); /* amber-50 */
+  /* amber-800: 6.88:1 */
+  --warning-subtle-foreground: oklch(0.473 0.137 46.201);
+  --success: oklch(0.527 0.154 150.069); /* green-700 */
+  --success-foreground: oklch(1 0 0); /* 4.94:1 */
+  --success-subtle: oklch(0.982 0.018 155.826); /* green-50 */
+  /* green-800: 6.78:1 */
+  --success-subtle-foreground: oklch(0.448 0.119 151.328);
+  --info: oklch(0.488 0.243 264.376); /* blue-700 */
+  --info-foreground: oklch(1 0 0); /* 6.82:1 */
+  --info-subtle: oklch(0.97 0.014 254.604); /* blue-50 */
+  --info-subtle-foreground: oklch(0.424 0.199 265.638); /* blue-800: 8.11:1 */
+
+  /* Team colours (V3, V9–V11, V14). Fills and accents only, never body text.
+     Overridden inline from franchise.colors on the workspace root and picker
+     cards; these teal defaults apply when no franchise is in scope. */
+  --team: var(--primary);
+  --team-foreground: var(--primary-foreground);
+  /* teal-900: 9.46:1 with white */
+  --team-secondary: oklch(0.386 0.063 188.416);
+  --team-secondary-foreground: oklch(1 0 0);
+
+  /* Shape and density (V5, V6) */
+  --radius: 0.5rem; /* 8px */
+  --touch-target: 2.75rem; /* 44px minimum on touch devices */
+}
+
+/* Minimum tap size on touch devices (V6), for any tappable element */
+@utility touch-target {
+  @media (pointer: coarse) {
+    min-height: var(--touch-target);
+    min-width: var(--touch-target);
+  }
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
     @apply font-sans;
+  }
+  body {
+    /* Compact density (V6): 14px base text. Tabular figures so every number
+       (prices, counts) aligns in columns (V4). */
+    @apply bg-background text-sm text-foreground tabular-nums;
   }
 }

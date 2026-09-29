@@ -115,3 +115,22 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | S22 | Vitest configured inside `vite.config.ts` (shares plugins and aliases); explicit imports, no test globals | 2026-09-29 |
 | S23 | `react-refresh/only-export-components` off for route files: the TanStack Router plugin code-splits route components and handles their HMR | 2026-09-29 |
 | S24 | TanStack Query default options kept for now; tuned when the data hooks are built | 2026-09-29 |
+
+## Visual design
+
+| ID | Decision | Date |
+|---|---|---|
+| V1 | Feel: neutral base with one strong accent; data-focused, not flashy | 2026-09-29 |
+| V2 | Accent: teal. `primary` teal-700 (white text 5.39:1), `ring` teal-600 (3.66:1 on white), `accent` teal-50 with teal-900 text (9.08:1). Light mode only | 2026-09-29 |
+| V3 | Each workspace picks up its franchise's colours as an accent | 2026-09-29 |
+| V4 | Font: Inter, with tabular figures for all numbers (set once on `body`) | 2026-09-29 |
+| V5 | Radius: 8px (`--radius: 0.5rem`) | 2026-09-29 |
+| V6 | Density: compact (14px base text, compact controls). On all touch devices (`pointer: coarse`, tablets included) tappable elements are at least 44px via the `touch-target` utility | 2026-09-29 |
+| V7 | Status colours: warnings amber, note blue (`info`), errors red (`destructive`), within limits green (`success`). Each has base, `-foreground`, `-subtle` and `-subtle-foreground` tokens, all WCAG AA checked | 2026-09-29 |
+| V8 | Breakpoints: below 768px mobile (tabs), 768–1279px tablet (two columns + sticky summary strip), 1280px and up desktop (three panels). Tailwind's default `md` (768px) and `xl` (1280px) match exactly; layout code uses only those two | 2026-09-29 |
+| V9 | Team colour appears only on the workspace header, team badge, active mobile tab and picker card accent. Buttons, links, focus rings and selected rows stay teal | 2026-09-29 |
+| V10 | Team colours are for fills and accents only, never body text; each colour has a paired text colour chosen for contrast | 2026-09-29 |
+| V11 | `Franchise` gains `colors: { primary, onPrimary, secondary, onSecondary }` in the shared contracts and seed data. Secondary is used minimally: a thin stripe or border in the workspace header and on the team badge. Schema added in the foundation step; CSK and RCB pairs, contrast-checked, come with the starter seed | 2026-09-29 |
+| V12 | Inter self-hosted via `@fontsource-variable/inter`; no Google Fonts | 2026-09-29 |
+| V13 | Two preset neutrals changed to pass WCAG: `muted-foreground` `oklch(0.52 0 0)` (preset failed at 4.34:1 on muted) and `input` borders `oklch(0.64 0 0)` (3:1 for form fields). Preset sidebar and chart tokens removed | 2026-09-29 |
+| V14 | Team colours are CSS variables (`--team`, `--team-foreground`, `--team-secondary`, `--team-secondary-foreground`) set inline from `franchise.colors` on the workspace root and each picker card; they default to teal when no franchise is in scope | 2026-09-29 |
