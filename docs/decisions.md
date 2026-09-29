@@ -86,3 +86,23 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | F5 | Tests next to the file they test | 2026-09-29 |
 | F6 | Each feature exposes an `index.ts` public API | 2026-09-29 |
 | F7 | One npm package, no monorepo | 2026-09-29 |
+
+## Setup and tooling
+
+| ID | Decision | Date |
+|---|---|---|
+| S1 | All dependency versions pinned exactly (`save-exact=true`); npm as the package manager; Node 24 (`.nvmrc`) | 2026-09-29 |
+| S2 | TypeScript 6.0.x, not 7.x: `typescript-eslint` supports TypeScript `<6.1` only. Revisit when it supports 7 | 2026-09-29 |
+| S3 | json-server 0.17.4 (stable, documented module + custom-route API) over 1.0.0-beta (undocumented module API, no types, breaking changes expected) | 2026-09-29 |
+| S4 | The app calls the mock server through a Vite dev proxy under `/api` (json-server on port 3001); no CORS | 2026-09-29 |
+| S5 | The API base path lives in one constant in the API client (`API_BASE = '/api'`); requests never repeat it | 2026-09-29 |
+| S6 | `eslint-plugin-boundaries` enforces the dependency rules in CLAUDE.md | 2026-09-29 |
+| S7 | shadcn initialised with the Radix base and a neutral preset; design tokens set before the first real UI | 2026-09-29 |
+| S8 | React Compiler off in v1 | 2026-09-29 |
+| S9 | `src/routeTree.gen.ts` is committed and excluded from ESLint and Prettier | 2026-09-29 |
+| S10 | TanStack Table (v8 vs v9) and TanStack Virtual installed when the pool is built, not at setup | 2026-09-29 |
+| S11 | Zod 4 schemas passed directly to TanStack Router `validateSearch`; no `@tanstack/zod-adapter` | 2026-09-29 |
+| S12 | ESLint (not Oxlint) with `typescript-eslint` strict type-checked rules; Prettier defaults plus the Tailwind class-sorting plugin | 2026-09-29 |
+| S13 | Vitest runs in jsdom; Playwright runs Chromium desktop plus one mobile viewport | 2026-09-29 |
+| S14 | `noUncheckedIndexedAccess` on in tsconfig | 2026-09-29 |
+| S15 | No git hooks (husky/lint-staged) in v1; a single `check` script runs typecheck, lint and tests | 2026-09-29 |

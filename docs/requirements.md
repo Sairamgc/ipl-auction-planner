@@ -200,5 +200,5 @@ Request/response shapes are Zod schemas in `shared/contracts`, used by both the 
 
 - Design tokens: colours, font, radius, spacing density
 - Exact breakpoint widths
-- json-server version (pin it and check its API)
+- ~~json-server version~~ → 0.17.4 (decision S3)
 - Final list of nationality codes (from the compiled data)

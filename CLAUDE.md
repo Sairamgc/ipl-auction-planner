@@ -80,7 +80,7 @@ src/
 
 - Design tokens: colours, font, radius, spacing density
 - Exact breakpoint widths
-- json-server version
+- ~~json-server version~~ → 0.17.4 (decision S3)
 - Final nationality code list (after compiling the data)
 
 ## Data task
