@@ -13,6 +13,10 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  server: {
+    // The app calls /api/*; forward it unchanged to the mock server
+    proxy: { "/api": "http://localhost:3001" },
+  },
   resolve: {
     // Keep in sync with `paths` in tsconfig.app.json
     alias: {

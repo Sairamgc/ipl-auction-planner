@@ -2,7 +2,8 @@
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+    { "path": "./tsconfig.node.json" },
+    { "path": "./tsconfig.mock.json" }
   ],
   // Mirrors tsconfig.app.json so tools that read only the root config (shadcn CLI) resolve aliases
   "compilerOptions": {

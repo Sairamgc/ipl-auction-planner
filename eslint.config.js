@@ -138,6 +138,10 @@ export default defineConfig([
     },
   },
   {
+    files: ["mock-server/**/*.ts"],
+    languageOptions: { globals: globals.node },
+  },
+  {
     files: ["**/*.js"],
     extends: [js.configs.recommended],
     languageOptions: { globals: globals.node },
