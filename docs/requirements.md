@@ -64,7 +64,11 @@ A UI-only auction strategy tool. A franchise picks its team, reviews its squad b
 **Detail dialog content:** name, age, nationality, overseas flag, role, batting hand, bowling style, capped status, base price (pool players).
 
 - Layout: initials avatar, name (title) and role; then Age "25 (on 16 Dec 2025)", Nationality with an "Overseas" tag, Role, Batting ("Right-handed"), Bowling, Status (Capped / Uncapped), Base price. Closes with Close, Esc or a click outside; focus returns to the row that opened it. Not reflected in the URL (UI29).
-- In a pool row, the player's name is the control that opens the dialog; the row's Add button (slice 3) sits beside it, never inside it. Until the add dialog exists, the Add button is not shown (UI30, UI34).
+- In a pool row, the player's name is the control that opens the dialog; the row's Add button sits beside it, never inside it (UI30). Players already in the plan show "In plan" with their expected price instead of Add (UI38).
+
+**Add dialog:** player summary with base price; expected price in whole lakh, pre-filled with the base price, with a live "= ₹2.40 Cr" preview; below-base, empty and non-whole values are blocked with a message; above the purse is allowed with a note. After adding, focus returns to the pool row (UI36, UI42).
+
+**Plan panel:** grouped by role; each role lists its locked retained players, then its targets (highest expected price first) with an editable price and Remove. Removing leaves an Undo for 10 s. Empty plan: "No targets yet. Use Add on a player in the pool." (UI37–UI40).
 
 ## 4. Responsive layout
 
@@ -124,7 +128,7 @@ Target       { auctionEntryId, expectedPriceLakh }
 - Below base price: **blocked** at the input (add dialog and inline edit).
 - Above the remaining purse: allowed, flagged by warnings.
 - Plan-level rule breaks never block; they produce warnings.
-- Autosave: add and remove save immediately; inline price edits save on blur or Enter. Saves are optimistic with rollback on failure and are sent one at a time in order, so an older save never overwrites a newer one. The client sends the plan without `updatedAt`; the server sets it. Latest wins: a failed save is rolled back only when no newer save is queued (the newer one carries the whole plan); rollback restores the last plan the server confirmed. When the latest save fails, the error offers "Try again", which resends the plan that failed.
+- Autosave: add and remove save immediately; inline price edits save on blur or Enter. Saves are optimistic with rollback on failure and are sent one at a time in order, so an older save never overwrites a newer one. The client sends the plan without `updatedAt`; the server sets it. Latest wins: a failed save is rolled back only when no newer save is queued (the newer one carries the whole plan); rollback restores the last plan the server confirmed. When the latest save fails, the error offers "Try again", which resends the plan that failed. Save status shows in the plan header ("Saving…", "Saved", or the error with Try again and Dismiss); the error stays until dismissed, retried, or a later save succeeds (UI41).
 
 ## 7. Summary metrics, warnings and note
 

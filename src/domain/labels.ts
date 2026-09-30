@@ -12,6 +12,14 @@ export const ROLE_LABELS: Record<PlayerRole, string> = {
   wicketkeeper: "Wicketkeeper",
 };
 
+/** Role group headings in the plan panel. */
+export const ROLE_PLURAL_LABELS: Record<PlayerRole, string> = {
+  batter: "Batters",
+  bowler: "Bowlers",
+  "all-rounder": "All-rounders",
+  wicketkeeper: "Wicketkeepers",
+};
+
 export const BATTING_HAND_LABELS: Record<BattingHand, string> = {
   right: "Right",
   left: "Left",

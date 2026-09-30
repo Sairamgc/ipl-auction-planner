@@ -2,6 +2,7 @@ import { Money } from "@/components/common/Money";
 import { sortDescription, type SortOption } from "@/domain";
 import { cn } from "@/lib/utils";
 import type { PoolRow } from "@shared/contracts";
+import type { ReactNode } from "react";
 
 import { PlayerTrigger } from "./PlayerTrigger";
 import { rowSummary } from "./rowDetails";
@@ -13,6 +14,8 @@ interface PoolListProps {
   auctionDate: string | undefined;
   busy: boolean;
   onOpen: (row: PoolRow, trigger: HTMLElement) => void;
+  /** Row action beside the name button, e.g. Add (UI30, UI34). */
+  renderAction?: (row: PoolRow) => ReactNode;
 }
 
 /** The pool on mobile: one row per player (UI25). */
@@ -22,6 +25,7 @@ export function PoolList({
   auctionDate,
   busy,
   onOpen,
+  renderAction,
 }: PoolListProps) {
   return (
     <ul
@@ -41,7 +45,12 @@ export function PoolList({
               {rowSummary(row, auctionDate)}
             </span>
           </div>
-          <Money lakh={row.basePriceLakh} className="font-medium" />
+          <div className="flex flex-col items-end gap-1">
+            <Money lakh={row.basePriceLakh} className="font-medium" />
+            {renderAction && (
+              <div className="relative z-[1]">{renderAction(row)}</div>
+            )}
+          </div>
         </li>
       ))}
     </ul>

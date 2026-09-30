@@ -216,6 +216,15 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | UI33 | Base-price filter: "From" and "Up to" selects of the eight official slabs (₹30 L, 40 L, 50 L, 75 L, ₹1 Cr, 1.25 Cr, 1.5 Cr, 2 Cr; verified on iplt20.com); the options never allow an inverted range | 2026-09-30 |
 | UI34 | The pool row's Add button is not shown until the add dialog exists (slice 3); rows have an action slot for it | 2026-09-30 |
 | UI35 | The current sort is part of the pool's accessible name at every width, in the same words: the table caption "Auction pool, sorted by name, Z to A" and the mobile list label "Players, sorted by name, Z to A" (`sortDescription`) | 2026-09-30 |
+| UI36 | Add dialog: title "Add to plan", player summary (avatar, name, "Batter · AUS · 26", base price), an expected-price field in whole lakh pre-filled with the base price, a live "= ₹2.40 Cr" preview and hint; arrow keys step by 5 L. Errors appear after the first blur or submit ("Enter an expected price.", "Use whole lakh, e.g. 240 for ₹2.40 Cr.", "At least the base price, ₹2.00 Cr."); a price above the purse shows a neutral note, not an error | 2026-09-30 |
+| UI37 | Plan panel grouped by role (batters, wicketkeepers, all-rounders, bowlers; empty roles left out), each listing its locked retained players, then its targets by highest expected price (D7). Headings carry counts ("Bowlers · 3"). Empty plan: "No targets yet. Use Add on a player in the pool." (plus "Go to Pool" on mobile) | 2026-09-30 |
+| UI38 | Pool rows for players in the plan show a non-interactive "✓ In plan / ₹2.40 Cr" tag (read as "In plan at ₹2.40 Cr") in place of Add | 2026-09-30 |
+| UI39 | Target prices are always inputs: Enter or blur saves a valid changed value, an invalid one shows its error and is not saved, Escape restores. The input shows the typed draft or, otherwise, the saved price directly, so a rollback always appears | 2026-09-30 |
+| UI40 | Removing a target saves at once and leaves "Cameron Green removed. Undo" in its place for 10 s or until the plan changes in another way; Undo re-adds it at the old price | 2026-09-30 |
+| UI41 | Save status in the plan header: "Saving…", "Saved", or an error ("Couldn't save your last change. Your plan is back to its last saved version.") with Try again and Dismiss. The error stays until dismissed, retried, or a later save succeeds. Try again resends the plan that failed (N30 unchanged) | 2026-09-30 |
+| UI42 | Focus in the plan flow: after adding, to the pool row's name (with "… added to plan at ₹2.40 Cr" announced); after cancelling, to Add; after removing, to Undo; after Undo, to the restored row; when the Undo notice ends, to the plan heading. Focus moves wait for the render that shows the element | 2026-09-30 |
+| UI43 | Corrects UI34: the pool rows' action slot did not exist until this slice. It now holds Add (or the in-plan tag) | 2026-09-30 |
+| UI44 | Amounts never break across lines (`Money` is `whitespace-nowrap`) | 2026-09-30 |
 
 ## Setup and tooling (continued)
 
@@ -225,6 +234,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | S28 | `e2e/` has its own tsconfig with DOM types (for `page.evaluate`); Node-only config files keep Node types only | 2026-09-30 |
 | S29 | Until the full dataset exists (the starter pool is under one page), multi-page behaviour is tested with network mocks: multi-page fixtures in component tests and Playwright request interception in E2E. No test-only code in the app or the data | 2026-09-30 |
 | S30 | Test fixtures may import the mock server's query logic, so component tests get real filtering, sorting and paging for `/api/pool` | 2026-09-30 |
+| S31 | E2E tests run one at a time (`workers: 1`) against the one shared mock server; tests that save plans reset them before and after | 2026-09-30 |
 
 <!-- New decision sections go above this line; Follow-ups stays last. -->
 

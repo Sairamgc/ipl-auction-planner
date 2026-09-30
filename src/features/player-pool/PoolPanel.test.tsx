@@ -56,6 +56,7 @@ describe("PoolPanel", () => {
         "Role",
         "Age",
         "Base price",
+        "Plan",
       ]);
       expect(
         within(pool()).getByRole("columnheader", { name: "Base price" }),
@@ -389,14 +390,22 @@ describe("PoolPanel", () => {
   });
 
   describe("rows", () => {
-    it("has one control per row, reached in reading order", async () => {
+    it("has the name, then Add, as sibling controls in each row (UI30)", async () => {
       mockApi();
       renderRoute("/teams/csk");
       await loaded();
 
       const rows = within(pool()).getAllByRole("row").slice(1);
       for (const row of rows) {
-        expect(within(row).getAllByRole("button")).toHaveLength(1);
+        const buttons = within(row).getAllByRole("button");
+        expect(
+          buttons.map((button) => button.getAttribute("aria-label")),
+        ).toEqual([
+          expect.stringMatching(/, view details$/),
+          expect.stringMatching(/^Add .+ to plan$/),
+        ]);
+        // Siblings, never nested
+        expect(buttons[0]?.contains(buttons[1] ?? null)).toBe(false);
       }
       expect(
         within(rows[0] ?? pool()).getByRole("rowheader"),
@@ -413,7 +422,7 @@ describe("PoolPanel", () => {
         within(pool())
           .getAllByRole("columnheader")
           .map((header) => header.textContent),
-      ).toEqual(["Player", "Base price"]);
+      ).toEqual(["Player", "Base price", "Plan"]);
       expect(within(pool()).getByText("Batter · AUS · 26")).toBeVisible();
     });
 

@@ -5,7 +5,10 @@ const isCI = Boolean(process.env.CI);
 
 export default defineConfig({
   testDir: "./e2e",
-  fullyParallel: true,
+  // One shared mock server and database: tests that save plans must not
+  // run alongside tests that read them (S31)
+  fullyParallel: false,
+  workers: 1,
   forbidOnly: isCI,
   retries: isCI ? 2 : 0,
   reporter: isCI ? "github" : "list",

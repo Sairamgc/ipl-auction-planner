@@ -1,4 +1,4 @@
-import { useAuction, usePool } from "@/api";
+import { useAuction, usePlan, usePool } from "@/api";
 import { EmptyState } from "@/components/common/EmptyState";
 import { ErrorState } from "@/components/common/ErrorState";
 import { Button } from "@/components/ui/button";
@@ -7,11 +7,13 @@ import { openPlayerDetail } from "@/features/player-detail";
 import { useElementHeight } from "@/lib/useElementHeight";
 import { cn } from "@/lib/utils";
 import type { PoolRow } from "@shared/contracts";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useParams } from "@tanstack/react-router";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { ActiveFilterChips } from "./ActiveFilterChips";
 import { PoolFooter } from "./PoolFooter";
 import { PoolList } from "./PoolList";
+import { PoolRowAction } from "./PoolRowAction";
 import { PoolSkeleton } from "./PoolSkeleton";
 import { PoolTable } from "./PoolTable";
 import { PoolToolbar } from "./PoolToolbar";
@@ -37,6 +39,24 @@ export function PoolPanel({ layout, scrollable = false }: PoolPanelProps) {
   const { search, filters, update, clearFilters } = usePoolSearch();
   const pool = usePool(filters);
   const auction = useAuction();
+  const { teamId } = useParams({ from: "/teams/$teamId" });
+  const plan = usePlan(teamId);
+  const targetsById = useMemo(
+    () =>
+      new Map(
+        (plan.data?.targets ?? []).map((target) => [
+          target.auctionEntryId,
+          target,
+        ]),
+      ),
+    [plan.data],
+  );
+  // Until the plan has loaded, no row offers Add (it could already be in it)
+  const renderAction = plan.data
+    ? (row: PoolRow) => (
+        <PoolRowAction row={row} target={targetsById.get(row.id)} />
+      )
+    : undefined;
   const auctionDate = auction.data?.auctionDate;
   const sort = sortOptionFor(filters.sort, filters.order);
 
@@ -157,6 +177,7 @@ export function PoolPanel({ layout, scrollable = false }: PoolPanelProps) {
             auctionDate={auctionDate}
             busy={busy}
             onOpen={openDetail}
+            renderAction={renderAction}
           />
         ) : (
           <PoolTable
@@ -167,6 +188,7 @@ export function PoolPanel({ layout, scrollable = false }: PoolPanelProps) {
             stickyTop={scrollable ? topHeight : null}
             busy={busy}
             onOpen={openDetail}
+            renderAction={renderAction}
           />
         )}
         <PoolFooter

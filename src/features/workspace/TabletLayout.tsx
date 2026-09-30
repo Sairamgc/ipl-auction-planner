@@ -7,6 +7,7 @@ import {
 import { ChevronUp } from "lucide-react";
 import { useState } from "react";
 
+import { PlanPanel } from "@/features/plan";
 import { PoolPanel } from "@/features/player-pool";
 
 import { PanelPlaceholder } from "./PanelPlaceholder";
@@ -23,7 +24,7 @@ export function TabletLayout() {
     <>
       <div className="grid min-h-0 flex-1 grid-cols-2 gap-4">
         <PoolPanel layout="narrow" scrollable />
-        <PanelPlaceholder id="plan" title="My plan" scrollable />
+        <PlanPanel scrollable />
       </div>
 
       <Collapsible

@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { ROLE_LABELS, sortDescription, type SortOption } from "@/domain";
 import { cn } from "@/lib/utils";
 import type { PoolRow, PoolSortField } from "@shared/contracts";
+import type { ReactNode } from "react";
 
 import { PlayerTrigger } from "./PlayerTrigger";
 import { rowAge, rowIsOverseas, rowSummary } from "./rowDetails";
@@ -17,6 +18,8 @@ interface PoolTableProps {
   stickyTop: number | null;
   busy: boolean;
   onOpen: (row: PoolRow, trigger: HTMLElement) => void;
+  /** Row action beside the name button, e.g. Add (UI30, UI34). */
+  renderAction?: (row: PoolRow) => ReactNode;
 }
 
 function ariaSort(column: PoolSortField, sort: SortOption) {
@@ -33,6 +36,7 @@ export function PoolTable({
   stickyTop,
   busy,
   onOpen,
+  renderAction,
 }: PoolTableProps) {
   const wide = layout === "wide";
   const headerClass = cn(
@@ -79,10 +83,19 @@ export function PoolTable({
             scope="col"
             aria-sort={ariaSort("basePrice", sort)}
             style={headerStyle}
-            className={cn(headerClass, "pr-4 text-right")}
+            className={cn(headerClass, "pr-4 text-right whitespace-nowrap")}
           >
             Base price
           </th>
+          {renderAction && (
+            <th
+              scope="col"
+              style={headerStyle}
+              className={cn(headerClass, "pr-4")}
+            >
+              <span className="sr-only">Plan</span>
+            </th>
+          )}
         </tr>
       </thead>
       <tbody>
@@ -120,6 +133,12 @@ export function PoolTable({
             <td className="py-2 pr-4 pl-2 text-right font-medium">
               <Money lakh={row.basePriceLakh} />
             </td>
+            {renderAction && (
+              // Above the name button's stretched area
+              <td className="relative z-[1] py-2 pr-4 text-right">
+                {renderAction(row)}
+              </td>
+            )}
           </tr>
         ))}
       </tbody>

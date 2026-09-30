@@ -1,4 +1,5 @@
 import { formatLakh, formatLakhLabel } from "@/domain";
+import { cn } from "@/lib/utils";
 
 interface MoneyProps {
   lakh: number;
@@ -11,7 +12,8 @@ interface MoneyProps {
  */
 export function Money({ lakh, className }: MoneyProps) {
   return (
-    <data value={String(lakh)} className={className}>
+    // An amount never breaks across lines ("₹2.00 / Cr")
+    <data value={String(lakh)} className={cn("whitespace-nowrap", className)}>
       {lakh < 0 ? (
         <>
           <span aria-hidden="true">{formatLakh(lakh)}</span>

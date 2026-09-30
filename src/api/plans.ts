@@ -186,6 +186,8 @@ export type PlanSaveStatus =
   | {
       state: "error";
       error: unknown;
+      /** When the failed save was sent; identifies this failure (UI41). */
+      failedAt: number;
       /** Resends the plan that failed (user-initiated, N4). */
       retry: () => void;
     };
@@ -217,6 +219,7 @@ export function usePlanSaveStatus(franchiseId: string): PlanSaveStatus {
       return {
         state: "error",
         error: latest.error,
+        failedAt: latest.submittedAt,
         retry: () => {
           if (failed) save(failed.targets);
         },

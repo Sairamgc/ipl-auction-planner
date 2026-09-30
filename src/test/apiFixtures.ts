@@ -153,6 +153,7 @@ export function defaultResponses(): ApiResponses {
     "/api/retentions": retentions,
     "/api/players": players,
     "/api/plans": [emptyPlan("csk"), emptyPlan("rcb")],
+    "/api/auctionEntries": poolEntries,
     "/api/pool": poolResponse,
   };
 }
@@ -161,16 +162,72 @@ export function defaultResponses(): ApiResponses {
  * Stubs fetch with the given responses. A path mapped to a number answers
  * with that HTTP status; a path mapped to a promise waits for it.
  */
+type Answer = Response | Promise<Response>;
+type Handler = (url: URL, init: RequestInit | undefined) => Answer;
+
+function answer(
+  body: unknown,
+  url: URL,
+  init: RequestInit | undefined,
+): Answer {
+  if (typeof body === "function") return (body as Handler)(url, init);
+  if (body instanceof Promise) return body as Promise<Response>;
+  if (typeof body === "number") return jsonResponse({ error: "x" }, body);
+  return jsonResponse(body);
+}
+
+/**
+ * Stubs fetch with the given GET responses. A path mapped to a number
+ * answers with that HTTP status, to a promise waits for it, to a function
+ * computes the answer.
+ *
+ * Plans behave like the mock server: `GET /api/plans/:id` reads and
+ * `PUT /api/plans/:id` writes an in-memory store seeded from `/api/plans`,
+ * setting `updatedAt`. Override a PUT with `"PUT /api/plans/csk"`.
+ */
 export function mockApi(responses: ApiResponses = defaultResponses()) {
-  return mockFetch((url) => {
-    const body = responses[url.pathname];
-    if (typeof body === "function") {
-      return (body as (url: URL) => Response | Promise<Response>)(url);
+  const seeded = responses["/api/plans"];
+  const plans = new Map(
+    (Array.isArray(seeded) ? (seeded as Plan[]) : []).map((plan) => [
+      plan.id,
+      plan,
+    ]),
+  );
+  let saves = 0;
+
+  return mockFetch((url, init) => {
+    const planId = /^\/api\/plans\/([^/]+)$/.exec(url.pathname)?.[1];
+    if (planId && init?.method === "PUT") {
+      const override = responses[`PUT ${url.pathname}`];
+      if (override !== undefined) return answer(override, url, init);
+      const body = JSON.parse(
+        typeof init.body === "string" ? init.body : "{}",
+      ) as Omit<Plan, "updatedAt">;
+      saves += 1;
+      const saved: Plan = {
+        ...body,
+        updatedAt: new Date(Date.UTC(2026, 8, 30, 10, 0, saves)).toISOString(),
+      };
+      plans.set(planId, saved);
+      return jsonResponse(saved);
     }
-    if (body instanceof Promise) return body as Promise<Response>;
-    if (typeof body === "number") return jsonResponse({ error: "x" }, body);
+    if (planId) {
+      const override = responses[url.pathname];
+      if (override !== undefined) return answer(override, url, init);
+      const plan = plans.get(planId);
+      return plan
+        ? jsonResponse(plan)
+        : jsonResponse({ error: "Not found" }, 404);
+    }
+    if (
+      url.pathname === "/api/plans" &&
+      Array.isArray(responses["/api/plans"])
+    ) {
+      return jsonResponse([...plans.values()]);
+    }
+    const body = responses[url.pathname];
     return body === undefined
       ? jsonResponse({ error: "Not found" }, 404)
-      : jsonResponse(body);
+      : answer(body, url, init);
   });
 }

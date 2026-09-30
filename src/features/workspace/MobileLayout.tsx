@@ -2,6 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { useNavigate, useSearch } from "@tanstack/react-router";
 
+import { PlanPanel } from "@/features/plan";
 import { PoolPanel } from "@/features/player-pool";
 
 import { PanelPlaceholder } from "./PanelPlaceholder";
@@ -39,6 +40,12 @@ function isWorkspaceTab(value: string): value is WorkspaceTab {
 export function MobileLayout() {
   const { tab = DEFAULT_TAB } = useSearch({ from: "/teams/$teamId" });
   const navigate = useNavigate({ from: "/teams/$teamId" });
+  const goToPool = () => {
+    void navigate({
+      search: (previous) => ({ ...previous, tab: undefined }),
+      replace: true,
+    });
+  };
 
   return (
     <>
@@ -78,6 +85,8 @@ export function MobileLayout() {
           <TabsContent key={value} value={value}>
             {value === "pool" ? (
               <PoolPanel layout="list" />
+            ) : value === "plan" ? (
+              <PlanPanel onGoToPool={goToPool} />
             ) : (
               <PanelPlaceholder id={value} title={PANEL_TITLES[value]} />
             )}
