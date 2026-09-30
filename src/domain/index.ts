@@ -10,6 +10,7 @@ export * from "./date";
 export * from "./groupByRole";
 export * from "./labels";
 export * from "./maxSafeBid";
+export * from "./maxSafeBidView";
 export * from "./money";
 export * from "./note";
 export * from "./overseas";

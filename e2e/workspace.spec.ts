@@ -109,7 +109,7 @@ test.describe("workspace scrolling", () => {
   }) => {
     test.skip(isMobile, "Panels scroll on their own on tablet and desktop");
     await page.goto("/teams/csk");
-    await page.getByText("Before the auction").waitFor();
+    await page.locator("header").getByText("Before the auction").waitFor();
     await fillPool(page);
 
     await page.getByRole("button", { name: /^Switch team/ }).focus();
@@ -129,7 +129,7 @@ test.describe("workspace scrolling", () => {
   }) => {
     test.skip(!isMobile, "The mini summary exists on mobile only");
     await page.goto("/teams/csk");
-    await page.getByText("Before the auction").waitFor();
+    await page.locator("header").getByText("Before the auction").waitFor();
     await fillPool(page);
     await page.evaluate(() => {
       window.scrollTo(0, document.documentElement.scrollHeight);

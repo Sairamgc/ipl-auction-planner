@@ -9,9 +9,7 @@ import { useState } from "react";
 
 import { PlanPanel } from "@/features/plan";
 import { PoolPanel } from "@/features/player-pool";
-
-import { PanelPlaceholder } from "./PanelPlaceholder";
-import { SummaryFigures } from "./SummaryFigures";
+import { SummaryFigures, SummaryPanel } from "@/features/summary";
 
 /**
  * 768–1279px: pool and plan side by side; the summary is a strip along
@@ -33,12 +31,7 @@ export function TabletLayout() {
         className="flex max-h-[50%] shrink-0 flex-col rounded-lg border bg-card"
       >
         <CollapsibleContent className="flex min-h-0 flex-col border-b">
-          <PanelPlaceholder
-            id="summary"
-            title="Summary"
-            scrollable
-            className="flex-1 rounded-b-none border-0"
-          />
+          <SummaryPanel scrollable className="flex-1 rounded-b-none border-0" />
         </CollapsibleContent>
         <div className="flex items-center gap-4 px-4 py-2">
           <SummaryFigures className="flex-1" />

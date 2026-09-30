@@ -3,6 +3,7 @@ import { ErrorState } from "@/components/common/ErrorState";
 import { teamColorStyle } from "@/components/common/teamColorStyle";
 import { AddTargetDialog } from "@/features/add-target";
 import { PlayerDetailDialog } from "@/features/player-detail";
+import { SummaryAnnouncer } from "@/features/summary";
 import { useDocumentTitle } from "@/lib/useDocumentTitle";
 import { useViewport } from "@/lib/useMediaQuery";
 import { cn } from "@/lib/utils";
@@ -80,6 +81,7 @@ export function WorkspacePage({ teamId }: { teamId: string }) {
       <Layout />
       <PlayerDetailDialog />
       <AddTargetDialog franchise={state.franchise} />
+      <SummaryAnnouncer />
     </div>
   );
 }

@@ -52,7 +52,7 @@ A UI-only auction strategy tool. A franchise picks its team, reviews its squad b
 - Header and picker figures are the baseline after retentions, before any plan, and are labelled that way (e.g. "Purse before auction"). The plan's effect appears only in the summary panel.
 - Player pool panel: search, filters, sort, infinite-scrolling table. Filters, search and sort live in the URL.
 - My plan panel: retained players (locked) and targets grouped by role; within each role, highest expected price first. Expected price editable inline; targets removable.
-- Summary panel: metrics, warnings, note, and rival purses at the bottom.
+- Summary panel: warnings and note at the top (or "Within all limits"), max safe bid with a sentence explaining it, spend / squad / overseas against their limits, role breakdown, and rival purses (other teams, highest purse first) at the bottom (UI45–UI50).
 
 **Flows**
 1. **View player details:** click a player row in the pool, or a retained player or target in the plan panel. Opens a read-only detail dialog.
@@ -76,7 +76,7 @@ A UI-only auction strategy tool. A franchise picks its team, reviews its squad b
 |---|---|---|
 | Desktop | 1280px and up | Three panels: pool, plan, summary |
 | Tablet | 768–1279px | Two columns (pool and plan); summary as a sticky strip that expands |
-| Mobile | Below 768px | Tabs: Pool / Plan / Summary; sticky mini-summary bar (purse left, max safe bid, warning count). Active tab kept in the URL. |
+| Mobile | Below 768px | Tabs: Pool / Plan / Summary; sticky mini-summary bar (purse left, max safe bid, warning count) that opens the Summary tab when tapped. Active tab kept in the URL. |
 
 On touch devices (tablets included), tappable elements are at least 44px (decision V6).
 
@@ -84,7 +84,7 @@ Team picker grid: 1 column (mobile), 2 (tablet), 4 (desktop) (UI2).
 
 Workspace details (UI11–UI15):
 - Desktop and tablet: the workspace fills the viewport under the header, and each panel scrolls on its own. Mobile: the page scrolls; the tabs stick under the header and the mini-summary bar is fixed to the bottom.
-- Tablet: the summary strip sits along the bottom and expands upward.
+- Tablet: the summary strip sits along the bottom showing purse left, max safe bid and the warning count, and expands upward to the full summary panel (UI49, UI50).
 - Mobile: the default tab is Pool; the tab is in the URL as `?tab=`, omitted for the default.
 - Panels that scroll on their own are keyboard-focusable, so they can be scrolled with the keyboard in every browser, Safari included (UI20).
 - Mobile: the mini-summary bar never covers content (the page reserves its exact height) and clears the iPhone safe area; the app uses `viewport-fit=cover` and pads for all safe-area insets (UI21).
@@ -148,7 +148,7 @@ remaining   = purseRemaining − plannedSpend
 slotsToFill = max(0, minSquadSize − (squadCount + 1))   // +1 = the player being bid for
 maxSafeBid  = remaining − slotsToFill × lowestBasePrice
 ```
-If negative, display ₹0. A negative max safe bid always comes with a warning: warning 1 (over purse) or warning 4 (minimum squad unaffordable).
+If negative, display ₹0. A negative max safe bid always comes with a warning: warning 1 (over purse) or warning 4 (minimum squad unaffordable). ₹0 is also shown whenever warning 4 is active, even if the value is positive (D17). A sentence under the figure explains it (UI47).
 
 **Warnings**
 1. Planned spend exceeds the purse
@@ -163,6 +163,10 @@ If negative, display ₹0. A negative max safe bid always comes with a warning: 
 
 **Note (informational, not a warning)**
 - Squad count is below the minimum squad size
+
+**Display and announcements (UI48)**
+- Warnings, then the note, sit at the top of the summary in the order above, each with a title and a sentence with the numbers (e.g. "Too many overseas players — 9 overseas; the cap is 8."); with neither, "Within all limits".
+- Screen readers hear only when a warning or the note appears or clears, never figures or amounts.
 
 ## 8. API contract (mock server)
 

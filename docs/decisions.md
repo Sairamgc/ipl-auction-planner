@@ -62,6 +62,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | D14 | Negative amounts display with a minus sign (−₹1.20 Cr, U+2212) and an accessible label that reads "minus" | 2026-09-30 |
 | D15 | Header and picker figures (purse, open slots, open overseas slots) are the baseline after retentions and before any plan, labelled that way (e.g. "Purse before auction"); the plan's effect shows only in the summary | 2026-09-30 |
 | D16 | Amends D5 and D6: the "not enough purse for the minimum squad" warning has its own condition, independent of max safe bid: `slotsShort = max(0, minSquadSize − squadCount)`; it fires when `slotsShort > 0` and `remaining < slotsShort × lowestBasePrice`. So it never fires once the minimum is met (over purse is its own warning), and it does fire one player short even when max safe bid is positive. Max safe bid formula and ₹0 display unchanged | 2026-09-30 |
+| D17 | Amends D5's display rule: max safe bid shows ₹0 with "Not enough purse left. See warnings." whenever the raw value is negative **or** the minimum-squad warning is active (e.g. 17 players, ₹20 L left, lowest base ₹30 L: raw +₹20 L). Formula unchanged; `maxSafeBidView` in `domain/` | 2026-09-30 |
 
 ## API
 
@@ -225,6 +226,13 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | UI42 | Focus in the plan flow: after adding, to the pool row's name (with "… added to plan at ₹2.40 Cr" announced); after cancelling, to Add; after removing, to Undo; after Undo, to the restored row; when the Undo notice ends, to the plan heading. Focus moves wait for the render that shows the element | 2026-09-30 |
 | UI43 | Corrects UI34: the pool rows' action slot did not exist until this slice. It now holds Add (or the in-plan tag) | 2026-09-30 |
 | UI44 | Amounts never break across lines (`Money` is `whitespace-nowrap`) | 2026-09-30 |
+| UI45 | Summary metrics: spend, squad and overseas written out ("₹41.20 Cr of ₹43.40 Cr", "19 of 18–25", "9 of 8") with a thin decorative bar (`LimitBar`, hidden from screen readers), a status icon with hidden text, and a detail line ("₹2.20 Cr left", "Over by 1", "2 short of the minimum"). Over a limit: amber; within: green; below the minimum squad: blue. The squad bar marks the minimum | 2026-09-30 |
+| UI46 | Role breakdown: a 2×2 grid of labelled counts in the plan's role order, retained players included | 2026-09-30 |
+| UI47 | Max safe bid: headline figure with a live sentence, no tooltip. Sentences: "…still buy N more player(s) at ₹30 L to reach 18."; "Your next player completes the minimum squad." (one short); "Your squad already reaches the minimum."; "Your squad is full (25 of 25)."; "Not enough purse left. See warnings." (D17) | 2026-09-30 |
+| UI48 | Warnings, then the note, at the top of the summary in §7 order, no links; each has a title and a detail sentence with the numbers; with neither, "Within all limits". One polite live region for the workspace announces only when the set of warnings or the note changes ("Warning: …", "Note: …", "Cleared: …"), after 1 s without changes; silent on load and after a team switch; figures and amounts are never announced | 2026-09-30 |
+| UI49 | Collapsed tablet strip and mobile bar: Purse left, Max safe bid (₹0 with a warning icon when unsafe), Warnings (count, or "None"; the note is not counted). The mobile bar is one button that opens the Summary tab and focuses its heading; its accessible name always carries the figures ("Purse left ₹2.20 Cr, max safe bid ₹1.60 Cr, 2 warnings. Open summary") | 2026-09-30 |
+| UI50 | The expanded tablet strip shows the full summary panel. Rival purses: other teams only, highest official purse first (name breaks ties), each with badge, full name and purse under "Before the auction" | 2026-09-30 |
+| UI51 | The plan and summary share one data hook (`useSquadPlan`, exported by the plan feature), reading the plan's query cache, so the summary follows optimistic saves and rollbacks; a typed but unsaved price is not counted. Targets whose player can't be found are left out of the summary with an info line | 2026-09-30 |
 
 ## Setup and tooling (continued)
 

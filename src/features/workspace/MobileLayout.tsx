@@ -1,12 +1,12 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { useNavigate, useSearch } from "@tanstack/react-router";
+import { useState } from "react";
 
 import { PlanPanel } from "@/features/plan";
 import { PoolPanel } from "@/features/player-pool";
+import { SummaryBarButton, SummaryPanel } from "@/features/summary";
 
-import { PanelPlaceholder } from "./PanelPlaceholder";
-import { SummaryFigures } from "./SummaryFigures";
 import {
   DEFAULT_TAB,
   WORKSPACE_TABS,
@@ -20,12 +20,6 @@ const MINI_BAR =
 const TAB_LABELS: Record<WorkspaceTab, string> = {
   pool: "Pool",
   plan: "Plan",
-  summary: "Summary",
-};
-
-const PANEL_TITLES: Record<WorkspaceTab, string> = {
-  pool: "Player pool",
-  plan: "My plan",
   summary: "Summary",
 };
 
@@ -45,6 +39,19 @@ export function MobileLayout() {
       search: (previous) => ({ ...previous, tab: undefined }),
       replace: true,
     });
+  };
+  // The bar opens the Summary tab and moves focus to its heading (UI49)
+  const [focusSummary, setFocusSummary] = useState(false);
+  const openSummary = () => {
+    setFocusSummary(true);
+    if (tab === "summary") return;
+    void navigate({
+      search: (previous) => ({ ...previous, tab: "summary" }),
+      replace: true,
+    });
+  };
+  const summaryFocused = () => {
+    setFocusSummary(false);
   };
 
   return (
@@ -88,7 +95,10 @@ export function MobileLayout() {
             ) : value === "plan" ? (
               <PlanPanel onGoToPool={goToPool} />
             ) : (
-              <PanelPlaceholder id={value} title={PANEL_TITLES[value]} />
+              <SummaryPanel
+                focusHeading={focusSummary}
+                onHeadingFocused={summaryFocused}
+              />
             )}
           </TabsContent>
         ))}
@@ -104,7 +114,7 @@ export function MobileLayout() {
         inert
         className={cn(MINI_BAR, "invisible border-t border-transparent")}
       >
-        <SummaryFigures />
+        <SummaryBarButton />
       </div>
       <aside
         aria-label="Plan summary"
@@ -113,7 +123,7 @@ export function MobileLayout() {
           "fixed inset-x-0 bottom-0 z-10 border-t bg-background",
         )}
       >
-        <SummaryFigures />
+        <SummaryBarButton onOpen={openSummary} />
       </aside>
     </>
   );

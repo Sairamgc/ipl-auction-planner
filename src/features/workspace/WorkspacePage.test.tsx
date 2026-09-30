@@ -14,10 +14,19 @@ async function workspaceTitle(name: string) {
   return screen.findByRole("heading", { level: 1, name });
 }
 
+/** The workspace header (rival purses also say "Before the auction"). */
+function header() {
+  const headers = document.querySelectorAll("header");
+  const last = headers[headers.length - 1];
+  if (!last) throw new Error("No header");
+  return within(last);
+}
+
 /** The inline "Before the auction" figures, by label. */
 function headerFigures() {
   const value = (label: string) =>
-    screen.getByText(label, { selector: "dt" }).nextElementSibling?.textContent;
+    header().getByText(label, { selector: "dt" }).nextElementSibling
+      ?.textContent;
   return {
     purse: value("Purse"),
     open: value("Open slots"),
@@ -32,7 +41,7 @@ describe("WorkspacePage", () => {
       renderRoute("/teams/csk");
 
       await workspaceTitle("Chennai Super Kings");
-      expect(await screen.findByText("Before the auction")).toBeVisible();
+      expect(await header().findByText("Before the auction")).toBeVisible();
       expect(headerFigures()).toEqual({
         purse: "₹43.40 Cr",
         open: "9",
@@ -68,7 +77,9 @@ describe("WorkspacePage", () => {
       renderRoute("/teams/csk");
 
       await workspaceTitle("Chennai Super Kings");
-      expect(screen.queryByText("Before the auction")).not.toBeInTheDocument();
+      expect(
+        header().queryByText("Before the auction"),
+      ).not.toBeInTheDocument();
     });
 
     it("sets the page title to the team", async () => {
@@ -240,9 +251,7 @@ describe("WorkspacePage", () => {
       ).toHaveLength(1);
       // Role queries skip aria-hidden content: the spacer copy is not exposed
       expect(
-        screen
-          .getAllByRole("term")
-          .filter((term) => term.textContent === "Purse left"),
+        await screen.findAllByRole("button", { name: /Open summary$/ }),
       ).toHaveLength(1);
       const spacer = screen.getByRole("complementary", {
         name: "Plan summary",
@@ -303,7 +312,7 @@ describe("WorkspacePage", () => {
       await user.click(screen.getByRole("button", { name: "Try again" }));
 
       await workspaceTitle("Chennai Super Kings");
-      expect(await screen.findByText("Before the auction")).toBeVisible();
+      expect(await header().findByText("Before the auction")).toBeVisible();
     });
   });
 });
