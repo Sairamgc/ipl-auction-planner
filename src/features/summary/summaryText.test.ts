@@ -162,6 +162,19 @@ describe("summaryBarLabel", () => {
     );
   });
 
+  it("says max safe bid doesn't apply to a full squad (D18)", () => {
+    const { summary, view } = derive(25, 500);
+    expect(
+      summaryBarLabel({
+        remainingLakh: summary.remainingLakh,
+        maxSafeBid: view,
+        warningCount: 0,
+      }),
+    ).toBe(
+      "Purse left ₹5.00 Cr, max safe bid not applicable, squad full, no warnings. Open summary",
+    );
+  });
+
   it("reads unavailable figures", () => {
     expect(summaryBarLabel(null)).toBe(
       "Plan summary unavailable. Open summary",

@@ -13,34 +13,37 @@ export type MaxSafeBidReason =
   | { code: "completes" }
   /** At or above the minimum squad. */
   | { code: "reached" }
-  /** At or above the maximum squad. */
+  /** At or above the maximum squad: no bid applies, shown as "—" (D18). */
   | { code: "full" };
 
 export interface MaxSafeBidView {
-  displayedLakh: number;
+  /** Null when the squad is full: there is no next player to bid for. */
+  displayedLakh: number | null;
   reason: MaxSafeBidReason;
 }
 
 /**
- * Max safe bid as displayed (D5, D17): ₹0 whenever it is not safe to bid,
- * which is when the raw value is negative or the minimum-squad warning is
- * active (one short with too little purse can leave a positive raw value).
+ * Max safe bid as displayed (D5, D17, D18). A full squad has no next
+ * player, so there is no figure ("—"), whatever the purse. Otherwise ₹0
+ * whenever it is not safe to bid: the raw value is negative or the
+ * minimum-squad warning is active (one short with too little purse can
+ * leave a positive raw value).
  */
 export function maxSafeBidView(
   summary: PlanSummary,
   warnings: readonly PlanWarning[],
   rules: SquadRules,
 ): MaxSafeBidView {
+  const { squadCount } = summary;
+  if (squadCount >= rules.maxSquadSize) {
+    return { displayedLakh: null, reason: { code: "full" } };
+  }
   const unsafe =
     summary.maxSafeBidLakh < 0 ||
     warnings.some((warning) => warning.code === "min-squad-unaffordable");
   if (unsafe) return { displayedLakh: 0, reason: { code: "unsafe" } };
 
   const displayedLakh = summary.maxSafeBidLakh;
-  const { squadCount } = summary;
-  if (squadCount >= rules.maxSquadSize) {
-    return { displayedLakh, reason: { code: "full" } };
-  }
   if (squadCount >= rules.minSquadSize) {
     return { displayedLakh, reason: { code: "reached" } };
   }

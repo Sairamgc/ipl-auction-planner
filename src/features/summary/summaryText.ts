@@ -102,8 +102,11 @@ export function summaryBarLabel(
 ): string {
   if (!figures) return "Plan summary unavailable. Open summary";
   const { remainingLakh, maxSafeBid, warningCount } = figures;
-  const bid = `max safe bid ${formatLakhLabel(maxSafeBid.displayedLakh)}${
-    maxSafeBid.reason.code === "unsafe" ? ", not enough purse left" : ""
-  }`;
+  const bid =
+    maxSafeBid.displayedLakh === null
+      ? "max safe bid not applicable, squad full"
+      : `max safe bid ${formatLakhLabel(maxSafeBid.displayedLakh)}${
+          maxSafeBid.reason.code === "unsafe" ? ", not enough purse left" : ""
+        }`;
   return `Purse left ${formatLakhLabel(remainingLakh)}, ${bid}, ${warningCountText(warningCount)}. Open summary`;
 }

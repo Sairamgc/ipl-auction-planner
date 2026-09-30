@@ -149,7 +149,7 @@ remaining   = purseRemaining − plannedSpend
 slotsToFill = max(0, minSquadSize − (squadCount + 1))   // +1 = the player being bid for
 maxSafeBid  = remaining − slotsToFill × lowestBasePrice
 ```
-If negative, display ₹0. A negative max safe bid always comes with a warning: warning 1 (over purse) or warning 4 (minimum squad unaffordable). ₹0 is also shown whenever warning 4 is active, even if the value is positive (D17). A sentence under the figure explains it (UI47).
+If negative, display ₹0. A negative max safe bid always comes with a warning: warning 1 (over purse) or warning 4 (minimum squad unaffordable). ₹0 is also shown whenever warning 4 is active, even if the value is positive (D17). At or above the maximum squad there is no next player to bid for, so it shows "—" ("not applicable") with "Your squad is full" (D18). A sentence under the figure explains it (UI47).
 
 **Warnings**
 1. Planned spend exceeds the purse

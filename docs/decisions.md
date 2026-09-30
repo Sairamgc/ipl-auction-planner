@@ -63,6 +63,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | D15 | Header and picker figures (purse, open slots, open overseas slots) are the baseline after retentions and before any plan, labelled that way (e.g. "Purse before auction"); the plan's effect shows only in the summary | 2026-09-30 |
 | D16 | Amends D5 and D6: the "not enough purse for the minimum squad" warning has its own condition, independent of max safe bid: `slotsShort = max(0, minSquadSize − squadCount)`; it fires when `slotsShort > 0` and `remaining < slotsShort × lowestBasePrice`. So it never fires once the minimum is met (over purse is its own warning), and it does fire one player short even when max safe bid is positive. Max safe bid formula and ₹0 display unchanged | 2026-09-30 |
 | D17 | Amends D5's display rule: max safe bid shows ₹0 with "Not enough purse left. See warnings." whenever the raw value is negative **or** the minimum-squad warning is active (e.g. 17 players, ₹20 L left, lowest base ₹30 L: raw +₹20 L). Formula unchanged; `maxSafeBidView` in `domain/` | 2026-09-30 |
+| D18 | Amends D5 and D17: when the squad is at or above the maximum, max safe bid shows "—" (read as "not applicable"), since there is no next player to bid for, with the sentence "Your squad is full (25 of 25)." This wins over the ₹0 "not enough purse" state; any warnings still show. The mobile bar reads "max safe bid not applicable, squad full" | 2026-09-30 |
 
 ## API
 

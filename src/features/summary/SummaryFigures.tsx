@@ -5,6 +5,7 @@ import { useParams } from "@tanstack/react-router";
 import { ChevronRight, TriangleAlert } from "lucide-react";
 import type { ReactNode } from "react";
 
+import { MaxSafeBidValue } from "./MaxSafeBidValue";
 import { summaryBarLabel } from "./summaryText";
 import { type SummaryViewState, useSummaryView } from "./useSummaryView";
 
@@ -51,7 +52,7 @@ function figuresOf(view: SummaryViewState): Figure[] {
               className="size-3.5 text-warning"
             />
           )}
-          <Money lakh={maxSafeBid.displayedLakh} />
+          <MaxSafeBidValue view={maxSafeBid} />
           {unsafe && <span className="sr-only">, not enough purse left</span>}
         </span>
       ),

@@ -215,7 +215,11 @@ describe("SummaryPanel", () => {
       "Warning: Squad over the maximum",
       "Warning: Too many overseas players",
     ]);
-    expect(maxSafeBid().sentence).toBe("Your squad is full (26 of 25).");
+    // No next player to bid for: "—", read as "not applicable" (D18)
+    expect(maxSafeBid()).toEqual({
+      value: "—not applicable",
+      sentence: "Your squad is full (26 of 25).",
+    });
     expect(metric("Squad")).toHaveTextContent(
       "26 of 18–25Over the limitOver by 1",
     );

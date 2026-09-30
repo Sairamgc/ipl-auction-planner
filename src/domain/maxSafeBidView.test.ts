@@ -37,8 +37,11 @@ describe("maxSafeBidView", () => {
     expect(viewFor(24, 500).reason).toEqual({ code: "reached" });
   });
 
-  it("says the squad is full at or above the maximum", () => {
-    expect(viewFor(25, 500).reason).toEqual({ code: "full" });
+  it("has no figure once the squad is full (D18)", () => {
+    expect(viewFor(25, 500)).toEqual({
+      displayedLakh: null,
+      reason: { code: "full" },
+    });
     expect(viewFor(26, 500).reason).toEqual({ code: "full" });
   });
 
@@ -61,10 +64,10 @@ describe("maxSafeBidView", () => {
     ).toEqual({ displayedLakh: 0, reason: { code: "unsafe" } });
   });
 
-  it("puts unsafe ahead of a full squad", () => {
+  it("puts a full squad ahead of unsafe: no bid applies (D18)", () => {
     expect(viewFor(25, -10)).toEqual({
-      displayedLakh: 0,
-      reason: { code: "unsafe" },
+      displayedLakh: null,
+      reason: { code: "full" },
     });
   });
 });

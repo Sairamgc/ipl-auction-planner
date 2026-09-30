@@ -10,6 +10,7 @@ import { useParams } from "@tanstack/react-router";
 import { CircleCheck, Info, TriangleAlert } from "lucide-react";
 import { type ReactNode, useEffect, useRef } from "react";
 
+import { MaxSafeBidValue } from "./MaxSafeBidValue";
 import {
   maxSafeBidSentence,
   noteText,
@@ -115,7 +116,7 @@ function SummaryContent({ view }: { view: SummaryView }) {
           {maxSafeBid.reason.code === "unsafe" && (
             <TriangleAlert aria-hidden="true" className="size-5 text-warning" />
           )}
-          <Money lakh={maxSafeBid.displayedLakh} />
+          <MaxSafeBidValue view={maxSafeBid} />
         </p>
         <p className="mt-1 text-sm text-muted-foreground">
           {maxSafeBidSentence(maxSafeBid, summary, rules)}
