@@ -1,17 +1,10 @@
-import { franchisesQueryOptions, useFranchise } from "@/api";
+import { franchisesQueryOptions } from "@/api";
 import { ErrorState } from "@/components/common/ErrorState";
-import {
-  createFileRoute,
-  Link,
-  notFound,
-  useRouter,
-} from "@tanstack/react-router";
+import { WorkspacePage, workspaceSearchSchema } from "@/features/workspace";
+import { createFileRoute, notFound, useRouter } from "@tanstack/react-router";
 
-/**
- * Placeholder workspace (UI7): proves navigation from the picker until the
- * workspace is built. Unknown team ids show the not-found page.
- */
 export const Route = createFileRoute("/teams/$teamId")({
+  validateSearch: workspaceSearchSchema,
   loader: async ({ context, params }) => {
     // Cached data if present, otherwise fetch (replaces ensureQueryData)
     const franchises = await context.queryClient.query({
@@ -23,23 +16,13 @@ export const Route = createFileRoute("/teams/$teamId")({
       throw notFound();
     }
   },
-  component: WorkspacePlaceholder,
+  component: WorkspaceRoute,
   errorComponent: WorkspaceLoadError,
 });
 
-function WorkspacePlaceholder() {
+function WorkspaceRoute() {
   const { teamId } = Route.useParams();
-  const { data: franchise } = useFranchise(teamId);
-
-  return (
-    <div className="flex flex-col gap-2">
-      <h1 className="text-2xl font-semibold">{franchise?.name}</h1>
-      <p className="text-muted-foreground">The workspace is coming next.</p>
-      <Link to="/" className="text-primary underline underline-offset-4">
-        Back to all teams
-      </Link>
-    </div>
-  );
+  return <WorkspacePage teamId={teamId} />;
 }
 
 function WorkspaceLoadError() {
@@ -47,6 +30,8 @@ function WorkspaceLoadError() {
   return (
     <ErrorState
       title="Couldn't load this team."
+      description="Check your connection and try again."
+      className="max-w-xl"
       // Re-runs the loader; the error boundary's reset alone would not
       onRetry={() => {
         void router.invalidate();

@@ -102,6 +102,13 @@ describe("TeamPickerPage", () => {
     ).toBeVisible();
   });
 
+  it("sets the page title", async () => {
+    mockApi();
+    renderRoute("/");
+    await teamCards();
+    expect(document.title).toBe("Choose a team · IPL Auction Planner");
+  });
+
   it("links each card to its workspace, named by the team only", async () => {
     mockApi();
     renderRoute("/");

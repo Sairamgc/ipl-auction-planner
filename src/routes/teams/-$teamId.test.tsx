@@ -4,27 +4,11 @@ import {
   mockApi,
 } from "@/test/apiFixtures";
 import { renderRoute } from "@/test/render";
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 
-describe("/teams/$teamId (placeholder)", () => {
-  it("shows the franchise and a way back", async () => {
-    mockApi();
-    renderRoute("/teams/csk");
-
-    expect(
-      await screen.findByRole("heading", {
-        level: 1,
-        name: "Chennai Super Kings",
-      }),
-    ).toBeVisible();
-    expect(screen.getByText("The workspace is coming next.")).toBeVisible();
-    expect(
-      screen.getByRole("link", { name: "Back to all teams" }),
-    ).toHaveAttribute("href", "/");
-  });
-
+describe("/teams/$teamId route", () => {
   it("shows not found for an unknown team", async () => {
     mockApi();
     renderRoute("/teams/xyz");
@@ -32,6 +16,9 @@ describe("/teams/$teamId (placeholder)", () => {
     expect(
       await screen.findByRole("heading", { name: "Page not found." }),
     ).toBeVisible();
+    await waitFor(() => {
+      expect(document.title).toBe("Page not found · IPL Auction Planner");
+    });
   });
 
   it("offers a retry that reloads when franchises fail to load", async () => {

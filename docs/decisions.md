@@ -198,3 +198,13 @@ Agreed work that is not done yet. Remove an entry when it is done, and reference
 | UI8 | `Money` renders in `<data value>`; negatives show "−₹…" visually and a visually hidden "minus ₹…" for screen readers (`aria-label` is unreliable on non-interactive elements) | 2026-09-30 |
 | UI9 | The shadcn `Button` includes the `touch-target` utility, so every button meets V6 on touch devices | 2026-09-30 |
 | UI10 | Cards use the 8px radius (`rounded-lg`, V5) rather than shadcn's larger card default | 2026-09-30 |
+| UI11 | Team colour on the active mobile tab uses `--team-indicator`: the primary colour if it reaches 3:1 on the page, otherwise the secondary, otherwise foreground (CSK → blue, RCB → red), plus bold text so state never relies on colour alone | 2026-09-30 |
+| UI12 | Workspace layouts are rendered one at a time for the current breakpoint (`useViewport`), so each panel exists once and tab roles exist only on mobile. Desktop and tablet fill the viewport with panels scrolling independently; mobile scrolls the page | 2026-09-30 |
+| UI13 | Mobile workspace opens on the Pool tab; the tab lives in `?tab=`, omitted for the default, invalid values fall back to Pool; tab changes replace the history entry | 2026-09-30 |
+| UI14 | Switching team keeps all search params: pool filters, search, sort and the mobile tab carry over (the pool is the same for every team) | 2026-09-30 |
+| UI15 | After a team switch, focus moves to the new team's title (announced by screen readers); Escape without switching returns focus to the switcher | 2026-09-30 |
+| UI16 | Team switcher: shadcn DropdownMenu with a radio group (badge + full name per team, alphabetical, current checked, type-ahead); accessible name "Switch team, current: <team>" | 2026-09-30 |
+| UI17 | Browser tab titles: "Choose a team · IPL Auction Planner", "<Team> · IPL Auction Planner", "Page not found · IPL Auction Planner" (`useDocumentTitle`) | 2026-09-30 |
+| UI18 | Workspace header: 4px team stripe and 2px secondary line, "All teams" back link, badge + h1 + switcher (switcher wraps below the name on narrow screens), baseline figures via the shared `BaselineFigures`. While figures load, the team shows immediately and only the figures are skeletons | 2026-09-30 |
+| UI19 | Tappable menu items and tab triggers include the `touch-target` utility, like buttons (UI9) | 2026-09-30 |
+| S27 | `shared/color` is a shared-utilities boundary element (WCAG contrast) usable by `domain/` and `mock-server/` | 2026-09-30 |

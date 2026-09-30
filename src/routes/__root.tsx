@@ -1,5 +1,6 @@
 import { AppHeader } from "@/components/common/AppHeader";
 import { EmptyState } from "@/components/common/EmptyState";
+import { useDocumentTitle } from "@/lib/useDocumentTitle";
 import {
   createRootRouteWithContext,
   Link,
@@ -14,20 +15,28 @@ export const Route = createRootRouteWithContext<RouterContext>()({
   notFoundComponent: NotFound,
 });
 
+/**
+ * Mobile: the document scrolls. Tablet and desktop: the shell fills the
+ * viewport and <main> scrolls, so a workspace can pin its header and let
+ * each panel scroll on its own (UI12).
+ */
 function RootLayout() {
   return (
-    <>
+    <div className="flex min-h-dvh flex-col md:h-dvh">
       <AppHeader />
-      <main className="mx-auto max-w-7xl px-4 py-6 md:px-6">
-        <Outlet />
+      <main className="flex flex-1 flex-col md:min-h-0 md:overflow-y-auto">
+        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 py-6 md:min-h-0 md:px-6">
+          <Outlet />
+        </div>
       </main>
       {/* Excluded from production builds automatically */}
       <TanStackRouterDevtools position="bottom-right" />
-    </>
+    </div>
   );
 }
 
 function NotFound() {
+  useDocumentTitle("Page not found");
   return (
     <EmptyState title="Page not found." className="max-w-xl">
       <Link to="/" className="text-primary underline underline-offset-4">

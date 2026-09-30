@@ -1,0 +1,88 @@
+import { expect, test } from "@playwright/test";
+
+function figure(page: import("@playwright/test").Page, label: string) {
+  return page
+    .locator("main header dt", { hasText: label })
+    .locator("xpath=following-sibling::dd[1]");
+}
+
+test.describe("workspace", () => {
+  test("picker → workspace → switch team → back to picker", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    await page.getByRole("link", { name: "Chennai Super Kings" }).click();
+
+    await expect(page).toHaveURL("/teams/csk");
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Chennai Super Kings" }),
+    ).toBeVisible();
+    await expect(figure(page, "Purse")).toHaveText("₹43.40 Cr");
+    await expect(page).toHaveTitle("Chennai Super Kings · IPL Auction Planner");
+
+    // Switch with the keyboard
+    await page.getByRole("button", { name: /^Switch team/ }).focus();
+    await page.keyboard.press("Enter");
+    await page
+      .getByRole("menuitemradio", { name: /Royal Challengers Bengaluru/ })
+      .waitFor();
+    // Type-ahead jumps to the team starting with R
+    await page.keyboard.press("r");
+    await expect(
+      page.getByRole("menuitemradio", { name: /Royal Challengers Bengaluru/ }),
+    ).toBeFocused();
+    await page.keyboard.press("Enter");
+
+    await expect(page).toHaveURL("/teams/rcb");
+    const title = page.getByRole("heading", {
+      level: 1,
+      name: "Royal Challengers Bengaluru",
+    });
+    await expect(title).toBeFocused();
+    await expect(figure(page, "Purse")).toHaveText("₹16.40 Cr");
+    await expect(page).toHaveTitle(
+      "Royal Challengers Bengaluru · IPL Auction Planner",
+    );
+
+    await page.getByRole("link", { name: "All teams" }).click();
+    await expect(page).toHaveURL("/");
+    await expect(page).toHaveTitle("Choose a team · IPL Auction Planner");
+  });
+
+  test("shows the layout for the screen size", async ({ page, isMobile }) => {
+    await page.goto("/teams/csk");
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Chennai Super Kings" }),
+    ).toBeVisible();
+
+    if (isMobile) {
+      await expect(page.getByRole("tablist")).toBeVisible();
+      await expect(
+        page.getByRole("complementary", { name: "Plan summary" }),
+      ).toBeVisible();
+    } else {
+      for (const name of ["Player pool", "My plan", "Summary"]) {
+        await expect(page.getByRole("region", { name })).toBeVisible();
+      }
+      await expect(page.getByRole("tablist")).toHaveCount(0);
+    }
+  });
+
+  test("keeps the mobile tab in the URL across a reload", async ({
+    page,
+    isMobile,
+  }) => {
+    test.skip(!isMobile, "Tabs exist on mobile only");
+    await page.goto("/teams/csk");
+
+    await page.getByRole("tab", { name: "Plan" }).click();
+    await expect(page).toHaveURL("/teams/csk?tab=plan");
+    await expect(page.getByRole("region", { name: "My plan" })).toBeVisible();
+
+    await page.reload();
+    await expect(page.getByRole("tab", { name: "Plan" })).toHaveAttribute(
+      "aria-selected",
+      "true",
+    );
+  });
+});

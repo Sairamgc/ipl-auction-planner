@@ -1,6 +1,7 @@
 import { EmptyState } from "@/components/common/EmptyState";
 import { ErrorState } from "@/components/common/ErrorState";
 import { formatDate } from "@/domain";
+import { useDocumentTitle } from "@/lib/useDocumentTitle";
 
 import { TeamCard } from "./TeamCard";
 import { TeamCardSkeleton } from "./TeamCardSkeleton";
@@ -12,6 +13,7 @@ const GRID = "grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4"; // UI2
 /** `/`: choose a franchise to plan for (P3, §3). */
 export function TeamPickerPage() {
   const state = useTeamPicker();
+  useDocumentTitle("Choose a team");
 
   return (
     <div className="flex flex-col gap-6">

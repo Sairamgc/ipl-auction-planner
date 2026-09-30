@@ -48,7 +48,7 @@ A UI-only auction strategy tool. A franchise picks its team, reviews its squad b
 **Team picker:** one card per franchise showing logo (initials badge when there is no logo path or the image fails to load), purse before auction, open slots, open overseas slots, and plan status (not started, or number of targets). Clicking anywhere on a card opens the workspace. Cards are sorted alphabetically by franchise name; the figures sit under a "Before the auction" caption. Loading shows skeleton cards; any failed request shows one error with "Try again"; no franchises shows an empty state (UI1–UI7).
 
 **Team workspace**
-- Header: franchise name and logo, team switcher, purse before auction, open slots, open overseas slots.
+- Header: franchise name and logo, team switcher, purse before auction, open slots, open overseas slots, and an "All teams" link back to the picker. The browser tab reads "<Team> · IPL Auction Planner".
 - Header and picker figures are the baseline after retentions, before any plan, and are labelled that way (e.g. "Purse before auction"). The plan's effect appears only in the summary panel.
 - Player pool panel: search, filters, sort, infinite-scrolling table. Filters, search and sort live in the URL.
 - My plan panel: retained players (locked) and targets grouped by role; within each role, highest expected price first. Expected price editable inline; targets removable.
@@ -59,7 +59,7 @@ A UI-only auction strategy tool. A franchise picks its team, reviews its squad b
 2. **Add a target:** only from the Add button on a pool row. Opens the add dialog with expected price pre-filled with the base price. Confirming adds the target optimistically and autosaves.
 3. **Edit a target's price:** inline in the plan panel. Saves on blur or Enter. An invalid value shows an error and is not saved until valid.
 4. **Remove a target:** in the plan panel, saves immediately.
-5. **Switch franchise:** header switcher navigates directly to another workspace.
+5. **Switch franchise:** header switcher (a menu of all teams, alphabetical, current team checked) navigates directly to another workspace. Search params carry over, so pool filters, search, sort and the mobile tab stay as they were. Focus moves to the new team's title.
 
 **Detail dialog content:** name, age, nationality, overseas flag, role, batting hand, bowling style, capped status, base price (pool players).
 
@@ -74,6 +74,11 @@ A UI-only auction strategy tool. A franchise picks its team, reviews its squad b
 On touch devices (tablets included), tappable elements are at least 44px (decision V6).
 
 Team picker grid: 1 column (mobile), 2 (tablet), 4 (desktop) (UI2).
+
+Workspace details (UI11–UI15):
+- Desktop and tablet: the workspace fills the viewport under the header, and each panel scrolls on its own. Mobile: the page scrolls; the tabs stick under the header and the mini-summary bar is fixed to the bottom.
+- Tablet: the summary strip sits along the bottom and expands upward.
+- Mobile: the default tab is Pool; the tab is in the URL as `?tab=`, omitted for the default.
 
 ## 5. Domain model
 

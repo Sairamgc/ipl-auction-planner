@@ -58,6 +58,7 @@
   --color-team-foreground: var(--team-foreground);
   --color-team-secondary: var(--team-secondary);
   --color-team-secondary-foreground: var(--team-secondary-foreground);
+  --color-team-indicator: var(--team-indicator);
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -126,6 +127,8 @@
   /* teal-900: 9.46:1 with white */
   --team-secondary: oklch(0.386 0.063 188.416);
   --team-secondary-foreground: oklch(1 0 0);
+  /* Team colour that marks state at 3:1 on the page (teal-700: 5.39:1) */
+  --team-indicator: var(--primary);
 
   /* Shape and density (V5, V6) */
   --radius: 0.5rem; /* 8px */

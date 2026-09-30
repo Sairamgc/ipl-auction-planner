@@ -25,6 +25,7 @@ const elements = [
   { type: "lib", pattern: "src/lib" },
   { type: "test", pattern: "src/test" },
   { type: "contracts", pattern: "shared/contracts" },
+  { type: "shared-utils", pattern: "shared/color" },
   { type: "mock-server", pattern: "mock-server" },
 ];
 
@@ -36,7 +37,7 @@ const allowedDependencies = {
   common: ["ui", "domain", "lib"],
   ui: ["lib"],
   api: ["contracts", "lib"],
-  domain: ["contracts"],
+  domain: ["contracts", "shared-utils"],
   lib: [],
   test: [
     "app",
@@ -50,7 +51,8 @@ const allowedDependencies = {
     "contracts",
   ],
   contracts: [],
-  "mock-server": ["contracts"],
+  "shared-utils": [],
+  "mock-server": ["contracts", "shared-utils"],
 };
 
 const boundaryPolicies = [
@@ -123,7 +125,11 @@ export default defineConfig([
         "error",
         {
           allowConstantExport: true,
-          allowExportNames: ["badgeVariants", "buttonVariants"],
+          allowExportNames: [
+            "badgeVariants",
+            "buttonVariants",
+            "tabsListVariants",
+          ],
         },
       ],
     },

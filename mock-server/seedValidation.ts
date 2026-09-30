@@ -1,6 +1,6 @@
 import { HOME_NATIONALITY } from "../shared/contracts/index.ts";
 
-import { contrastRatio, MIN_TEXT_CONTRAST } from "./contrast.ts";
+import { contrastRatio, MIN_TEXT_CONTRAST } from "../shared/color/contrast.ts";
 import { type Database, DatabaseSchema } from "./dbSchema.ts";
 
 /**

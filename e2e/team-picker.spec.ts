@@ -74,7 +74,7 @@ test.describe("team picker", () => {
     await page.keyboard.press("Enter");
 
     await expect(page).toHaveURL("/teams/rcb");
-    await page.getByRole("link", { name: "Back to all teams" }).click();
+    await page.getByRole("link", { name: "All teams" }).click();
     await expect(page).toHaveURL("/");
   });
 });

@@ -1,4 +1,4 @@
-import { Money } from "@/components/common/Money";
+import { BaselineFigures } from "@/components/common/BaselineFigures";
 import { TeamLogo } from "@/components/common/TeamLogo";
 import { teamColorStyle } from "@/components/common/teamColorStyle";
 import { Badge } from "@/components/ui/badge";
@@ -39,19 +39,12 @@ export function TeamCard({ franchise, preview }: TeamPickerCard) {
         </h2>
       </div>
 
-      <div className="px-4">
-        <p className="text-xs text-muted-foreground">Before the auction</p>
-        <dl className="mt-2 grid grid-cols-[1fr_auto] gap-x-4 gap-y-1">
-          <dt className="self-baseline text-muted-foreground">Purse</dt>
-          <dd className="text-right text-lg font-semibold">
-            <Money lakh={preview.purseLakh} />
-          </dd>
-          <dt className="text-muted-foreground">Open slots</dt>
-          <dd className="text-right">{preview.openSlots}</dd>
-          <dt className="text-muted-foreground">Overseas slots</dt>
-          <dd className="text-right">{preview.openOverseasSlots}</dd>
-        </dl>
-      </div>
+      <BaselineFigures
+        className="px-4"
+        purseLakh={preview.purseLakh}
+        openSlots={preview.openSlots}
+        openOverseasSlots={preview.openOverseasSlots}
+      />
 
       <div className="mt-auto px-4">
         <Badge
