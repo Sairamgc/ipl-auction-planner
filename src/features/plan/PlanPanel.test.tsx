@@ -360,7 +360,7 @@ describe("PlanPanel", () => {
       expect(await within(plan()).findByText("Saved")).toBeVisible();
     });
 
-    it("rolls back a failed save, explains it, and retries the failed plan (N30)", async () => {
+    it("names the dropped change, keeps it through a later save, and re-applies it (UI54)", async () => {
       const responses: ApiResponses = {
         ...withTargets(),
         "PUT /api/plans/csk": 500,
@@ -375,25 +375,39 @@ describe("PlanPanel", () => {
       await user.type(input, "250{Enter}");
 
       const alert = await within(plan()).findByRole("alert");
-      expect(alert).toHaveTextContent("Couldn't save your last change.");
+      expect(alert).toHaveTextContent(
+        "Couldn’t change Cameron Green’s price to ₹2.50 Cr. Your saved plan doesn’t include it.",
+      );
       // Rolled back to the last saved price
       await waitFor(() => {
         expect(priceInput("Cameron Green")).toHaveValue("240");
       });
 
-      // The server recovers; Try again resends the plan that failed
+      // The server recovers; an unrelated save succeeds but the error stays
       delete responses["PUT /api/plans/csk"];
       await user.click(
-        within(alert).getByRole("button", { name: "Try again" }),
+        within(plan()).getByRole("button", {
+          name: "Remove Jacob Duffy from plan",
+        }),
+      );
+      expect(
+        await within(plan()).findByText("Last change not saved"),
+      ).toBeVisible();
+      expect(within(plan()).getByRole("alert")).toBeVisible();
+
+      // Try again re-applies the dropped change on top of the current plan
+      await user.click(
+        within(plan()).getByRole("button", { name: "Try again" }),
       );
       await waitFor(() => {
         expect(within(plan()).queryByRole("alert")).not.toBeInTheDocument();
       });
-      const sent = saves(fetchMock);
-      expect(sent.at(-1)?.targets[0]?.expectedPriceLakh).toBe(250);
-      await waitFor(() => {
-        expect(priceInput("Cameron Green")).toHaveValue("250");
-      });
+      expect(saves(fetchMock).at(-1)?.targets).toEqual([
+        { auctionEntryId: "2026-cameron-green", expectedPriceLakh: 250 },
+        { auctionEntryId: "2026-ravi-bishnoi", expectedPriceLakh: 300 },
+      ]);
+      expect(priceInput("Cameron Green")).toHaveValue("250");
+      expect(await within(plan()).findByText("Saved")).toBeVisible();
     });
 
     it("keeps the error until dismissed", async () => {
@@ -408,6 +422,7 @@ describe("PlanPanel", () => {
         }),
       );
       const alert = await within(plan()).findByRole("alert");
+      expect(alert).toHaveTextContent("Couldn’t remove Jacob Duffy.");
       await user.click(within(alert).getByRole("button", { name: "Dismiss" }));
 
       expect(within(plan()).queryByRole("alert")).not.toBeInTheDocument();
@@ -417,7 +432,7 @@ describe("PlanPanel", () => {
       ).toHaveFocus();
     });
 
-    it("clears the error when a later save succeeds", async () => {
+    it("clears the error once a saved plan includes the change", async () => {
       const responses: ApiResponses = {
         ...withTargets(),
         "PUT /api/plans/csk": 500,
@@ -427,17 +442,18 @@ describe("PlanPanel", () => {
       renderRoute("/teams/csk");
       await ready();
 
-      await user.click(
-        within(plan()).getByRole("button", {
-          name: "Remove Jacob Duffy from plan",
-        }),
-      );
+      const remove = () =>
+        user.click(
+          within(plan()).getByRole("button", {
+            name: "Remove Jacob Duffy from plan",
+          }),
+        );
+      await remove();
       await within(plan()).findByRole("alert");
 
+      // The server recovers and the user makes the same change by hand
       delete responses["PUT /api/plans/csk"];
-      const input = priceInput("Cameron Green");
-      await user.clear(input);
-      await user.type(input, "250{Enter}");
+      await remove();
 
       await waitFor(() => {
         expect(within(plan()).queryByRole("alert")).not.toBeInTheDocument();

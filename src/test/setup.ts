@@ -3,6 +3,8 @@ import "@testing-library/jest-dom/vitest";
 import { cleanup } from "@testing-library/react";
 import { afterEach, vi } from "vitest";
 
+import { resetDroppedChanges } from "@/features/plan/droppedChangeStore";
+
 import { installMatchMedia, resetViewport } from "./viewport";
 
 // jsdom does not implement scrolling; the router calls it on navigation
@@ -21,4 +23,5 @@ Element.prototype.scrollTo = () => undefined;
 afterEach(() => {
   cleanup();
   resetViewport();
+  resetDroppedChanges();
 });

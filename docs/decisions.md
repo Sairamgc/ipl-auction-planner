@@ -246,6 +246,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | UI51 | The plan and summary share one data hook (`useSquadPlan`, exported by the plan feature), reading the plan's query cache, so the summary follows optimistic saves and rollbacks; a typed but unsaved price is not counted. Targets whose player can't be found are left out of the summary with an info line | 2026-09-30 |
 | UI52 | The mobile summary bar ends with a "›" chevron so it reads as tappable; decorative and hidden from screen readers (the button's name already ends "Open summary") | 2026-09-30 |
 | UI53 | Primary buttons (and linked badges) darken to a solid `--primary-hover` (teal-800, 7.58:1 with white) on hover instead of fading to 80% opacity, which dropped white text to 3.76:1 (below AA) | 2026-09-30 |
+| UI54 | Amends UI41 and N30. A failed save's error names the change it dropped ("Couldn’t add Devon Conway.", "Couldn’t change Cameron Green’s price to ₹2.50 Cr.", or a list). The dropped change is kept (plan-feature store) until dismissed, re-applied, or found in a plan the server confirmed, so a later unrelated save no longer clears it. Try again re-applies the dropped change on top of the current plan (keeping edits made since), instead of resending the failed plan. Several dropped changes merge; for the same player the later wins | 2026-09-30 |
 
 ## Setup and tooling (continued)
 

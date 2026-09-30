@@ -1,7 +1,10 @@
 import { usePlanSaveStatus } from "@/api";
 import { Button } from "@/components/ui/button";
 import { Check, LoaderCircle } from "lucide-react";
-import { type RefObject, useState } from "react";
+import type { RefObject } from "react";
+
+import { droppedChangeText } from "./droppedChangeText";
+import { useDroppedChange } from "./useDroppedChange";
 
 interface SaveStatusProps {
   teamId: string;
@@ -10,23 +13,22 @@ interface SaveStatusProps {
 }
 
 /**
- * Autosave feedback in the plan header (UI41): "Saving…", "Saved", or an
- * error with Try again and Dismiss. The error stays until dismissed,
- * retried, or a later save succeeds. After a failed save the plan has
- * already rolled back (N30).
+ * Autosave feedback in the plan header (UI41, UI54): "Saving…", "Saved",
+ * or an error naming the change a failed save dropped, with Try again
+ * (re-applies that change on top of the current plan) and Dismiss. The
+ * error stays until dismissed, re-applied, or found in a saved plan.
  */
 export function SaveStatus({ teamId, headingRef }: SaveStatusProps) {
   const status = usePlanSaveStatus(teamId);
-  const [dismissed, setDismissed] = useState<number | null>(null);
-  const showError = status.state === "error" && status.failedAt !== dismissed;
+  const dropped = useDroppedChange(teamId);
 
   const text =
     status.state === "saving"
       ? "Saving…"
-      : status.state === "saved"
-        ? "Saved"
-        : status.state === "error"
-          ? "Last change not saved"
+      : dropped || status.state === "error"
+        ? "Last change not saved"
+        : status.state === "saved"
+          ? "Saved"
           : "";
 
   return (
@@ -38,25 +40,24 @@ export function SaveStatus({ teamId, headingRef }: SaveStatusProps) {
         {status.state === "saving" && (
           <LoaderCircle aria-hidden="true" className="size-3.5 animate-spin" />
         )}
-        {status.state === "saved" && (
+        {status.state === "saved" && !dropped && (
           <Check aria-hidden="true" className="size-3.5" />
         )}
         {text}
       </p>
-      {showError && (
+      {dropped && (
         <div
           role="alert"
           className="col-span-full flex flex-wrap items-center gap-2 rounded-md border border-destructive/30 bg-destructive-subtle px-3 py-2 text-sm text-destructive-subtle-foreground"
         >
           <p className="flex-1 basis-56">
-            Couldn&apos;t save your last change. Your plan is back to its last
-            saved version.
+            {droppedChangeText(dropped.change, dropped.names)}
           </p>
           <Button
             size="sm"
             variant="outline"
             onClick={() => {
-              status.retry();
+              dropped.retry();
               headingRef.current?.focus();
             }}
           >
@@ -66,7 +67,7 @@ export function SaveStatus({ teamId, headingRef }: SaveStatusProps) {
             size="sm"
             variant="ghost"
             onClick={() => {
-              setDismissed(status.failedAt);
+              dropped.dismiss();
               headingRef.current?.focus();
             }}
           >

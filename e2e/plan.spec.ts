@@ -87,7 +87,7 @@ test.describe("plan", () => {
     ).toBeVisible();
   });
 
-  test("a failed save rolls back, explains it, and Try again succeeds", async ({
+  test("a failed save rolls back, names the change, and Try again re-applies it", async ({
     page,
     isMobile,
   }) => {
@@ -122,10 +122,12 @@ test.describe("plan", () => {
     await input.fill("260");
     await input.press("Enter");
     const alert = plan(page).getByRole("alert");
-    await expect(alert).toContainText("Couldn't save your last change.");
+    await expect(alert).toContainText(
+      "Couldn’t change Jacob Duffy’s price to ₹2.60 Cr.",
+    );
     await expect(input).toHaveValue("200");
 
-    // Try again resends the plan that failed
+    // Try again re-applies the dropped change (UI54)
     await alert.getByRole("button", { name: "Try again" }).click();
     await expect(alert).toBeHidden();
     await expect(input).toHaveValue("260");

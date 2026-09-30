@@ -104,6 +104,12 @@ function confirmedFor(client: QueryClient) {
   return plans;
 }
 
+/**
+ * The plan each failed save rolled back to, by save seq. Recorded before
+ * the mutation reports its error, so the status can say what was dropped.
+ */
+const rolledBackBySeq = new Map<number, Target[] | null>();
+
 function seqOf(mutation: Mutation): number {
   const variables = mutation.state.variables as SaveVariables | undefined;
   return variables?.seq ?? -1;
@@ -159,6 +165,7 @@ export function savePlanMutationOptions(
     onError: (_error: unknown, { seq }: SaveVariables) => {
       if (hasNewerSave(seq)) return;
       const lastConfirmed = confirmed.get(franchiseId);
+      rolledBackBySeq.set(seq, lastConfirmed?.targets ?? null);
       if (lastConfirmed) client.setQueryData(detailKey, lastConfirmed);
     },
   };
@@ -188,8 +195,14 @@ export type PlanSaveStatus =
       error: unknown;
       /** When the failed save was sent; identifies this failure (UI41). */
       failedAt: number;
-      /** Resends the plan that failed (user-initiated, N4). */
-      retry: () => void;
+      /** The plan the failed save tried to store. */
+      failedTargets: Target[];
+      /**
+       * The plan now shown after rolling back (the last one the server
+       * confirmed), or null if none was known. Together with
+       * `failedTargets` it tells what was dropped (UI54).
+       */
+      rolledBackTo: Target[] | null;
     };
 
 /**
@@ -198,7 +211,6 @@ export type PlanSaveStatus =
  * an error.
  */
 export function usePlanSaveStatus(franchiseId: string): PlanSaveStatus {
-  const save = useSavePlan(franchiseId);
   const states = useMutationState({
     filters: { mutationKey: planKeys.save(franchiseId) },
     select: (mutation) =>
@@ -215,14 +227,15 @@ export function usePlanSaveStatus(franchiseId: string): PlanSaveStatus {
     case "success":
       return { state: "saved", updatedAt: latest.data?.updatedAt ?? null };
     case "error": {
-      const failed = latest.variables?.request;
+      const variables = latest.variables;
       return {
         state: "error",
         error: latest.error,
         failedAt: latest.submittedAt,
-        retry: () => {
-          if (failed) save(failed.targets);
-        },
+        failedTargets: variables?.request.targets ?? [],
+        rolledBackTo: variables
+          ? (rolledBackBySeq.get(variables.seq) ?? null)
+          : null,
       };
     }
   }

@@ -281,7 +281,7 @@ describe("saving a plan", () => {
       });
     });
 
-    it("offers a retry that resends the plan that failed", async () => {
+    it("reports the plan that failed and the plan it rolled back to (UI54)", async () => {
       const hook = await renderLoadedPlan();
       act(() => {
         hook.result.current.save([target("a", 200)]);
@@ -294,22 +294,13 @@ describe("saving a plan", () => {
         expect(hook.result.current.status.state).toBe("error");
       });
 
-      act(() => {
-        const status = hook.result.current.status;
-        if (status.state === "error") status.retry();
+      const status = hook.result.current.status;
+      expect(status).toMatchObject({
+        state: "error",
+        failedTargets: [target("a", 200)],
+        rolledBackTo: serverPlan.targets,
       });
-      await waitFor(() => {
-        expect(puts).toHaveLength(2);
-      });
-      expect(putBodies[1]).toEqual(putBodies[0]);
-      expect(targetsOf(hook)).toEqual([target("a", 200)]);
-
-      puts[1]?.resolve(
-        savedPlan([target("a", 200)], "2026-09-30T10:00:02.000Z"),
-      );
-      await waitFor(() => {
-        expect(hook.result.current.status.state).toBe("saved");
-      });
+      expect(targetsOf(hook)).toEqual(serverPlan.targets);
     });
 
     it("never retries a save by itself (N4)", async () => {
