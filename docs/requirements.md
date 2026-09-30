@@ -68,7 +68,7 @@ A UI-only auction strategy tool. A franchise picks its team, reviews its squad b
 
 **Add dialog:** player summary with base price; expected price in whole lakh, pre-filled with the base price, with a live "= ₹2.40 Cr" preview; below-base, empty and non-whole values are blocked with a message; above the purse is allowed with a note. After adding, focus returns to the pool row (UI36, UI42).
 
-**Plan panel:** grouped by role; each role lists its locked retained players, then its targets (highest expected price first) with an editable price and Remove. Removing leaves an Undo for 10 s. Empty plan: "No targets yet. Use Add on a player in the pool." (UI37–UI40).
+**Plan panel:** grouped by role; each role lists its locked retained players, then its targets (highest expected price first) with an editable price and Remove. Removing leaves an Undo until the plan changes in another way or the team changes, with no time limit. Empty plan: "No targets yet. Use Add on a player in the pool." (UI37–UI40).
 
 ## 4. Responsive layout
 

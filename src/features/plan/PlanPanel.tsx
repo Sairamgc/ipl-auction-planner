@@ -26,10 +26,9 @@ import { RetainedRow, TargetRow } from "./PlanRows";
 import { SaveStatus } from "./SaveStatus";
 import { usePlanView } from "./usePlanView";
 
-/** How long "… removed. Undo" stays, unless the plan changes first (UI40). */
-export const UNDO_MS = 10_000;
-
 interface Removed {
+  /** The franchise whose plan it was removed from; switching team ends undo. */
+  teamId: string;
   target: Target;
   name: string;
   role: PlayerRole | null;
@@ -65,18 +64,15 @@ export function PlanPanel({ scrollable = false, onGoToPool }: PlanPanelProps) {
 
   const targets = view.status === "ready" ? view.targets : null;
 
-  // Undo lasts 10 s, or until the plan changes in any other way (derived)
-  useEffect(() => {
-    if (!removed) return;
-    const timer = setTimeout(() => {
-      setRemoved(null);
-    }, UNDO_MS);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [removed]);
+  // Undo has no time limit (UI40): it lasts until the plan changes in any
+  // other way or the team changes (derived, so nothing to reset)
   const activeRemoved =
-    removed && targets && idsOf(targets) === removed.idsAfter ? removed : null;
+    removed &&
+    removed.teamId === teamId &&
+    targets &&
+    idsOf(targets) === removed.idsAfter
+      ? removed
+      : null;
 
   // Where focus should go once it exists: saves update the plan a moment
   // later (optimistically, after an async step), so wait for the render
@@ -135,7 +131,7 @@ export function PlanPanel({ scrollable = false, onGoToPool }: PlanPanelProps) {
   const remove = (target: Target, name: string, role: PlayerRole | null) => {
     const next = removeTarget(current, target.auctionEntryId);
     save(next);
-    setRemoved({ target, name, role, idsAfter: idsOf(next) });
+    setRemoved({ teamId, target, name, role, idsAfter: idsOf(next) });
     // Focus lands on Undo (UI40)
     pendingFocus.current = "[data-undo] button";
   };

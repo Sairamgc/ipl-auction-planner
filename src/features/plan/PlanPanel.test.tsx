@@ -12,8 +12,6 @@ import { act, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { UNDO_MS } from "./PlanPanel";
-
 function plan() {
   return screen.getByRole("region", { name: "My plan" });
 }
@@ -246,7 +244,7 @@ describe("PlanPanel", () => {
       expect(saves(fetchMock)).toHaveLength(2);
     });
 
-    it("ends Undo after 10 seconds without stranding focus", async () => {
+    it("keeps Undo with no time limit (UI40)", async () => {
       vi.useFakeTimers({ shouldAdvanceTime: true });
       mockApi(withTargets());
       const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
@@ -261,17 +259,52 @@ describe("PlanPanel", () => {
       await within(plan()).findByRole("button", { name: /^Undo/ });
 
       await act(async () => {
-        await vi.advanceTimersByTimeAsync(UNDO_MS + 100);
+        await vi.advanceTimersByTimeAsync(5 * 60_000);
       });
+      expect(
+        within(plan()).getByRole("button", {
+          name: "Undo removing Jacob Duffy",
+        }),
+      ).toHaveFocus();
+      vi.useRealTimers();
+    });
+
+    it("ends Undo when switching team, even to an identical plan", async () => {
+      // CSK and RCB both end up empty, so only the team tells them apart
+      const csk: Plan = {
+        ...emptyPlan("csk"),
+        targets: [
+          { auctionEntryId: "2026-cameron-green", expectedPriceLakh: 240 },
+        ],
+      };
+      const fetchMock = mockApi({
+        ...defaultResponses(),
+        "/api/plans": [csk, emptyPlan("rcb")],
+      });
+      const user = userEvent.setup();
+      const { router } = renderRoute("/teams/csk");
+      await ready();
+
+      await user.click(
+        within(plan()).getByRole("button", {
+          name: "Remove Cameron Green from plan",
+        }),
+      );
+      await within(plan()).findByRole("button", { name: /^Undo/ });
+
+      await act(async () => {
+        await router.navigate({
+          to: "/teams/$teamId",
+          params: { teamId: "rcb" },
+        });
+      });
+      await ready();
       expect(
         within(plan()).queryByRole("button", { name: /^Undo/ }),
       ).not.toBeInTheDocument();
-      await waitFor(() => {
-        expect(
-          within(plan()).getByRole("heading", { name: "My plan" }),
-        ).toHaveFocus();
-      });
-      vi.useRealTimers();
+      expect(saves(fetchMock).map((save) => save.path)).toEqual([
+        "/api/plans/csk",
+      ]);
     });
 
     it("ends Undo when the plan changes in another way", async () => {

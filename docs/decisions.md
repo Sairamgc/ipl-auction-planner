@@ -220,7 +220,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | UI37 | Plan panel grouped by role (batters, wicketkeepers, all-rounders, bowlers; empty roles left out), each listing its locked retained players, then its targets by highest expected price (D7). Headings carry counts ("Bowlers · 3"). Empty plan: "No targets yet. Use Add on a player in the pool." (plus "Go to Pool" on mobile) | 2026-09-30 |
 | UI38 | Pool rows for players in the plan show a non-interactive "✓ In plan / ₹2.40 Cr" tag (read as "In plan at ₹2.40 Cr") in place of Add | 2026-09-30 |
 | UI39 | Target prices are always inputs: Enter or blur saves a valid changed value, an invalid one shows its error and is not saved, Escape restores. The input shows the typed draft or, otherwise, the saved price directly, so a rollback always appears | 2026-09-30 |
-| UI40 | Removing a target saves at once and leaves "Cameron Green removed. Undo" in its place for 10 s or until the plan changes in another way; Undo re-adds it at the old price | 2026-09-30 |
+| UI40 | Removing a target saves at once and leaves "Cameron Green removed. Undo" in its place until the plan changes in another way or the team changes, with no time limit (so no one is timed out, WCAG 2.2.1); Undo re-adds it at the old price. Revised the same day from a 10 s limit | 2026-09-30 |
 | UI41 | Save status in the plan header: "Saving…", "Saved", or an error ("Couldn't save your last change. Your plan is back to its last saved version.") with Try again and Dismiss. The error stays until dismissed, retried, or a later save succeeds. Try again resends the plan that failed (N30 unchanged) | 2026-09-30 |
 | UI42 | Focus in the plan flow: after adding, to the pool row's name (with "… added to plan at ₹2.40 Cr" announced); after cancelling, to Add; after removing, to Undo; after Undo, to the restored row; when the Undo notice ends, to the plan heading. Focus moves wait for the render that shows the element | 2026-09-30 |
 | UI43 | Corrects UI34: the pool rows' action slot did not exist until this slice. It now holds Add (or the in-plan tag) | 2026-09-30 |
@@ -245,3 +245,4 @@ Agreed work that is not done yet. Remove an entry when it is done, and reference
 | ID | Follow-up | Raised |
 |---|---|---|
 | FU1 | Once all 10 franchises are seeded, seed validation must require sold results to reference an existing franchise, replacing the fixed-list check from N24 | 2026-09-30 |
+| FU2 | If the E2E run gets slow, give each Playwright worker its own mock server and database, then run tests in parallel again (replaces the serial run in S31) | 2026-09-30 |
