@@ -112,7 +112,7 @@ Target       { auctionEntryId, expectedPriceLakh }
 - Below base price: **blocked** at the input (add dialog and inline edit).
 - Above the remaining purse: allowed, flagged by warnings.
 - Plan-level rule breaks never block; they produce warnings.
-- Autosave: add and remove save immediately; inline price edits save on blur or Enter. Saves are optimistic with rollback on failure and are sent one at a time in order, so an older save never overwrites a newer one. The client sends the plan without `updatedAt`; the server sets it.
+- Autosave: add and remove save immediately; inline price edits save on blur or Enter. Saves are optimistic with rollback on failure and are sent one at a time in order, so an older save never overwrites a newer one. The client sends the plan without `updatedAt`; the server sets it. Latest wins: a failed save is rolled back only when no newer save is queued (the newer one carries the whole plan); rollback restores the last plan the server confirmed. When the latest save fails, the error offers "Try again", which resends the plan that failed.
 
 ## 7. Summary metrics, warnings and note
 
@@ -157,7 +157,8 @@ Resources in the database: `auction`, `franchises`, `players`, `retentions`, `au
 | `GET /auction` | Rules, auction date |
 | `GET /franchises` | Picker, switcher, rival purses |
 | `GET /retentions` | Squad baselines, picker previews (joined with player data) |
-| `GET /players` | Player details for retained players |
+| `GET /players` | Player details for retained players and plan targets |
+| `GET /auctionEntries` | Static reference data: resolves plan targets to base price and player without another request |
 | `GET /pool` | **Custom route.** Filtered, joined, sorted, paginated pool |
 | `GET /plans` | Picker plan status |
 | `GET /plans/:franchiseId` | Workspace plan |

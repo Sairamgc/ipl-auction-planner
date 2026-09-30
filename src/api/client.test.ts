@@ -47,6 +47,25 @@ describe("apiRequest", () => {
     );
   });
 
+  it("appends search params as the query string", async () => {
+    const fetchMock = vi
+      .fn<typeof fetch>()
+      .mockImplementation(() => Promise.resolve(jsonResponse({ id: "csk" })));
+    vi.stubGlobal("fetch", fetchMock);
+
+    await apiRequest("/pool", itemSchema, {
+      searchParams: new URLSearchParams({ role: "batter,bowler", page: "2" }),
+    });
+    await apiRequest("/pool", itemSchema, {
+      searchParams: new URLSearchParams(),
+    });
+
+    expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([
+      `${API_BASE}/pool?role=batter%2Cbowler&page=2`,
+      `${API_BASE}/pool`,
+    ]);
+  });
+
   it("throws ApiError with the status on a non-2xx response", async () => {
     mockFetch(jsonResponse({ error: "Not Found" }, 404));
 

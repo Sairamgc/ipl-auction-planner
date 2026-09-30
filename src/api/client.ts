@@ -25,6 +25,8 @@ export interface ApiRequestOptions {
   body?: unknown;
   /** Lets TanStack Query cancel in-flight requests. */
   signal?: AbortSignal;
+  /** Appended as the query string. */
+  searchParams?: URLSearchParams;
 }
 
 /**
@@ -35,12 +37,13 @@ export interface ApiRequestOptions {
 export async function apiRequest<TSchema extends z.ZodType>(
   path: string,
   schema: TSchema,
-  { method = "GET", body, signal }: ApiRequestOptions = {},
+  { method = "GET", body, signal, searchParams }: ApiRequestOptions = {},
 ): Promise<z.output<TSchema>> {
   const headers = new Headers({ Accept: "application/json" });
   if (body !== undefined) headers.set("Content-Type", "application/json");
 
-  const response = await fetch(`${API_BASE}${path}`, {
+  const query = searchParams?.size ? `?${searchParams.toString()}` : "";
+  const response = await fetch(`${API_BASE}${path}${query}`, {
     method,
     headers,
     body: body === undefined ? undefined : JSON.stringify(body),
