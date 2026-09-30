@@ -103,6 +103,7 @@ export function PoolPanel({ layout, scrollable = false }: PoolPanelProps) {
   }, [fetchNextPage, scrollable, hasNextPage, isFetchNextPageError]);
 
   // "Load more" moves focus to the first new row and announces it (UI31)
+  const pendingFocusIndex = useRef<number | null>(null);
   const loadMore = useCallback(async () => {
     const before = rows.length;
     const result = await fetchNextPage({ cancelRefetch: false });
@@ -111,14 +112,22 @@ export function PoolPanel({ layout, scrollable = false }: PoolPanelProps) {
       result.data?.pages.reduce((sum, page) => sum + page.items.length, 0) ??
       before;
     setAnnouncement(`${playersLabel(after - before)} more loaded`);
-    requestAnimationFrame(() => {
-      panelRef.current
-        ?.querySelector<HTMLElement>(
-          `[data-pool-index="${String(before)}"] [data-player-trigger]`,
-        )
-        ?.focus();
-    });
+    pendingFocusIndex.current = before;
   }, [fetchNextPage, rows.length]);
+
+  // Focus the first new row once it has rendered: the query resolves before
+  // React commits the new rows, and WebKit sometimes paints in between
+  useEffect(() => {
+    const index = pendingFocusIndex.current;
+    if (index === null) return;
+    const trigger = panelRef.current?.querySelector<HTMLElement>(
+      `[data-pool-index="${String(index)}"] [data-player-trigger]`,
+    );
+    if (trigger) {
+      pendingFocusIndex.current = null;
+      trigger.focus();
+    }
+  });
 
   const openDetail = useCallback((row: PoolRow, trigger: HTMLElement) => {
     openPlayerDetail({
