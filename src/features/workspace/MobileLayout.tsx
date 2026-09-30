@@ -1,4 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
 import { useNavigate, useSearch } from "@tanstack/react-router";
 
 import { PanelPlaceholder } from "./PanelPlaceholder";
@@ -8,6 +9,10 @@ import {
   WORKSPACE_TABS,
   type WorkspaceTab,
 } from "./workspaceSearch";
+
+/** Shared by the fixed bar and its in-flow spacer; clears the iPhone safe area. */
+const MINI_BAR =
+  "pt-2 pr-[max(1rem,env(safe-area-inset-right))] pb-[max(0.5rem,env(safe-area-inset-bottom))] pl-[max(1rem,env(safe-area-inset-left))]";
 
 const TAB_LABELS: Record<WorkspaceTab, string> = {
   pool: "Pool",
@@ -47,19 +52,21 @@ export function MobileLayout() {
             replace: true,
           });
         }}
-        className="gap-4 pb-20"
+        className="gap-4"
       >
         <TabsList
           variant="line"
           aria-label="Workspace sections"
-          className="sticky top-0 z-10 w-full border-b bg-background"
+          // Grows with its 44px touch targets so the sticky bar fully covers
+          // what scrolls beneath it
+          className="sticky top-[env(safe-area-inset-top)] z-10 w-full border-b bg-background group-data-horizontal/tabs:h-auto"
         >
           {WORKSPACE_TABS.map((value) => (
             <TabsTrigger
               key={value}
               value={value}
               // Active tab in team colour (V9) at 3:1 (UI11), plus weight
-              className="after:h-[3px] after:bg-team-indicator data-active:font-semibold"
+              className="after:h-[3px] after:bg-team-indicator group-data-horizontal/tabs:after:bottom-0 data-active:font-semibold"
             >
               {TAB_LABELS[value]}
             </TabsTrigger>
@@ -72,9 +79,24 @@ export function MobileLayout() {
         ))}
       </Tabs>
 
+      {/*
+        Reserves exactly the bar's height at the end of the page, so the
+        fixed bar never covers content: same content and padding, so it
+        grows with wrapping, text size and the safe area (UI21)
+      */}
+      <div
+        aria-hidden="true"
+        inert
+        className={cn(MINI_BAR, "invisible border-t border-transparent")}
+      >
+        <SummaryFigures />
+      </div>
       <aside
         aria-label="Plan summary"
-        className="fixed inset-x-0 bottom-0 z-10 border-t bg-background px-4 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]"
+        className={cn(
+          MINI_BAR,
+          "fixed inset-x-0 bottom-0 z-10 border-t bg-background",
+        )}
       >
         <SummaryFigures />
       </aside>

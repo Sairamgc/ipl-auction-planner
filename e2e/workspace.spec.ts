@@ -86,3 +86,71 @@ test.describe("workspace", () => {
     );
   });
 });
+
+test.describe("workspace scrolling", () => {
+  /** Placeholder panels are short; add rows so the pool overflows. */
+  async function fillPool(page: import("@playwright/test").Page) {
+    await page.evaluate(() => {
+      const panel = document.querySelector(
+        'section[aria-labelledby="pool-heading"]',
+      );
+      for (let i = 0; i < 60; i++) {
+        panel?.insertAdjacentHTML(
+          "beforeend",
+          `<p data-test-row style="padding: 4px 16px">Row ${String(i)}</p>`,
+        );
+      }
+    });
+  }
+
+  test("panels can be scrolled with the keyboard (UI20)", async ({
+    page,
+    isMobile,
+  }) => {
+    test.skip(isMobile, "Panels scroll on their own on tablet and desktop");
+    await page.goto("/teams/csk");
+    await page.getByText("Before the auction").waitFor();
+    await fillPool(page);
+
+    await page.getByRole("button", { name: /^Switch team/ }).focus();
+    await page.keyboard.press("Tab");
+    const pool = page.getByRole("region", { name: "Player pool" });
+    await expect(pool).toBeFocused();
+
+    await page.keyboard.press("PageDown");
+    await expect
+      .poll(() => pool.evaluate((element) => element.scrollTop))
+      .toBeGreaterThan(0);
+  });
+
+  test("the mini summary never covers content (UI21)", async ({
+    page,
+    isMobile,
+  }) => {
+    test.skip(!isMobile, "The mini summary exists on mobile only");
+    await page.goto("/teams/csk");
+    await page.getByText("Before the auction").waitFor();
+    await fillPool(page);
+    await page.evaluate(() => {
+      window.scrollTo(0, document.documentElement.scrollHeight);
+    });
+
+    const panel = await page
+      .getByRole("region", { name: "Player pool" })
+      .boundingBox();
+    const bar = await page
+      .getByRole("complementary", { name: "Plan summary" })
+      .boundingBox();
+    expect(panel && bar).toBeTruthy();
+    if (!panel || !bar) return;
+    expect(panel.y + panel.height).toBeLessThanOrEqual(bar.y);
+
+    // The sticky tabs cover what scrolls beneath them (no overhang)
+    const tabs = await page.getByRole("tablist").boundingBox();
+    const tabButtons = await page.getByRole("tab").first().boundingBox();
+    if (!tabs || !tabButtons) throw new Error("tabs not visible");
+    expect(tabButtons.y + tabButtons.height).toBeLessThanOrEqual(
+      tabs.y + tabs.height,
+    );
+  });
+});

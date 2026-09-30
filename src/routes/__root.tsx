@@ -22,7 +22,9 @@ export const Route = createRootRouteWithContext<RouterContext>()({
  */
 function RootLayout() {
   return (
-    <div className="flex min-h-dvh flex-col md:h-dvh">
+    // viewport-fit=cover: keep content clear of the notch and rounded
+    // corners in landscape (UI21)
+    <div className="flex min-h-dvh flex-col pr-[env(safe-area-inset-right)] pl-[env(safe-area-inset-left)] md:h-dvh">
       <AppHeader />
       <main className="flex flex-1 flex-col md:min-h-0 md:overflow-y-auto">
         <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 py-6 md:min-h-0 md:px-6">

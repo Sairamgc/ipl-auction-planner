@@ -159,6 +159,24 @@ describe("WorkspacePage", () => {
       expect(screen.queryByRole("tablist")).not.toBeInTheDocument();
     });
 
+    it("makes panels that scroll on their own keyboard-focusable (UI20)", async () => {
+      mockApi();
+      const user = userEvent.setup();
+      renderRoute("/teams/csk");
+      await workspaceTitle("Chennai Super Kings");
+
+      for (const name of ["Player pool", "My plan", "Summary"]) {
+        expect(screen.getByRole("region", { name })).toHaveAttribute(
+          "tabindex",
+          "0",
+        );
+      }
+      // Reached in reading order with Tab, after the header controls
+      screen.getByRole("button", { name: /^Switch team/ }).focus();
+      await user.tab();
+      expect(screen.getByRole("region", { name: "Player pool" })).toHaveFocus();
+    });
+
     it("shows two panels and an expandable summary strip on tablet", async () => {
       setViewport("tablet");
       mockApi();
@@ -205,6 +223,32 @@ describe("WorkspacePage", () => {
         name: "Plan summary",
       });
       expect(within(miniSummary).getByText("Purse left")).toBeVisible();
+      // The page scrolls on mobile, so panels are not tab stops
+      expect(
+        screen.getByRole("region", { name: "Player pool" }),
+      ).not.toHaveAttribute("tabindex");
+    });
+
+    it("reserves the mini summary's space without announcing it twice (UI21)", async () => {
+      setViewport("mobile");
+      mockApi();
+      renderRoute("/teams/csk");
+      await workspaceTitle("Chennai Super Kings");
+
+      expect(
+        screen.getAllByRole("complementary", { name: "Plan summary" }),
+      ).toHaveLength(1);
+      // Role queries skip aria-hidden content: the spacer copy is not exposed
+      expect(
+        screen
+          .getAllByRole("term")
+          .filter((term) => term.textContent === "Purse left"),
+      ).toHaveLength(1);
+      const spacer = screen.getByRole("complementary", {
+        name: "Plan summary",
+      }).previousElementSibling;
+      expect(spacer).toHaveAttribute("aria-hidden", "true");
+      expect(spacer).toHaveAttribute("inert");
     });
 
     it("keeps the mobile tab in the URL", async () => {

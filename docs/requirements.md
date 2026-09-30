@@ -79,6 +79,8 @@ Workspace details (UI11–UI15):
 - Desktop and tablet: the workspace fills the viewport under the header, and each panel scrolls on its own. Mobile: the page scrolls; the tabs stick under the header and the mini-summary bar is fixed to the bottom.
 - Tablet: the summary strip sits along the bottom and expands upward.
 - Mobile: the default tab is Pool; the tab is in the URL as `?tab=`, omitted for the default.
+- Panels that scroll on their own are keyboard-focusable, so they can be scrolled with the keyboard in every browser, Safari included (UI20).
+- Mobile: the mini-summary bar never covers content (the page reserves its exact height) and clears the iPhone safe area; the app uses `viewport-fit=cover` and pads for all safe-area insets (UI21).
 
 ## 5. Domain model
 

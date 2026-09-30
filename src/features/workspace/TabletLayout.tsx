@@ -20,8 +20,8 @@ export function TabletLayout() {
   return (
     <>
       <div className="grid min-h-0 flex-1 grid-cols-2 gap-4">
-        <PanelPlaceholder id="pool" title="Player pool" />
-        <PanelPlaceholder id="plan" title="My plan" />
+        <PanelPlaceholder id="pool" title="Player pool" scrollable />
+        <PanelPlaceholder id="plan" title="My plan" scrollable />
       </div>
 
       <Collapsible
@@ -29,8 +29,13 @@ export function TabletLayout() {
         onOpenChange={setSummaryOpen}
         className="flex max-h-[50%] shrink-0 flex-col rounded-lg border bg-card"
       >
-        <CollapsibleContent className="min-h-0 overflow-y-auto border-b">
-          <PanelPlaceholder id="summary" title="Summary" className="border-0" />
+        <CollapsibleContent className="flex min-h-0 flex-col border-b">
+          <PanelPlaceholder
+            id="summary"
+            title="Summary"
+            scrollable
+            className="flex-1 rounded-b-none border-0"
+          />
         </CollapsibleContent>
         <div className="flex items-center gap-4 px-4 py-2">
           <SummaryFigures className="flex-1" />
