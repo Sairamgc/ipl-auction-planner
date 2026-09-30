@@ -209,7 +209,7 @@ Request/response shapes are Zod schemas in `shared/contracts`, used by both the 
 - Toolbar: search, a "Sort by" menu (base price, name or age, each both ways), and "Filters (n)", which opens a popover (tablet, desktop) or a bottom sheet (mobile). Filters apply immediately. Active filters show as removable chips with "Clear all" (the sort is kept) (UI26, UI27).
 - Filters: role and bowling style (multi-select), nationality (any / Indian / overseas), status (any / capped / uncapped), batting hand, and base price "From" / "Up to" using the eight official base-price slabs (UI33).
 - Rows: desktop table (player with Overseas / Uncapped tags, role, age, base price), tablet table (player with a "Bowler · AUS · 25" line, base price), mobile list. Clicking anywhere on a row opens the detail dialog (UI25, UI30).
-- States: skeleton rows on first load; previous results stay (dimmed) while a new search or filter loads; "Loading more players…" for later pages; "No players match these filters." with "Clear filters"; a panel error with retry; a failed "Load more" keeps loaded rows and retries only the next page (UI28).
+- States: skeleton rows on first load; previous results stay (dimmed, with "Updating results…" announced) while a new search or filter loads; "Loading more players…" for later pages; "No players match these filters." with "Clear filters"; a panel error with retry; a failed "Load more" keeps loaded rows and retries only the next page (UI28).
 - "Load more" moves focus to the first newly loaded player and announces how many loaded (UI31).
 
 ## 10. Data

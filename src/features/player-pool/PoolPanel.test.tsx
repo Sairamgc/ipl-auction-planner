@@ -170,6 +170,11 @@ describe("PoolPanel", () => {
         "aria-busy",
         "true",
       );
+      // Dimming is visual only; the status announces the update
+      expect(within(pool()).getByText("Updating results…")).toHaveAttribute(
+        "role",
+        "status",
+      );
 
       await act(async () => {
         bowlers.resolve(poolResponse(new URL("http://x/api/pool?role=bowler")));
@@ -180,6 +185,11 @@ describe("PoolPanel", () => {
           "aria-busy",
         );
       });
+      // ...and then the new count
+      expect(within(pool()).getByText(/^\d+ players?$/)).toHaveAttribute(
+        "role",
+        "status",
+      );
     });
   });
 

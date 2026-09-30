@@ -221,8 +221,10 @@ export function PoolPanel({ layout, scrollable = false }: PoolPanelProps) {
         />
       </div>
       {total !== null && (
+        // Dimming is visual only: this polite status also tells screen
+        // readers when an update starts and what it found (UI28)
         <p role="status" className="px-4 pt-2 text-xs text-muted-foreground">
-          {playersLabel(total)}
+          {busy ? "Updating results…" : playersLabel(total)}
         </p>
       )}
       {body}
