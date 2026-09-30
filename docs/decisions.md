@@ -40,6 +40,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | T10 | json-server as mock backend (chosen over MSW + IndexedDB) | 2026-09-28 |
 | T11 | Plain `fetch` in a typed API client (no Axios in v1) | 2026-09-28 |
 | T12 | Vitest + React Testing Library; Playwright for E2E | 2026-09-28 |
+| T13 | Supersedes T9 (and S10): TanStack Table and TanStack Virtual are not part of the stack; pool rows are plain semantic markup (details in UI22). Revisit if the pool grows past a few hundred rows | 2026-09-30 |
 
 ## Domain
 

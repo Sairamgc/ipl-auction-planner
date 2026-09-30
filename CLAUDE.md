@@ -15,7 +15,7 @@ A UI-only strategy tool for IPL franchises to plan auction targets within purse 
 
 ## Stack
 
-React + TypeScript (strict) · Vite · TanStack Router (file-based) · TanStack Query · Zustand · Zod · React Hook Form · Radix primitives via shadcn/ui · Tailwind CSS · TanStack Table + TanStack Virtual · json-server (as a Node module with custom routes) · plain `fetch` · Vitest + React Testing Library · Playwright · ESLint + Prettier.
+React + TypeScript (strict) · Vite · TanStack Router (file-based) · TanStack Query · Zustand · Zod · React Hook Form · Radix primitives via shadcn/ui · Tailwind CSS · json-server (as a Node module with custom routes) · plain `fetch` · Vitest + React Testing Library · Playwright · ESLint + Prettier.
 
 Pin versions at setup and check each tool's current docs before using version-specific APIs (especially json-server, Tailwind v4, TanStack Router, shadcn CLI).
 
