@@ -240,7 +240,7 @@ Request/response shapes are Zod schemas in `shared/contracts`, used by both the 
 | Below ₹1 Cr | Lakh, whole number | ₹75 L |
 | Negative | Minus sign before the amount; screen readers hear "minus" | −₹1.20 Cr |
 
-- Team logos: real logos, added by the project owner to `public/logos/`. No logo path, or the image fails to load → colour and initials badge. Franchise logos are trademarked: fine while private; revisit before any public deployment.
+- Team logos: none. Franchise logos are trademarks and the repository is public, so every team shows its colour and initials badge (P18). The contract's optional `logoPath` and the badge fallback remain, unused.
 - Player images: none in v1; initials avatars.
 - Theme: light mode only.
 - Design tokens (decisions V1–V14):

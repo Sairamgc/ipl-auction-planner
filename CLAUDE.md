@@ -48,7 +48,7 @@ mock-server/          server.ts, app.ts, routes/ (pool, plans, guards), seedVali
                       db.seed.json, db.json (git-ignored), reset-db.ts, validate-seed.ts
 shared/contracts/     Zod schemas + inferred types for API requests/responses (used by mock server AND app)
 shared/color/         WCAG contrast helper (used by seed validation AND domain)
-public/               favicon.svg; logos/ for franchise logos (logos to be added)
+public/               favicon.svg (no team logos: the repo is public, P18)
 e2e/                  Playwright tests
 src/
   main.tsx

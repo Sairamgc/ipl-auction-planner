@@ -19,10 +19,11 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | P11 | Light mode only in v1 | 2026-09-29 |
 | P12 | Rival purses shown read-only at the bottom of the summary; always the official pre-auction values | 2026-09-29 |
 | P13 | Picker shows a preview per franchise; in-workspace team switcher | 2026-09-29 |
-| P14 | Real team logos, supplied by the owner; initials badge as fallback | 2026-09-29 |
+| P14 | **(Superseded by P18.)** Real team logos, supplied by the owner; initials badge as fallback | 2026-09-29 |
 | P15 | No player photos in v1; initials avatars | 2026-09-29 |
 | P16 | Separate read-only detail dialog and add dialog. Detail opens from a pool row click or a plan item; add opens only from a pool row's Add button | 2026-09-29 |
 | P17 | Real auction results stored for a future "plan vs reality" feature, not used in v1 | 2026-09-29 |
+| P18 | The repository is public. No real team logos: every team uses its colour and initials badge permanently (logos are trademarks). Supersedes P14 and N23 | 2026-09-30 |
 
 ## Tech stack
 
@@ -170,7 +171,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | N20 | **(Amended by N34.)** Retained players' roles from iplt20.com as of the auction: squad page first, then player page | 2026-09-30 |
 | N21 | Capped status follows the IPL rule (Player Regulations 2025–27): an internationally capped Indian player is uncapped only with no starting-XI international in the preceding 5 calendar years AND no BCCI central contract. Contracts applied: the 2024–25 list, the latest published on the auction date. Overseas internationals are capped | 2026-09-30 |
 | N22 | Franchise colours from the official club websites. RCB secondary is gold `#E7C641` with `#101612` text | 2026-09-30 |
-| N23 | `logoPath` is left out until the owner adds logo files; the initials badge also shows when a logo image fails to load | 2026-09-30 |
+| N23 | **(Superseded by P18.)** `logoPath` is left out until the owner adds logo files; the initials badge also shows when a logo image fails to load | 2026-09-30 |
 | N24 | **(Superseded by N33.)** Starter seed: sold results are checked against the fixed list of the 10 IPL franchise IDs, since only CSK and RCB are seeded as franchises. See follow-up FU1 | 2026-09-30 |
 | N25 | Amends N2: simulation settings are command-line arguments to the mock server (`--delay <ms\|min-max>`, `--fail-rate <0-1>`), not environment variables, so the scripts work on Windows without extra dependencies. Scripts: `dev:slow` (300–1200 ms), `dev:flaky` (0.2), `dev:chaos` (both) | 2026-09-30 |
 | N26 | The mock server serves only the agreed API: every write except `PUT /plans/:franchiseId` returns 405 with an `Allow` header; `GET /auctionResults` returns 404. The PUT body is validated strictly against the plan contract and needs an existing franchise | 2026-09-30 |
@@ -268,6 +269,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | S33 | E2E also runs a desktop WebKit project (`desktop-webkit`, Desktop Safari) to guard Safari's focus and scrolling quirks (UI20, UI29). Firefox is not in the suite (owner). In WebKit, keyboard tests use Option+Tab (Safari's Tab skips links by default), and the two "Load more" button tests stub IntersectionObserver so auto-load can't replace the button mid-click | 2026-09-30 |
 | S34 | `shadcn` moves to devDependencies: the app uses only its `tailwind.css` at build time. Removed exports used only by their tests: `displayedMaxSafeBid` (replaced by `maxSafeBidView`) and `useFranchise` | 2026-09-30 |
 | S35 | Automated accessibility checks: `@axe-core/playwright` 4.13.0 (dev) scans, in every E2E project, the picker, the workspace with a warning showing (plus the Plan and Summary tabs on mobile), the tablet workspace with the summary strip open, and the add dialog, detail dialog and filters. WCAG 2.0–2.2 A/AA tags; `target-size` is off (stretched name buttons, UI30); dev-only devtools are excluded; scans wait for animations to finish | 2026-09-30 |
+| S36 | Public release: MIT License for the code only (the README says it doesn't cover IPL or team names and colours, or the compiled auction data). Commits from now use the GitHub noreply address (repo git config); earlier history keeps the original email (no rewrite) | 2026-09-30 |
 
 <!-- New decision sections go above this line; Follow-ups stays last. -->
 

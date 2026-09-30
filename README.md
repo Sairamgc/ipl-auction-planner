@@ -15,8 +15,7 @@ The app runs entirely on your machine. A small mock server stands in for the bac
   nvm use 24
   ```
   Or download it from [nodejs.org](https://nodejs.org/). npm comes with Node.
-- **Access to the repository.** It's private, so ask the owner to add you as a collaborator on GitHub and accept the invitation.
-- **Git**, signed in to GitHub. The simplest way is the [GitHub CLI](https://cli.github.com/): run `gh auth login` once, then clone:
+- **Git**, to clone the repository:
   ```sh
   git clone https://github.com/Sairamgc/ipl-auction-planner.git
   cd ipl-auction-planner
@@ -109,10 +108,12 @@ More detail:
 ## Known limitations
 
 - **Local only.** There's no real backend or login. Plans live in `mock-server/db.json` on your machine.
-- **No logos yet.** Teams show an initials badge in their colours.
+- **No team logos.** Team logos are trademarks, so teams show an initials badge in their colours instead, by design.
 - **Data scope.** The pool covers only players who were sold, plus those called and left unsold with a base price of ₹1 Cr or more. Other listed players aren't included. All data is as of the auction day (16 Dec 2025).
 - **Light mode only.**
 
 ## About this project
 
-This is a private, personal, non-commercial project. IPL, the team names, colours and logos belong to their respective owners, and this project is not affiliated with or endorsed by them.
+This is a personal, non-commercial project. IPL, the team names, colours and logos belong to their respective owners, and this project is not affiliated with or endorsed by them.
+
+The code is released under the [MIT License](LICENSE). The licence covers the code only. It does not cover the IPL or team names and colours, or the auction data compiled from public sources (see [`docs/data-sources.md`](docs/data-sources.md)).
