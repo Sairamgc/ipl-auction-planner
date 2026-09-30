@@ -179,6 +179,13 @@ Resources in the database: `auction`, `franchises`, `players`, `retentions`, `au
 
 Request/response shapes are Zod schemas in `shared/contracts`, used by both the mock server and the app.
 
+**Mock server behaviour**
+- Only the requests above are served. Every other write returns 405 with an `Allow` header; `GET /auctionResults` returns 404 (stored, not served in v1).
+- `PUT /plans/:franchiseId` validates the body strictly against the plan contract, requires an existing franchise (404 otherwise) and a body id matching the URL (400 otherwise), then sets `updatedAt`.
+- Invalid requests return 400 with `{ error, issues: [{ path, message }] }`.
+- Search is case- and accent-insensitive. The tie-break (name, then id) is always ascending, whatever the chosen order.
+- Dev-only simulation, off by default: `--delay <ms|min-max>` and `--fail-rate <0-1>` arguments to the mock server; `npm run dev:slow`, `dev:flaky`, `dev:chaos`.
+
 ## 9. Pool behaviour
 
 - Server-side search, filtering, sorting and pagination.

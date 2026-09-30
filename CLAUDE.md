@@ -25,6 +25,7 @@ Pin versions at setup and check each tool's current docs before using version-sp
 |---|---|
 | `npm run dev` | App (Vite, :5173) and mock server (:3001) together; the app reaches the server via the `/api` proxy |
 | `npm run dev:app` / `npm run dev:mock` | Run one side only (`dev:mock` restarts on change) |
+| `npm run dev:slow` / `dev:flaky` / `dev:chaos` | `dev` with simulated latency (300–1200 ms), failures (20%), or both; custom: `npm run dev:mock -- --delay 800 --fail-rate 0.1` |
 | `npm run db:reset` | Validate `db.seed.json`, then restore `mock-server/db.json` from it (refuses an invalid seed) |
 | `npm run db:validate` | Check `db.seed.json` against the strict contracts and cross-record rules; sources in `docs/data-sources.md` |
 | `npm run check` | Typecheck, lint, format check, and unit tests with coverage (100% required on `src/domain/**`); run before every commit |
