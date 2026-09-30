@@ -115,6 +115,20 @@ export default defineConfig([
     },
   },
   {
+    // shadcn components export their cva variants next to the component;
+    // keep the upstream shape instead of splitting files (UI4)
+    files: ["src/components/ui/**/*.tsx"],
+    rules: {
+      "react-refresh/only-export-components": [
+        "error",
+        {
+          allowConstantExport: true,
+          allowExportNames: ["badgeVariants", "buttonVariants"],
+        },
+      ],
+    },
+  },
+  {
     // Route files export `Route`, not components. The TanStack Router plugin
     // code-splits route components and handles their HMR itself.
     files: ["src/routes/**/*.tsx"],

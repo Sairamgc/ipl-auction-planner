@@ -45,7 +45,7 @@ A UI-only auction strategy tool. A franchise picks its team, reviews its squad b
 | `/` | Team picker. The app always opens here. |
 | `/teams/$teamId` | Team workspace |
 
-**Team picker:** one card per franchise showing logo (initials badge when there is no logo path or the image fails to load), purse before auction, open slots, open overseas slots, and plan status (not started, or number of targets). Clicking a card opens the workspace.
+**Team picker:** one card per franchise showing logo (initials badge when there is no logo path or the image fails to load), purse before auction, open slots, open overseas slots, and plan status (not started, or number of targets). Clicking anywhere on a card opens the workspace. Cards are sorted alphabetically by franchise name; the figures sit under a "Before the auction" caption. Loading shows skeleton cards; any failed request shows one error with "Try again"; no franchises shows an empty state (UI1–UI7).
 
 **Team workspace**
 - Header: franchise name and logo, team switcher, purse before auction, open slots, open overseas slots.
@@ -72,6 +72,8 @@ A UI-only auction strategy tool. A franchise picks its team, reviews its squad b
 | Mobile | Below 768px | Tabs: Pool / Plan / Summary; sticky mini-summary bar (purse left, max safe bid, warning count). Active tab kept in the URL. |
 
 On touch devices (tablets included), tappable elements are at least 44px (decision V6).
+
+Team picker grid: 1 column (mobile), 2 (tablet), 4 (desktop) (UI2).
 
 ## 5. Domain model
 

@@ -4,6 +4,8 @@
  * here and never stored.
  */
 export * from "./age";
+export * from "./baseline";
+export * from "./date";
 export * from "./labels";
 export * from "./maxSafeBid";
 export * from "./money";

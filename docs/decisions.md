@@ -183,3 +183,18 @@ Agreed work that is not done yet. Remove an entry when it is done, and reference
 | N28 | `GET /auctionEntries` added as static reference data (never stale); with `/players` it resolves any plan target on the client, so optimistic adds show immediately | 2026-09-30 |
 | N29 | Reads retry twice with TanStack Query's default backoff, only for network errors and 5xx; never for 4xx or contract mismatches | 2026-09-30 |
 | N30 | Plan saves: whole plan per save, optimistic, serialised with a TanStack Query mutation scope per plan. Latest wins: roll back to the last server-confirmed plan only when the failed save is the latest; "Try again" resends the failed plan (user-initiated). Plan refetches (mount, focus, reconnect) are skipped while saves are queued | 2026-09-30 |
+
+## UI
+
+| ID | Decision | Date |
+|---|---|---|
+| UI1 | App header on every page (brand links to `/`). Picker header: h1 "Choose a team to plan for" and the auction name and date; squad rules are left to the workspace | 2026-09-30 |
+| UI2 | Picker grid: 1 column on mobile, 2 on tablet (`md:`), 4 on desktop (`xl:`), content capped at `max-w-7xl` | 2026-09-30 |
+| UI3 | Data views: skeletons shaped like the real content while loading (with `aria-busy` and a hidden status), an error panel with "Try again" that refetches only the failed queries and takes focus, and a muted empty state. Pages that need several queries show one error state if any fails | 2026-09-30 |
+| UI4 | shadcn components keep their upstream shape; their `cva` variant exports are allowed in `src/components/ui` only (lint exception) | 2026-09-30 |
+| UI5 | Clickable cards use the stretched-link pattern: the team name is the only link and covers the card, so the card is one tab stop and the link's name is just the team name. Focus shows as a teal ring on the whole card | 2026-09-30 |
+| UI6 | Picker cards: alphabetical by full name; hierarchy name → purse → open slots → overseas slots → plan status, figures in a `<dl>` under one "Before the auction" caption (D15). Team accent: 4px `--team` top stripe; initials badge in `--team` / `--team-foreground` with a `--team-secondary` ring | 2026-09-30 |
+| UI7 | Until the workspace exists, `/teams/$teamId` is a placeholder (team name, "The workspace is coming next.", back link); unknown team IDs show not found | 2026-09-30 |
+| UI8 | `Money` renders in `<data value>`; negatives show "−₹…" visually and a visually hidden "minus ₹…" for screen readers (`aria-label` is unreliable on non-interactive elements) | 2026-09-30 |
+| UI9 | The shadcn `Button` includes the `touch-target` utility, so every button meets V6 on touch devices | 2026-09-30 |
+| UI10 | Cards use the 8px radius (`rounded-lg`, V5) rather than shadcn's larger card default | 2026-09-30 |
