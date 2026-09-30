@@ -45,10 +45,11 @@ A UI-only auction strategy tool. A franchise picks its team, reviews its squad b
 | `/` | Team picker. The app always opens here. |
 | `/teams/$teamId` | Team workspace |
 
-**Team picker:** one card per franchise showing logo (initials badge when there is no logo path or the image fails to load), purse left, open slots, open overseas slots, and plan status (not started, or number of targets). Clicking a card opens the workspace.
+**Team picker:** one card per franchise showing logo (initials badge when there is no logo path or the image fails to load), purse before auction, open slots, open overseas slots, and plan status (not started, or number of targets). Clicking a card opens the workspace.
 
 **Team workspace**
-- Header: franchise name and logo, team switcher, purse left, open slots, open overseas slots.
+- Header: franchise name and logo, team switcher, purse before auction, open slots, open overseas slots.
+- Header and picker figures are the baseline after retentions, before any plan, and are labelled that way (e.g. "Purse before auction"). The plan's effect appears only in the summary panel.
 - Player pool panel: search, filters, sort, infinite-scrolling table. Filters, search and sort live in the URL.
 - My plan panel: retained players (locked) and targets grouped by role; within each role, highest expected price first. Expected price editable inline; targets removable.
 - Summary panel: metrics, warnings, note, and rival purses at the bottom.
@@ -131,14 +132,13 @@ remaining   = purseRemaining − plannedSpend
 slotsToFill = max(0, minSquadSize − (squadCount + 1))   // +1 = the player being bid for
 maxSafeBid  = remaining − slotsToFill × lowestBasePrice
 ```
-If negative, display ₹0 and raise warning 5.
+If negative, display ₹0 and raise warning 4.
 
 **Warnings**
 1. Planned spend exceeds the purse
 2. Squad count exceeds the maximum
 3. Overseas count exceeds the cap
-4. A target's expected price exceeds the current max safe bid
-5. Not enough purse left to fill the minimum squad (max safe bid below zero)
+4. Not enough purse left to fill the minimum squad (max safe bid below zero)
 
 **Note (informational, not a warning)**
 - Squad count is below the minimum squad size
@@ -196,6 +196,7 @@ Request/response shapes are Zod schemas in `shared/contracts`, used by both the 
 |---|---|---|
 | ₹1 Cr and above | Crore, always 2 decimals | ₹2.40 Cr, ₹2.00 Cr |
 | Below ₹1 Cr | Lakh, whole number | ₹75 L |
+| Negative | Minus sign before the amount; screen readers hear "minus" | −₹1.20 Cr |
 
 - Team logos: real logos, added by the project owner to `public/logos/`. No logo path, or the image fails to load → colour and initials badge. Franchise logos are trademarked: fine while private; revisit before any public deployment.
 - Player images: none in v1; initials avatars.

@@ -172,3 +172,7 @@ Agreed work that is not done yet. Remove an entry when it is done, and reference
 | ID | Follow-up | Raised |
 |---|---|---|
 | FU1 | Once all 10 franchises are seeded, seed validation must require sold results to reference an existing franchise, replacing the fixed-list check from N24 | 2026-09-30 |
+| D13 | Warning "a target's expected price exceeds the current max safe bid" dropped. D6 now has four warnings: over purse, over max squad, over overseas cap, not enough purse for the minimum squad | 2026-09-30 |
+| D14 | Negative amounts display with a minus sign (−₹1.20 Cr, U+2212) and an accessible label that reads "minus" | 2026-09-30 |
+| D15 | Header and picker figures (purse, open slots, open overseas slots) are the baseline after retentions and before any plan, labelled that way (e.g. "Purse before auction"); the plan's effect shows only in the summary | 2026-09-30 |
+| S26 | 100% coverage (lines, branches, functions, statements) on `src/domain/**`, enforced in `npm run check` | 2026-09-30 |

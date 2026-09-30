@@ -28,6 +28,20 @@ export default defineConfig({
   test: {
     // Undo vi.stubGlobal (e.g. fetch) after every test
     unstubGlobals: true,
+    coverage: {
+      provider: "v8",
+      include: ["src/**/*.{ts,tsx}", "shared/**/*.ts", "mock-server/**/*.ts"],
+      exclude: ["src/routeTree.gen.ts", "src/test/**"],
+      // domain/ must be fully unit-tested (S26)
+      thresholds: {
+        "src/domain/**": {
+          lines: 100,
+          branches: 100,
+          functions: 100,
+          statements: 100,
+        },
+      },
+    },
     projects: [
       {
         extends: true,
