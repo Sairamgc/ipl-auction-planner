@@ -67,7 +67,7 @@ src/
 **Dependencies**
 - `routes` → `features` → `components`, `api`, `domain`, `lib`.
 - `domain` imports nothing from the app (pure functions, fully unit-tested).
-- Features import other features only through their `index.ts` public API.
+- Features import other features only through their public entries: `index.ts`, or `search.ts` for route search params (kept light so routes stay code-split, S32).
 - `components/ui` stays generic: no player, team or auction knowledge. App-specific components live in features.
 
 **State**

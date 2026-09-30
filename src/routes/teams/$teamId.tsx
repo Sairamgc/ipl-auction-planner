@@ -1,6 +1,7 @@
 import { franchisesQueryOptions } from "@/api";
 import { ErrorState } from "@/components/common/ErrorState";
-import { WorkspacePage, workspaceSearchSchema } from "@/features/workspace";
+import { WorkspacePage } from "@/features/workspace";
+import { workspaceSearchSchema } from "@/features/workspace/search";
 import { createFileRoute, notFound, useRouter } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/teams/$teamId")({

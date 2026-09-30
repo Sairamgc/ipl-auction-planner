@@ -258,6 +258,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | S29 | Until the full dataset exists (the starter pool is under one page), multi-page behaviour is tested with network mocks: multi-page fixtures in component tests and Playwright request interception in E2E. No test-only code in the app or the data | 2026-09-30 |
 | S30 | Test fixtures may import the mock server's query logic, so component tests get real filtering, sorting and paging for `/api/pool` | 2026-09-30 |
 | S31 | E2E tests run one at a time (`workers: 1`) against the one shared mock server; tests that save plans reset them before and after | 2026-09-30 |
+| S32 | Features may expose a second, light public entry, `search.ts`, for route search params (workspace, player-pool), and features may import each other's `index.ts` or `search.ts` only. The `/teams/$teamId` route imports its schema from there, so the workspace is code-split: entry chunk 715 → 430 kB (222 → 133 kB gzip), workspace chunk 238 kB (72 kB gzip), no size warning | 2026-09-30 |
 
 <!-- New decision sections go above this line; Follow-ups stays last. -->
 

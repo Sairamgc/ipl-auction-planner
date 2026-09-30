@@ -1,4 +1,4 @@
-import { poolSearchShape } from "@/features/player-pool";
+import { poolSearchShape } from "@/features/player-pool/search";
 import { z } from "zod";
 
 export const WORKSPACE_TABS = ["pool", "plan", "summary"] as const;

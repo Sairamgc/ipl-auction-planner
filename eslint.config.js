@@ -62,7 +62,8 @@ const boundaryPolicies = [
     from: { element: { type: from } },
     allow: { to: { element: { types: { anyOf: [from, ...to] } } } },
   })),
-  // Features import other features only through their public index.ts
+  // Features import other features only through their public entries:
+  // index.ts, or search.ts for route search params (kept light, S32)
   {
     from: { element: { type: "feature" } },
     disallow: {
@@ -77,7 +78,9 @@ const boundaryPolicies = [
   {
     from: { element: { type: "feature" } },
     allow: {
-      to: { element: { type: "feature", fileInternalPath: "index.ts" } },
+      to: {
+        element: { type: "feature", fileInternalPath: "{index,search}.ts" },
+      },
     },
   },
   // Test files may use the shared test helpers in src/test
