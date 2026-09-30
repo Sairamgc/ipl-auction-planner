@@ -11,6 +11,7 @@ import { Link } from "@tanstack/react-router";
 
 import { DesktopLayout } from "./DesktopLayout";
 import { MobileLayout } from "./MobileLayout";
+import { SkipLinks, type SkipTarget } from "./SkipLinks";
 import { TabletLayout } from "./TabletLayout";
 import { useWorkspaceTeam } from "./useWorkspaceTeam";
 import { WorkspaceHeader } from "./WorkspaceHeader";
@@ -25,6 +26,13 @@ const LAYOUTS = {
  * `/teams/$teamId`: the team workspace shell (§3). One layout is rendered
  * for the current breakpoint, so each panel exists once (UI12).
  */
+/** Tablet and desktop only; mobile switches panels with tabs (UI55). */
+const SKIP_TARGETS: SkipTarget[] = [
+  { id: "pool", label: "Skip to player pool" },
+  { id: "plan", label: "Skip to My plan" },
+  { id: "summary", label: "Skip to summary" },
+];
+
 export function WorkspacePage({ teamId }: { teamId: string }) {
   const state = useWorkspaceTeam(teamId);
   const viewport = useViewport();
@@ -73,6 +81,7 @@ export function WorkspacePage({ teamId }: { teamId: string }) {
         viewport !== "mobile" && "min-h-0 flex-1",
       )}
     >
+      {viewport !== "mobile" && <SkipLinks targets={SKIP_TARGETS} />}
       <WorkspaceHeader
         franchise={state.franchise}
         franchises={state.franchises}

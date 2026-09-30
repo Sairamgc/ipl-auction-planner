@@ -207,6 +207,7 @@ export function PoolPanel({ layout, scrollable = false }: PoolPanelProps) {
     <section
       ref={panelRef}
       aria-labelledby="pool-heading"
+      data-skip-target="pool"
       tabIndex={scrollable ? 0 : undefined}
       className={cn(
         "flex flex-col rounded-lg border bg-card",

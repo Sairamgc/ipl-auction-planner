@@ -50,6 +50,7 @@ export function SummaryPanel({
   return (
     <section
       aria-labelledby="summary-heading"
+      data-skip-target="summary"
       tabIndex={scrollable ? 0 : undefined}
       className={cn(
         "flex flex-col rounded-lg border bg-card",

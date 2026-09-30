@@ -188,6 +188,48 @@ describe("WorkspacePage", () => {
       expect(screen.getByRole("region", { name: "Player pool" })).toHaveFocus();
     });
 
+    it("offers skip links to each panel on desktop (UI55)", async () => {
+      mockApi();
+      const user = userEvent.setup();
+      renderRoute("/teams/csk");
+      await workspaceTitle("Chennai Super Kings");
+
+      const skips = within(
+        screen.getByRole("navigation", { name: "Skip to a panel" }),
+      ).getAllByRole("link");
+      expect(skips.map((link) => link.textContent)).toEqual([
+        "Skip to player pool",
+        "Skip to My plan",
+        "Skip to summary",
+      ]);
+      await user.click(screen.getByRole("link", { name: "Skip to My plan" }));
+      expect(screen.getByRole("region", { name: "My plan" })).toHaveFocus();
+      await user.click(screen.getByRole("link", { name: "Skip to summary" }));
+      expect(screen.getByRole("region", { name: "Summary" })).toHaveFocus();
+    });
+
+    it("skips to the summary strip's toggle on tablet, and has no skip links on mobile", async () => {
+      setViewport("tablet");
+      mockApi();
+      const user = userEvent.setup();
+      const view = renderRoute("/teams/csk");
+      await workspaceTitle("Chennai Super Kings");
+
+      await user.click(screen.getByRole("link", { name: "Skip to summary" }));
+      expect(
+        screen.getByRole("button", { name: /Show summary/ }),
+      ).toHaveFocus();
+      view.unmount();
+
+      setViewport("mobile");
+      mockApi();
+      renderRoute("/teams/csk");
+      await workspaceTitle("Chennai Super Kings");
+      expect(
+        screen.queryByRole("navigation", { name: "Skip to a panel" }),
+      ).not.toBeInTheDocument();
+    });
+
     it("shows two panels and an expandable summary strip on tablet", async () => {
       setViewport("tablet");
       mockApi();

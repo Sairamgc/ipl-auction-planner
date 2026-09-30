@@ -282,6 +282,7 @@ function PanelShell({
     <section
       ref={panelRef}
       aria-labelledby="plan-heading"
+      data-skip-target="plan"
       tabIndex={scrollable ? 0 : undefined}
       className={cn(
         "flex flex-col rounded-lg border bg-card",

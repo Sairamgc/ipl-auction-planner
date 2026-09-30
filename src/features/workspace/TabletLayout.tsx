@@ -36,7 +36,8 @@ export function TabletLayout() {
         <div className="flex items-center gap-4 px-4 py-2">
           <SummaryFigures className="flex-1" />
           <CollapsibleTrigger asChild>
-            <Button variant="ghost" size="sm">
+            {/* Skip-link target while collapsed; the open panel comes first in DOM order (UI55) */}
+            <Button variant="ghost" size="sm" data-skip-target="summary">
               {summaryOpen ? "Hide summary" : "Show summary"}
               <ChevronUp
                 aria-hidden="true"

@@ -247,6 +247,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | UI52 | The mobile summary bar ends with a "›" chevron so it reads as tappable; decorative and hidden from screen readers (the button's name already ends "Open summary") | 2026-09-30 |
 | UI53 | Primary buttons (and linked badges) darken to a solid `--primary-hover` (teal-800, 7.58:1 with white) on hover instead of fading to 80% opacity, which dropped white text to 3.76:1 (below AA) | 2026-09-30 |
 | UI54 | Amends UI41 and N30. A failed save's error names the change it dropped ("Couldn’t add Devon Conway.", "Couldn’t change Cameron Green’s price to ₹2.50 Cr.", or a list). The dropped change is kept (plan-feature store) until dismissed, re-applied, or found in a plan the server confirmed, so a later unrelated save no longer clears it. Try again re-applies the dropped change on top of the current plan (keeping edits made since), instead of resending the failed plan. Several dropped changes merge; for the same player the later wins | 2026-09-30 |
+| UI55 | Tablet and desktop workspaces start with skip links, hidden until focused: "Skip to player pool", "Skip to My plan", "Skip to summary" (in a nav "Skip to a panel"). They focus the panel region (UI20); on tablet, "Skip to summary" focuses the strip's Show summary button while it's collapsed. Mobile has none (tabs) | 2026-09-30 |
 
 ## Setup and tooling (continued)
 

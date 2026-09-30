@@ -87,6 +87,7 @@ Workspace details (UI11–UI15):
 - Tablet: the summary strip sits along the bottom showing purse left, max safe bid and the warning count, and expands upward to the full summary panel (UI49, UI50).
 - Mobile: the default tab is Pool; the tab is in the URL as `?tab=`, omitted for the default.
 - Panels that scroll on their own are keyboard-focusable, so they can be scrolled with the keyboard in every browser, Safari included (UI20).
+- Tablet and desktop: skip links (shown on focus) jump to the pool, the plan or the summary (UI55).
 - Mobile: the mini-summary bar never covers content (the page reserves its exact height) and clears the iPhone safe area; the app uses `viewport-fit=cover` and pads for all safe-area insets (UI21).
 
 ## 5. Domain model
