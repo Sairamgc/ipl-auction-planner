@@ -233,6 +233,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | UI49 | Collapsed tablet strip and mobile bar: Purse left, Max safe bid (₹0 with a warning icon when unsafe), Warnings (count, or "None"; the note is not counted). The mobile bar is one button that opens the Summary tab and focuses its heading; its accessible name always carries the figures ("Purse left ₹2.20 Cr, max safe bid ₹1.60 Cr, 2 warnings. Open summary") | 2026-09-30 |
 | UI50 | The expanded tablet strip shows the full summary panel. Rival purses: other teams only, highest official purse first (name breaks ties), each with badge, full name and purse under "Before the auction" | 2026-09-30 |
 | UI51 | The plan and summary share one data hook (`useSquadPlan`, exported by the plan feature), reading the plan's query cache, so the summary follows optimistic saves and rollbacks; a typed but unsaved price is not counted. Targets whose player can't be found are left out of the summary with an info line | 2026-09-30 |
+| UI52 | The mobile summary bar ends with a "›" chevron so it reads as tappable; decorative and hidden from screen readers (the button's name already ends "Open summary") | 2026-09-30 |
 
 ## Setup and tooling (continued)
 

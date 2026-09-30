@@ -2,7 +2,7 @@ import { Money } from "@/components/common/Money";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import { useParams } from "@tanstack/react-router";
-import { TriangleAlert } from "lucide-react";
+import { ChevronRight, TriangleAlert } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { summaryBarLabel } from "./summaryText";
@@ -117,14 +117,22 @@ export function SummaryBarButton({ onOpen }: { onOpen?: () => void }) {
       type="button"
       aria-label={label}
       onClick={onOpen}
-      className="flex touch-target w-full flex-wrap items-center gap-x-4 gap-y-1 rounded-md text-left text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="flex touch-target w-full items-center gap-2 rounded-md text-left text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
-      {figures.map(({ label: figureLabel, value }) => (
-        <span key={figureLabel} className="flex items-baseline gap-1.5">
-          <span className="text-muted-foreground">{figureLabel}</span>
-          {value}
-        </span>
-      ))}
+      <span className="flex min-w-0 flex-1 flex-wrap items-center gap-x-4 gap-y-1">
+        {figures.map(({ label: figureLabel, value }) => (
+          <span key={figureLabel} className="flex items-baseline gap-1.5">
+            <span className="text-muted-foreground">{figureLabel}</span>
+            {value}
+          </span>
+        ))}
+      </span>
+      {/* Shows the bar can be tapped; the name already says "Open summary" */}
+      <ChevronRight
+        aria-hidden="true"
+        data-bar-chevron
+        className="size-4 shrink-0 text-muted-foreground"
+      />
     </button>
   );
 }

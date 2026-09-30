@@ -303,6 +303,11 @@ describe("summary strip and bar", () => {
     const bar = await screen.findByRole("button", {
       name: "Purse left ₹20 L, max safe bid ₹0 L, not enough purse left, 1 warning. Open summary",
     });
+    // The chevron only hints that the bar can be tapped
+    expect(bar.querySelector("[data-bar-chevron]")).toHaveAttribute(
+      "aria-hidden",
+      "true",
+    );
     await user.click(bar);
 
     await waitFor(() => {
