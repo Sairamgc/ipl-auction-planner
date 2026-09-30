@@ -93,6 +93,10 @@ describe("TeamPickerPage", () => {
     expect(
       within(rcbCard ?? document.body).getByText("3 targets"),
     ).toBeVisible();
+    // Read as "Plan: Not started" by screen readers
+    expect(
+      within(cskCard ?? document.body).getByText("Not started").parentElement,
+    ).toHaveTextContent("Plan: Not started");
     expect(
       within(cskCard ?? document.body).getByText("Before the auction"),
     ).toBeVisible();

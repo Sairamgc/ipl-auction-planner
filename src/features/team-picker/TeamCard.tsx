@@ -57,7 +57,9 @@ export function TeamCard({ franchise, preview }: TeamPickerCard) {
         <Badge
           variant={planStatus.kind === "not-started" ? "secondary" : "outline"}
         >
-          {planStatusLabel(planStatus)}
+          {/* Gives the status context when read on its own */}
+          <span className="sr-only">Plan: </span>
+          <span>{planStatusLabel(planStatus)}</span>
         </Badge>
       </div>
     </Card>
