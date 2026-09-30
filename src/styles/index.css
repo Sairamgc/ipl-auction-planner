@@ -27,6 +27,7 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -90,6 +91,8 @@
   /* teal-700: 5.39:1 with white; as link text 5.39:1 on white */
   --primary: oklch(0.511 0.096 186.391);
   --primary-foreground: oklch(1 0 0);
+  /* teal-800, solid so hover text stays AA: 7.58:1 with white (UI53) */
+  --primary-hover: oklch(0.437 0.078 188.216);
   /* teal-600: 3.66:1 on white, 3.35:1 on muted */
   --ring: oklch(0.6 0.118 184.704);
   --accent: oklch(0.984 0.014 180.72); /* teal-50 */

@@ -245,6 +245,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | UI50 | The expanded tablet strip shows the full summary panel. Rival purses: other teams only, highest official purse first (name breaks ties), each with badge, full name and purse under "Before the auction" | 2026-09-30 |
 | UI51 | The plan and summary share one data hook (`useSquadPlan`, exported by the plan feature), reading the plan's query cache, so the summary follows optimistic saves and rollbacks; a typed but unsaved price is not counted. Targets whose player can't be found are left out of the summary with an info line | 2026-09-30 |
 | UI52 | The mobile summary bar ends with a "›" chevron so it reads as tappable; decorative and hidden from screen readers (the button's name already ends "Open summary") | 2026-09-30 |
+| UI53 | Primary buttons (and linked badges) darken to a solid `--primary-hover` (teal-800, 7.58:1 with white) on hover instead of fading to 80% opacity, which dropped white text to 3.76:1 (below AA) | 2026-09-30 |
 
 ## Setup and tooling (continued)
 
