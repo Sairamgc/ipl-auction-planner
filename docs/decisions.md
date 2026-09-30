@@ -36,7 +36,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | T6 | React Hook Form + Zod for forms | 2026-09-28 |
 | T7 | Radix primitives via shadcn/ui | 2026-09-28 |
 | T8 | Tailwind CSS with design tokens | 2026-09-28 |
-| T9 | TanStack Table + TanStack Virtual for the pool | 2026-09-28 |
+| T9 | **(Superseded by UI22.)** TanStack Table + TanStack Virtual for the pool | 2026-09-28 |
 | T10 | json-server as mock backend (chosen over MSW + IndexedDB) | 2026-09-28 |
 | T11 | Plain `fetch` in a typed API client (no Axios in v1) | 2026-09-28 |
 | T12 | Vitest + React Testing Library; Playwright for E2E | 2026-09-28 |
@@ -50,8 +50,8 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | D2 | Money stored and entered as whole lakh integers | 2026-09-29 |
 | D3 | Nationality = fixed list of cricket-nation codes; overseas = not `IND` | 2026-09-29 |
 | D4 | Targets embedded in the plan; autosave sends the whole plan | 2026-09-29 |
-| D5 | Max safe bid = (purse − spend) − max(0, min − (count + 1)) × lowest base price; negative shows ₹0 plus warning | 2026-09-29 |
-| D6 | Warnings: over purse, over max squad, over overseas cap, target above max safe bid, not enough purse for minimum squad. Below minimum squad = informational note | 2026-09-29 |
+| D5 | **(Amended by D16, D17, D18.)** Max safe bid = (purse − spend) − max(0, min − (count + 1)) × lowest base price; negative shows ₹0 plus warning | 2026-09-29 |
+| D6 | **(Amended by D13, D16.)** Warnings: over purse, over max squad, over overseas cap, target above max safe bid, not enough purse for minimum squad. Below minimum squad = informational note | 2026-09-29 |
 | D7 | Plan targets grouped by role; within a role, highest expected price first | 2026-09-29 |
 | D8 | Pool filters: name search, role, overseas, capped, batting hand, bowling style, base-price range. Sorts: name, base price, age | 2026-09-29 |
 | D9 | Age derived from date of birth as of the auction date | 2026-09-29 |
@@ -107,7 +107,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | S7 | shadcn initialised with the Radix base and a neutral preset; design tokens set before the first real UI | 2026-09-29 |
 | S8 | React Compiler off in v1 | 2026-09-29 |
 | S9 | `src/routeTree.gen.ts` is committed and excluded from ESLint and Prettier | 2026-09-29 |
-| S10 | TanStack Table (v8 vs v9) and TanStack Virtual installed when the pool is built, not at setup | 2026-09-29 |
+| S10 | **(Superseded by UI22.)** TanStack Table (v8 vs v9) and TanStack Virtual installed when the pool is built, not at setup | 2026-09-29 |
 | S11 | Zod 4 schemas passed directly to TanStack Router `validateSearch`; no `@tanstack/zod-adapter` | 2026-09-29 |
 | S12 | ESLint (not Oxlint) with `typescript-eslint` strict type-checked rules; Prettier defaults plus the Tailwind class-sorting plugin | 2026-09-29 |
 | S13 | Vitest runs in jsdom; Playwright runs Chromium desktop plus one mobile viewport | 2026-09-29 |
@@ -148,7 +148,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 
 | ID | Decision | Date |
 |---|---|---|
-| N1 | Provisional starter seed until the full dataset is verified: CSK and RCB only, their real retained players, and about 20 real auction-pool players (mix of roles, overseas/Indian, capped/uncapped, sold and notable unsold). Player list and sources reviewed by the owner before writing | 2026-09-29 |
+| N1 | **(Superseded by N31.)** Provisional starter seed until the full dataset is verified: CSK and RCB only, their real retained players, and about 20 real auction-pool players (mix of roles, overseas/Indian, capped/uncapped, sold and notable unsold). Player list and sources reviewed by the owner before writing | 2026-09-29 |
 | N2 | Dev latency and failure simulation in the mock server via environment flags (e.g. `MOCK_DELAY`, `MOCK_FAIL_RATE`), off by default, with npm scripts to run with them on | 2026-09-29 |
 | N3 | A seed validation script checks `db.seed.json` against the shared Zod contracts; it runs as part of the reset step and in tests | 2026-09-29 |
 | N4 | TanStack Query defaults: read-only data (auction, franchises, players, retentions, pool) uses `staleTime: Infinity` and no refetch on window focus; plans use normal freshness with refetch on window focus. Reads retry 1–2 times; autosave mutations don't retry (roll back and show an error). Supersedes S24 | 2026-09-29 |
@@ -162,22 +162,22 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | N12 | `Plan.updatedAt` is null on seeded plans and set by the mock server on every save. The PUT body (`SavePlanRequest`) omits `updatedAt` | 2026-09-29 |
 | N13 | Pool rows nest the player (`{ id, basePriceLakh, player }`); age and overseas are not in rows (derived in `domain/`). `HOME_NATIONALITY = "IND"` lives in the contracts so the server filter and `domain/` share it. Pool `pageSize` capped at 100 | 2026-09-29 |
 | N14 | Franchise colour-pair contrast (WCAG AA, 4.5:1) is enforced by seed validation, not by the contract, so the app never rejects a response over styling | 2026-09-29 |
-| N15 | The provisional status of the seed is stated in `docs/data-sources.md`, and `db:reset` prints a reminder; nothing extra is stored in the seed | 2026-09-30 |
+| N15 | **(Superseded by N31.)** The provisional status of the seed is stated in `docs/data-sources.md`, and `db:reset` prints a reminder; nothing extra is stored in the seed | 2026-09-30 |
 | N16 | Auction name: "IPL 2026 Player Auction" (no sponsor name) | 2026-09-30 |
 | N17 | Player names follow the official source (auction list for pool players, iplt20.com for retained), except where common usage clearly differs; every exception (official value, value used, reason) is listed in `docs/data-sources.md` | 2026-09-30 |
 | N18 | All data is as of the auction date (16 Dec 2025); later changes are ignored and, where sources disagree, the source closest to that date wins | 2026-09-30 |
 | N19 | Batting hand and bowling style from Cricbuzz (ESPNcricinfo where Cricbuzz has no profile). Mapping: fast and fast-medium → `*-fast`; medium-fast and medium → `*-medium`; part-timers keep their listed style. Livingstone (bowls both) stored as `off-spin` | 2026-09-30 |
-| N20 | Retained players' roles from iplt20.com as of the auction: squad page first, then player page | 2026-09-30 |
+| N20 | **(Amended by N34.)** Retained players' roles from iplt20.com as of the auction: squad page first, then player page | 2026-09-30 |
 | N21 | Capped status follows the IPL rule (Player Regulations 2025–27): an internationally capped Indian player is uncapped only with no starting-XI international in the preceding 5 calendar years AND no BCCI central contract. Contracts applied: the 2024–25 list, the latest published on the auction date. Overseas internationals are capped | 2026-09-30 |
 | N22 | Franchise colours from the official club websites. RCB secondary is gold `#E7C641` with `#101612` text | 2026-09-30 |
 | N23 | `logoPath` is left out until the owner adds logo files; the initials badge also shows when a logo image fails to load | 2026-09-30 |
-| N24 | Starter seed: sold results are checked against the fixed list of the 10 IPL franchise IDs, since only CSK and RCB are seeded as franchises. See follow-up FU1 | 2026-09-30 |
+| N24 | **(Superseded by N33.)** Starter seed: sold results are checked against the fixed list of the 10 IPL franchise IDs, since only CSK and RCB are seeded as franchises. See follow-up FU1 | 2026-09-30 |
 | N25 | Amends N2: simulation settings are command-line arguments to the mock server (`--delay <ms\|min-max>`, `--fail-rate <0-1>`), not environment variables, so the scripts work on Windows without extra dependencies. Scripts: `dev:slow` (300–1200 ms), `dev:flaky` (0.2), `dev:chaos` (both) | 2026-09-30 |
 | N26 | The mock server serves only the agreed API: every write except `PUT /plans/:franchiseId` returns 405 with an `Allow` header; `GET /auctionResults` returns 404. The PUT body is validated strictly against the plan contract and needs an existing franchise | 2026-09-30 |
 | N27 | Pool search is case- and accent-insensitive. The name-then-id tie-break is always ascending. Error responses are `{ error, issues? }` | 2026-09-30 |
 | N28 | `GET /auctionEntries` added as static reference data (never stale); with `/players` it resolves any plan target on the client, so optimistic adds show immediately | 2026-09-30 |
 | N29 | Reads retry twice with TanStack Query's default backoff, only for network errors and 5xx; never for 4xx or contract mismatches | 2026-09-30 |
-| N30 | Plan saves: whole plan per save, optimistic, serialised with a TanStack Query mutation scope per plan. Latest wins: roll back to the last server-confirmed plan only when the failed save is the latest; "Try again" resends the failed plan (user-initiated). Plan refetches (mount, focus, reconnect) are skipped while saves are queued | 2026-09-30 |
+| N30 | **(Amended by UI54.)** Plan saves: whole plan per save, optimistic, serialised with a TanStack Query mutation scope per plan. Latest wins: roll back to the last server-confirmed plan only when the failed save is the latest; "Try again" resends the failed plan (user-initiated). Plan refetches (mount, focus, reconnect) are skipped while saves are queued | 2026-09-30 |
 | N31 | Full dataset replaces the provisional starter seed (supersedes N1 and N15): 10 franchises, 173 retained players, a pool of 98 (77 sold + 21 unsold), 271 players in all. Compiled in four owner-reviewed batches; details in `docs/data-sources.md` | 2026-09-30 |
 | N32 | "Unsold" means called at the auction and not bought (Wisden's complete table; ESPNcricinfo's total of 79). The 23 players on the final list with base ≥ ₹1 Cr who were never called are left out of the pool. Pool = sold + called-and-unsold with base ≥ ₹1 Cr | 2026-09-30 |
 | N33 | Closes FU1: seed validation requires every sold result to name a franchise in the data. The fixed list of IPL franchise IDs (N24) and its "not an IPL franchise id" check are removed | 2026-09-30 |
@@ -217,7 +217,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | UI21 | Mobile mini-summary bar: fixed to the bottom, with an invisible, inert copy at the end of the page reserving exactly its height, so it never covers content at any text size or inset. `viewport-fit=cover`; the bar pads for the bottom and side safe areas, the shell for the side insets, and the sticky tabs sit below the top inset and grow to their 44px touch targets | 2026-09-30 |
 | UI22 | Pool rows are plain semantic markup (a `<table>` on tablet and desktop, a list on mobile); no TanStack Table and no TanStack Virtual, since the pool is at most about 110 rows (P7). Supersedes T9 and S10 for the pool; revisit if the pool grows past a few hundred rows | 2026-09-30 |
 | UI23 | Role and bowling-style filters stay multi-select (N10 confirmed) | 2026-09-30 |
-| UI24 | Router search params use the API's own format (`?role=batter,bowler&sort=name`) via custom `parseSearch`/`stringifySearch`; each pool param falls back on its own when invalid; defaults are omitted; changes replace the history entry | 2026-09-30 |
+| UI24 | **(Amended by UI58.)** Router search params use the API's own format (`?role=batter,bowler&sort=name`) via custom `parseSearch`/`stringifySearch`; each pool param falls back on its own when invalid; defaults are omitted; changes replace the history entry | 2026-09-30 |
 | UI25 | Pool rows: desktop table (Player with Overseas / Uncapped tags, Role, Age, Base price); tablet table (Player with a "Bowler · AUS · 25" line, Base price); mobile list. Batting hand, bowling style and full nationality only in the detail dialog; no avatars in rows | 2026-09-30 |
 | UI26 | Pool toolbar: search and "Sort by" inline; "Filters (n)" opens a popover (tablet, desktop) or a bottom sheet (mobile) whose close button reads "Show N players"; filters apply immediately; active filters are removable chips with "Clear all" (sort kept) | 2026-09-30 |
 | UI27 | One "Sort by" select at every width: base price, name or age, each both ways; the sorted column header carries `aria-sort` | 2026-09-30 |
@@ -227,14 +227,14 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | UI31 | "Load more" moves focus to the first newly loaded player and announces how many loaded; auto-load while scrolling never moves focus; after a failed page, auto-load stops until "Try again". Both join a next-page request already in flight rather than restarting it (`cancelRefetch: false`), so one page is never fetched twice | 2026-09-30 |
 | UI32 | `ErrorState` has two modes: page-level errors move focus to the title; errors inside a panel are announced as an alert and leave focus where the user is | 2026-09-30 |
 | UI33 | Base-price filter: "From" and "Up to" selects of the eight official slabs (₹30 L, 40 L, 50 L, 75 L, ₹1 Cr, 1.25 Cr, 1.5 Cr, 2 Cr; verified on iplt20.com); the options never allow an inverted range | 2026-09-30 |
-| UI34 | The pool row's Add button is not shown until the add dialog exists (slice 3); rows have an action slot for it | 2026-09-30 |
+| UI34 | **(Corrected by UI43.)** The pool row's Add button is not shown until the add dialog exists (slice 3); rows have an action slot for it | 2026-09-30 |
 | UI35 | The current sort is part of the pool's accessible name at every width, in the same words: the table caption "Auction pool, sorted by name, Z to A" and the mobile list label "Players, sorted by name, Z to A" (`sortDescription`) | 2026-09-30 |
 | UI36 | Add dialog: title "Add to plan", player summary (avatar, name, "Batter · AUS · 26", base price), an expected-price field in whole lakh pre-filled with the base price, a live "= ₹2.40 Cr" preview and hint; arrow keys step by 5 L. Errors appear after the first blur or submit ("Enter an expected price.", "Use whole lakh, e.g. 240 for ₹2.40 Cr.", "At least the base price, ₹2.00 Cr."); a price above the purse shows a neutral note, not an error | 2026-09-30 |
 | UI37 | Plan panel grouped by role (batters, wicketkeepers, all-rounders, bowlers; empty roles left out), each listing its locked retained players, then its targets by highest expected price (D7). Headings carry counts ("Bowlers · 3"). Empty plan: "No targets yet. Use Add on a player in the pool." (plus "Go to Pool" on mobile) | 2026-09-30 |
 | UI38 | Pool rows for players in the plan show a non-interactive "✓ In plan / ₹2.40 Cr" tag (read as "In plan at ₹2.40 Cr") in place of Add | 2026-09-30 |
 | UI39 | Target prices are always inputs: Enter or blur saves a valid changed value, an invalid one shows its error and is not saved, Escape restores. The input shows the typed draft or, otherwise, the saved price directly, so a rollback always appears | 2026-09-30 |
 | UI40 | Removing a target saves at once and leaves "Cameron Green removed. Undo" in its place until the plan changes in another way or the team changes, with no time limit (so no one is timed out, WCAG 2.2.1); Undo re-adds it at the old price. Revised the same day from a 10 s limit | 2026-09-30 |
-| UI41 | Save status in the plan header: "Saving…", "Saved", or an error ("Couldn't save your last change. Your plan is back to its last saved version.") with Try again and Dismiss. The error stays until dismissed, retried, or a later save succeeds. Try again resends the plan that failed (N30 unchanged) | 2026-09-30 |
+| UI41 | **(Amended by UI54.)** Save status in the plan header: "Saving…", "Saved", or an error ("Couldn't save your last change. Your plan is back to its last saved version.") with Try again and Dismiss. The error stays until dismissed, retried, or a later save succeeds. Try again resends the plan that failed (N30 unchanged) | 2026-09-30 |
 | UI42 | Focus in the plan flow: after adding, to the pool row's name (with "… added to plan at ₹2.40 Cr" announced); after cancelling, to Add; after removing, to Undo; after Undo, to the restored row; when the Undo notice ends, to the plan heading. Focus moves wait for the render that shows the element | 2026-09-30 |
 | UI43 | Corrects UI34: the pool rows' action slot did not exist until this slice. It now holds Add (or the in-plan tag) | 2026-09-30 |
 | UI44 | Amounts never break across lines (`Money` is `whitespace-nowrap`) | 2026-09-30 |

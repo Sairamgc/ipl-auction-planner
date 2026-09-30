@@ -108,7 +108,7 @@ Target       { auctionEntryId, expectedPriceLakh }
 ```
 
 **Enumerations**
-- `nationality`: fixed list of cricket-nation codes with display names (e.g. `IND`, `AUS`, `ENG`, `WI`, `SA`, `NZ`, …). Final list set when compiling the data.
+- `nationality`: fixed list of cricket-nation codes with display names (e.g. `IND`, `AUS`, `ENG`, `WI`, `SA`, `NZ`, …). Final list: the 12 ICC Full Members (N37).
 - `role`: Batter, Bowler, All-rounder, Wicketkeeper
 - `battingHand`: Right, Left
 - `bowlingStyle`: right-arm fast, right-arm medium, off-spin, leg-spin, left-arm fast, left-arm medium, left-arm orthodox, left-arm wrist spin, none
@@ -251,4 +251,4 @@ Request/response shapes are Zod schemas in `shared/contracts`, used by both the 
 
 ## 12. Still to decide (during the build)
 
-- Final list of nationality codes (from the compiled data)
+Nothing open.

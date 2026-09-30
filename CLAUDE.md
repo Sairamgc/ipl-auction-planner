@@ -25,6 +25,7 @@ Pin versions at setup and check each tool's current docs before using version-sp
 |---|---|
 | `npm run dev` | App (Vite, :5173) and mock server (:3001) together; the app reaches the server via the `/api` proxy |
 | `npm run dev:app` / `npm run dev:mock` | Run one side only (`dev:mock` restarts on change) |
+| `npm run start:mock` | Mock server without file watching (used by Playwright) |
 | `npm run dev:slow` / `dev:flaky` / `dev:chaos` | `dev` with simulated latency (300–1200 ms), failures (20%), or both; custom: `npm run dev:mock -- --delay 800 --fail-rate 0.1` |
 | `npm run db:reset` | Validate `db.seed.json`, then restore `mock-server/db.json` from it (refuses an invalid seed) |
 | `npm run db:validate` | Check `db.seed.json` against the strict contracts and cross-record rules; sources in `docs/data-sources.md` |
@@ -42,10 +43,12 @@ Add shadcn components with `npx shadcn@4.21.0 add <name>` (pinned CLI version), 
 
 ```
 CLAUDE.md
-docs/                 requirements.md, decisions.md
-mock-server/          server.ts, routes/pool.ts, db.seed.json, db.json (git-ignored), reset-db.ts
+docs/                 requirements.md, decisions.md, data-sources.md
+mock-server/          server.ts, app.ts, routes/ (pool, plans, guards), seedValidation.ts,
+                      db.seed.json, db.json (git-ignored), reset-db.ts, validate-seed.ts
 shared/contracts/     Zod schemas + inferred types for API requests/responses (used by mock server AND app)
-public/logos/         franchise logos (supplied by the owner)
+shared/color/         WCAG contrast helper (used by seed validation AND domain)
+public/               favicon.svg; logos/ for franchise logos (logos to be added)
 e2e/                  Playwright tests
 src/
   main.tsx
@@ -54,9 +57,9 @@ src/
   api/                typed fetch client + one module per resource
   domain/             pure TypeScript, no React: rules, money, age, overseas, summary, warnings
   features/
-    team-picker/  workspace/  player-pool/  player-detail/  plan/  summary/
+    team-picker/  workspace/  player-pool/  player-detail/  add-target/  plan/  summary/
   components/ui/      shadcn components (generic only)
-  components/common/  app-wide pieces (InitialsAvatar, TeamLogo, Money)
+  components/common/  app-wide pieces (e.g. InitialsAvatar, TeamLogo, Money, ErrorState, LimitBar)
   lib/                cn() and small utilities
   styles/index.css    Tailwind entry + design tokens
   test/               test setup and helpers
