@@ -132,13 +132,18 @@ remaining   = purseRemaining − plannedSpend
 slotsToFill = max(0, minSquadSize − (squadCount + 1))   // +1 = the player being bid for
 maxSafeBid  = remaining − slotsToFill × lowestBasePrice
 ```
-If negative, display ₹0 and raise warning 4.
+If negative, display ₹0. A negative max safe bid always comes with a warning: warning 1 (over purse) or warning 4 (minimum squad unaffordable).
 
 **Warnings**
 1. Planned spend exceeds the purse
 2. Squad count exceeds the maximum
 3. Overseas count exceeds the cap
-4. Not enough purse left to fill the minimum squad (max safe bid below zero)
+4. Not enough purse left to fill the minimum squad. Checked independently of max safe bid:
+   ```
+   slotsShort = max(0, minSquadSize − squadCount)
+   warn when slotsShort > 0 and remaining < slotsShort × lowestBasePrice
+   ```
+   No warning once the minimum squad is met (an overspend is warning 1).
 
 **Note (informational, not a warning)**
 - Squad count is below the minimum squad size
