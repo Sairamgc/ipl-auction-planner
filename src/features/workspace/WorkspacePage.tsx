@@ -1,6 +1,7 @@
 import { EmptyState } from "@/components/common/EmptyState";
 import { ErrorState } from "@/components/common/ErrorState";
 import { teamColorStyle } from "@/components/common/teamColorStyle";
+import { PlayerDetailDialog } from "@/features/player-detail";
 import { useDocumentTitle } from "@/lib/useDocumentTitle";
 import { useViewport } from "@/lib/useMediaQuery";
 import { cn } from "@/lib/utils";
@@ -76,6 +77,7 @@ export function WorkspacePage({ teamId }: { teamId: string }) {
         figures={state.figures}
       />
       <Layout />
+      <PlayerDetailDialog />
     </div>
   );
 }

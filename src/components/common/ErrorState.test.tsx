@@ -32,4 +32,18 @@ describe("ErrorState", () => {
     render(<ErrorState title="Oops" onRetry={vi.fn()} />);
     expect(screen.queryByRole("alert")).not.toBeInTheDocument();
   });
+
+  it("can announce as an alert without moving focus (UI32)", () => {
+    render(
+      <ErrorState
+        title="Couldn't load players."
+        announce="alert"
+        onRetry={vi.fn()}
+      />,
+    );
+    expect(screen.getByRole("alert")).toHaveTextContent(
+      "Couldn't load players.",
+    );
+    expect(screen.getByRole("heading")).not.toHaveFocus();
+  });
 });

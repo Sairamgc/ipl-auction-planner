@@ -1,3 +1,4 @@
+import { poolSearchShape } from "@/features/player-pool";
 import { z } from "zod";
 
 export const WORKSPACE_TABS = ["pool", "plan", "summary"] as const;
@@ -13,5 +14,7 @@ export const DEFAULT_TAB: WorkspaceTab = "pool";
  */
 export const workspaceSearchSchema = z.object({
   tab: z.enum(WORKSPACE_TABS).optional().catch(undefined),
+  // Pool filters, search and sort (§9), carried over on team switch (UI14)
+  ...poolSearchShape,
 });
 export type WorkspaceSearch = z.infer<typeof workspaceSearchSchema>;

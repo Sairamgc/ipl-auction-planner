@@ -49,6 +49,8 @@ const allowedDependencies = {
     "domain",
     "lib",
     "contracts",
+    // Test fixtures answer /api/pool with the mock server's real query logic
+    "mock-server",
   ],
   contracts: [],
   "shared-utils": [],

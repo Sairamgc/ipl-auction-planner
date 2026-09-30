@@ -57,6 +57,10 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | D10 | Expected price required, pre-filled with base price, blocked below base price, any whole-lakh value, above purse allowed with warning | 2026-09-29 |
 | D11 | Retained players count toward squad size, overseas count and role breakdown | 2026-09-29 |
 | D12 | Money display: ₹X.XX Cr at ₹1 Cr and above (always 2 decimals); ₹N L below | 2026-09-29 |
+| D13 | Warning "a target's expected price exceeds the current max safe bid" dropped. D6 now has four warnings: over purse, over max squad, over overseas cap, not enough purse for the minimum squad | 2026-09-30 |
+| D14 | Negative amounts display with a minus sign (−₹1.20 Cr, U+2212) and an accessible label that reads "minus" | 2026-09-30 |
+| D15 | Header and picker figures (purse, open slots, open overseas slots) are the baseline after retentions and before any plan, labelled that way (e.g. "Purse before auction"); the plan's effect shows only in the summary | 2026-09-30 |
+| D16 | Amends D5 and D6: the "not enough purse for the minimum squad" warning has its own condition, independent of max safe bid: `slotsShort = max(0, minSquadSize − squadCount)`; it fires when `slotsShort > 0` and `remaining < slotsShort × lowestBasePrice`. So it never fires once the minimum is met (over purse is its own warning), and it does fire one player short even when max safe bid is positive. Max safe bid formula and ₹0 display unchanged | 2026-09-30 |
 
 ## API
 
@@ -115,6 +119,8 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | S22 | Vitest configured inside `vite.config.ts` (shares plugins and aliases); explicit imports, no test globals | 2026-09-29 |
 | S23 | `react-refresh/only-export-components` off for route files: the TanStack Router plugin code-splits route components and handles their HMR | 2026-09-29 |
 | S24 | TanStack Query default options kept for now; tuned when the data hooks are built | 2026-09-29 |
+| S25 | Vitest runs two projects: `app` (jsdom, browser setup) for `src/`, and `node` for `shared/` and `mock-server/` | 2026-09-30 |
+| S26 | 100% coverage (lines, branches, functions, statements) on `src/domain/**`, enforced in `npm run check` | 2026-09-30 |
 
 ## Visual design
 
@@ -163,20 +169,6 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | N22 | Franchise colours from the official club websites. RCB secondary is gold `#E7C641` with `#101612` text | 2026-09-30 |
 | N23 | `logoPath` is left out until the owner adds logo files; the initials badge also shows when a logo image fails to load | 2026-09-30 |
 | N24 | Starter seed: sold results are checked against the fixed list of the 10 IPL franchise IDs, since only CSK and RCB are seeded as franchises. See follow-up FU1 | 2026-09-30 |
-| S25 | Vitest runs two projects: `app` (jsdom, browser setup) for `src/`, and `node` for `shared/` and `mock-server/` | 2026-09-30 |
-
-## Follow-ups
-
-Agreed work that is not done yet. Remove an entry when it is done, and reference the commit.
-
-| ID | Follow-up | Raised |
-|---|---|---|
-| FU1 | Once all 10 franchises are seeded, seed validation must require sold results to reference an existing franchise, replacing the fixed-list check from N24 | 2026-09-30 |
-| D13 | Warning "a target's expected price exceeds the current max safe bid" dropped. D6 now has four warnings: over purse, over max squad, over overseas cap, not enough purse for the minimum squad | 2026-09-30 |
-| D14 | Negative amounts display with a minus sign (−₹1.20 Cr, U+2212) and an accessible label that reads "minus" | 2026-09-30 |
-| D15 | Header and picker figures (purse, open slots, open overseas slots) are the baseline after retentions and before any plan, labelled that way (e.g. "Purse before auction"); the plan's effect shows only in the summary | 2026-09-30 |
-| S26 | 100% coverage (lines, branches, functions, statements) on `src/domain/**`, enforced in `npm run check` | 2026-09-30 |
-| D16 | Amends D5 and D6: the "not enough purse for the minimum squad" warning has its own condition, independent of max safe bid: `slotsShort = max(0, minSquadSize − squadCount)`; it fires when `slotsShort > 0` and `remaining < slotsShort × lowestBasePrice`. So it never fires once the minimum is met (over purse is its own warning), and it does fire one player short even when max safe bid is positive. Max safe bid formula and ₹0 display unchanged | 2026-09-30 |
 | N25 | Amends N2: simulation settings are command-line arguments to the mock server (`--delay <ms\|min-max>`, `--fail-rate <0-1>`), not environment variables, so the scripts work on Windows without extra dependencies. Scripts: `dev:slow` (300–1200 ms), `dev:flaky` (0.2), `dev:chaos` (both) | 2026-09-30 |
 | N26 | The mock server serves only the agreed API: every write except `PUT /plans/:franchiseId` returns 405 with an `Allow` header; `GET /auctionResults` returns 404. The PUT body is validated strictly against the plan contract and needs an existing franchise | 2026-09-30 |
 | N27 | Pool search is case- and accent-insensitive. The name-then-id tie-break is always ascending. Error responses are `{ error, issues? }` | 2026-09-30 |
@@ -207,7 +199,37 @@ Agreed work that is not done yet. Remove an entry when it is done, and reference
 | UI17 | Browser tab titles: "Choose a team · IPL Auction Planner", "<Team> · IPL Auction Planner", "Page not found · IPL Auction Planner" (`useDocumentTitle`) | 2026-09-30 |
 | UI18 | Workspace header: 4px team stripe and 2px secondary line, "All teams" back link, badge + h1 + switcher (switcher wraps below the name on narrow screens), baseline figures via the shared `BaselineFigures`. While figures load, the team shows immediately and only the figures are skeletons | 2026-09-30 |
 | UI19 | Tappable menu items and tab triggers include the `touch-target` utility, like buttons (UI9) | 2026-09-30 |
-| S27 | `shared/color` is a shared-utilities boundary element (WCAG contrast) usable by `domain/` and `mock-server/` | 2026-09-30 |
 | UI20 | Panels that scroll on their own (tablet and desktop) are focusable regions (`tabIndex=0`, named by their heading, with a focus ring) whose heading stays pinned while scrolling. Safari does not make scroll areas keyboard-focusable by itself (verified in WebKit) | 2026-09-30 |
 | UI21 | Mobile mini-summary bar: fixed to the bottom, with an invisible, inert copy at the end of the page reserving exactly its height, so it never covers content at any text size or inset. `viewport-fit=cover`; the bar pads for the bottom and side safe areas, the shell for the side insets, and the sticky tabs sit below the top inset and grow to their 44px touch targets | 2026-09-30 |
+| UI22 | Pool rows are plain semantic markup (a `<table>` on tablet and desktop, a list on mobile); no TanStack Table and no TanStack Virtual, since the pool is at most about 110 rows (P7). Supersedes T9 and S10 for the pool; revisit if the pool grows past a few hundred rows | 2026-09-30 |
+| UI23 | Role and bowling-style filters stay multi-select (N10 confirmed) | 2026-09-30 |
+| UI24 | Router search params use the API's own format (`?role=batter,bowler&sort=name`) via custom `parseSearch`/`stringifySearch`; each pool param falls back on its own when invalid; defaults are omitted; changes replace the history entry | 2026-09-30 |
+| UI25 | Pool rows: desktop table (Player with Overseas / Uncapped tags, Role, Age, Base price); tablet table (Player with a "Bowler · AUS · 25" line, Base price); mobile list. Batting hand, bowling style and full nationality only in the detail dialog; no avatars in rows | 2026-09-30 |
+| UI26 | Pool toolbar: search and "Sort by" inline; "Filters (n)" opens a popover (tablet, desktop) or a bottom sheet (mobile) whose close button reads "Show N players"; filters apply immediately; active filters are removable chips with "Clear all" (sort kept) | 2026-09-30 |
+| UI27 | One "Sort by" select at every width: base price, name or age, each both ways; the sorted column header carries `aria-sort` | 2026-09-30 |
+| UI28 | While a new search, filter or sort loads, the previous results stay, dimmed and `aria-busy`, with a thin progress bar | 2026-09-30 |
+| UI29 | Player detail dialog: its own feature (`player-detail`) with a small store, so pool rows now and plan items later open the same dialog; state is local, not in the URL; on close, focus returns to the element that opened it (set explicitly, since Safari does not focus buttons on click) | 2026-09-30 |
+| UI30 | Pool row pattern: the player's name is a button stretched over the row (opens the dialog); row actions sit beside it, never inside it; the focus ring is drawn on the stretched area | 2026-09-30 |
+| UI31 | "Load more" moves focus to the first newly loaded player and announces how many loaded; auto-load while scrolling never moves focus; after a failed page, auto-load stops until "Try again". Both join a next-page request already in flight rather than restarting it (`cancelRefetch: false`), so one page is never fetched twice | 2026-09-30 |
+| UI32 | `ErrorState` has two modes: page-level errors move focus to the title; errors inside a panel are announced as an alert and leave focus where the user is | 2026-09-30 |
+| UI33 | Base-price filter: "From" and "Up to" selects of the eight official slabs (₹30 L, 40 L, 50 L, 75 L, ₹1 Cr, 1.25 Cr, 1.5 Cr, 2 Cr; verified on iplt20.com); the options never allow an inverted range | 2026-09-30 |
+| UI34 | The pool row's Add button is not shown until the add dialog exists (slice 3); rows have an action slot for it | 2026-09-30 |
+
+## Setup and tooling (continued)
+
+| ID | Decision | Date |
+|---|---|---|
+| S27 | `shared/color` is a shared-utilities boundary element (WCAG contrast) usable by `domain/` and `mock-server/` | 2026-09-30 |
 | S28 | `e2e/` has its own tsconfig with DOM types (for `page.evaluate`); Node-only config files keep Node types only | 2026-09-30 |
+| S29 | Until the full dataset exists (the starter pool is under one page), multi-page behaviour is tested with network mocks: multi-page fixtures in component tests and Playwright request interception in E2E. No test-only code in the app or the data | 2026-09-30 |
+| S30 | Test fixtures may import the mock server's query logic, so component tests get real filtering, sorting and paging for `/api/pool` | 2026-09-30 |
+
+<!-- New decision sections go above this line; Follow-ups stays last. -->
+
+## Follow-ups
+
+Agreed work that is not done yet. Remove an entry when it is done, and reference the commit.
+
+| ID | Follow-up | Raised |
+|---|---|---|
+| FU1 | Once all 10 franchises are seeded, seed validation must require sold results to reference an existing franchise, replacing the fixed-list check from N24 | 2026-09-30 |

@@ -63,6 +63,9 @@ A UI-only auction strategy tool. A franchise picks its team, reviews its squad b
 
 **Detail dialog content:** name, age, nationality, overseas flag, role, batting hand, bowling style, capped status, base price (pool players).
 
+- Layout: initials avatar, name (title) and role; then Age "25 (on 16 Dec 2025)", Nationality with an "Overseas" tag, Role, Batting ("Right-handed"), Bowling, Status (Capped / Uncapped), Base price. Closes with Close, Esc or a click outside; focus returns to the row that opened it. Not reflected in the URL (UI29).
+- In a pool row, the player's name is the control that opens the dialog; the row's Add button (slice 3) sits beside it, never inside it. Until the add dialog exists, the Add button is not shown (UI30, UI34).
+
 ## 4. Responsive layout
 
 | Screen | Width | Layout |
@@ -201,7 +204,13 @@ Request/response shapes are Zod schemas in `shared/contracts`, used by both the 
 - Server-side search, filtering, sorting and pagination.
 - Search input debounced by 300 ms.
 - Infinite scroll: auto-loads at the bottom, plus a "Load more" button for keyboard and screen-reader users.
-- Changing filters or sort resets to the first page.
+- Changing filters or sort resets to the first page and scrolls the pool back to the top.
+- The URL uses the API's own format: `/teams/csk?role=batter,bowler&overseas=false&sort=name`. Defaults are omitted; invalid values are ignored one by one; changes replace the history entry (UI24).
+- Toolbar: search, a "Sort by" menu (base price, name or age, each both ways), and "Filters (n)", which opens a popover (tablet, desktop) or a bottom sheet (mobile). Filters apply immediately. Active filters show as removable chips with "Clear all" (the sort is kept) (UI26, UI27).
+- Filters: role and bowling style (multi-select), nationality (any / Indian / overseas), status (any / capped / uncapped), batting hand, and base price "From" / "Up to" using the eight official base-price slabs (UI33).
+- Rows: desktop table (player with Overseas / Uncapped tags, role, age, base price), tablet table (player with a "Bowler · AUS · 25" line, base price), mobile list. Clicking anywhere on a row opens the detail dialog (UI25, UI30).
+- States: skeleton rows on first load; previous results stay (dimmed) while a new search or filter loads; "Loading more players…" for later pages; "No players match these filters." with "Clear filters"; a panel error with retry; a failed "Load more" keeps loaded rows and retries only the next page (UI28).
+- "Load more" moves focus to the first newly loaded player and announces how many loaded (UI31).
 
 ## 10. Data
 

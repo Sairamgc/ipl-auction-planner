@@ -7,27 +7,31 @@ interface ErrorStateProps {
   title: string;
   description?: string;
   onRetry: () => void;
+  /**
+   * `focus` (page-level errors): focus moves to the title. `alert`
+   * (errors inside a panel): announced as an alert, focus stays where the
+   * user is, e.g. typing in the search box (UI32).
+   */
+  announce?: "focus" | "alert";
   className?: string;
 }
 
-/**
- * Error with a retry. Focus moves to the title when it appears, so keyboard
- * and screen-reader users land on it (instead of an extra live region).
- */
+/** Error with a retry, announced by moving focus or as an alert. */
 export function ErrorState({
   title,
   description,
   onRetry,
+  announce = "focus",
   className,
 }: ErrorStateProps) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
-    titleRef.current?.focus();
-  }, []);
+    if (announce === "focus") titleRef.current?.focus();
+  }, [announce]);
 
   return (
     <Alert
-      role={undefined}
+      role={announce === "alert" ? "alert" : undefined}
       className={cn(
         "gap-2 border-destructive/30 bg-destructive-subtle p-4 text-destructive-subtle-foreground",
         className,

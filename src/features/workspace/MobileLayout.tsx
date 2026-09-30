@@ -2,6 +2,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { useNavigate, useSearch } from "@tanstack/react-router";
 
+import { PoolPanel } from "@/features/player-pool";
+
 import { PanelPlaceholder } from "./PanelPlaceholder";
 import { SummaryFigures } from "./SummaryFigures";
 import {
@@ -74,7 +76,11 @@ export function MobileLayout() {
         </TabsList>
         {WORKSPACE_TABS.map((value) => (
           <TabsContent key={value} value={value}>
-            <PanelPlaceholder id={value} title={PANEL_TITLES[value]} />
+            {value === "pool" ? (
+              <PoolPanel layout="list" />
+            ) : (
+              <PanelPlaceholder id={value} title={PANEL_TITLES[value]} />
+            )}
           </TabsContent>
         ))}
       </Tabs>

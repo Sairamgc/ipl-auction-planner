@@ -11,6 +11,12 @@ vi.spyOn(window, "scrollTo").mockImplementation(() => undefined);
 // jsdom has no matchMedia; tests render as desktop unless they choose
 installMatchMedia();
 
+// Radix Select and scroll containers call these; jsdom lacks them
+Element.prototype.hasPointerCapture = () => false;
+Element.prototype.releasePointerCapture = () => undefined;
+Element.prototype.scrollIntoView = () => undefined;
+Element.prototype.scrollTo = () => undefined;
+
 // RTL only auto-cleans when test globals are enabled; we import explicitly
 afterEach(() => {
   cleanup();

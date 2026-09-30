@@ -3,7 +3,11 @@ import {
   PoolPageSchema,
   type PoolQuery,
 } from "@shared/contracts";
-import { infiniteQueryOptions, useInfiniteQuery } from "@tanstack/react-query";
+import {
+  infiniteQueryOptions,
+  keepPreviousData,
+  useInfiniteQuery,
+} from "@tanstack/react-query";
 
 import { apiRequest } from "./client";
 import { READ_ONLY_QUERY } from "./queryDefaults";
@@ -69,7 +73,14 @@ export function poolQueryOptions(filters: PoolFilters) {
   });
 }
 
-/** Server-side filtered, sorted pool with infinite scroll (A3, A7). */
+/**
+ * Server-side filtered, sorted pool with infinite scroll (A3, A7). While a
+ * new filter's first page loads, the previous results stay on screen
+ * (`isPlaceholderData`, UI28).
+ */
 export function usePool(filters: PoolFilters) {
-  return useInfiniteQuery(poolQueryOptions(filters));
+  return useInfiniteQuery({
+    ...poolQueryOptions(filters),
+    placeholderData: keepPreviousData,
+  });
 }
