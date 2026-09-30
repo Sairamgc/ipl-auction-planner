@@ -18,8 +18,10 @@ export default defineConfig({
   },
   projects: [
     { name: "desktop", use: { ...devices["Desktop Chrome"] } },
-    // Chromium-based, so a single browser download covers both projects
+    // Chromium-based, so it shares the desktop project's browser download
     { name: "mobile", use: { ...devices["Pixel 7"] } },
+    // Safari's engine: guards its focus and scrolling quirks (UI20, UI29, S33)
+    { name: "desktop-webkit", use: { ...devices["Desktop Safari"] } },
   ],
   webServer: [
     {

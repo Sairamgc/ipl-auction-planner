@@ -74,6 +74,23 @@ test.describe("pool", () => {
   });
 
   test.describe("more than one page (network mocked, S29)", () => {
+    /**
+     * Turns off auto-load so a test can use the button: in WebKit, scrolling
+     * the button into view to click it would auto-load first (S33).
+     */
+    async function withoutAutoLoad(page: Page) {
+      await page.addInitScript(() => {
+        window.IntersectionObserver = class {
+          observe() {}
+          unobserve() {}
+          disconnect() {}
+          takeRecords() {
+            return [];
+          }
+        } as unknown as typeof IntersectionObserver;
+      });
+    }
+
     /** Serves a 40-player pool from the real first page's shape. */
     async function mockPages(page: Page, { failPageTwo = false } = {}) {
       // The first try plus two automatic retries (N29) must all fail
@@ -120,6 +137,7 @@ test.describe("pool", () => {
     test("loads the next page with the button and focuses the first new row", async ({
       page,
     }) => {
+      await withoutAutoLoad(page);
       await mockPages(page);
       await page.goto("/teams/csk");
       await expect(pool(page).getByText("40 players")).toBeVisible();
@@ -137,6 +155,7 @@ test.describe("pool", () => {
     test("keeps loaded rows when the next page fails, then retries", async ({
       page,
     }) => {
+      await withoutAutoLoad(page);
       await mockPages(page, { failPageTwo: true });
       await page.goto("/teams/csk");
       await expect(playerButtons(page)).toHaveCount(25);

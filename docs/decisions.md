@@ -260,6 +260,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | S30 | Test fixtures may import the mock server's query logic, so component tests get real filtering, sorting and paging for `/api/pool` | 2026-09-30 |
 | S31 | E2E tests run one at a time (`workers: 1`) against the one shared mock server; tests that save plans reset them before and after | 2026-09-30 |
 | S32 | Features may expose a second, light public entry, `search.ts`, for route search params (workspace, player-pool), and features may import each other's `index.ts` or `search.ts` only. The `/teams/$teamId` route imports its schema from there, so the workspace is code-split: entry chunk 715 → 430 kB (222 → 133 kB gzip), workspace chunk 238 kB (72 kB gzip), no size warning | 2026-09-30 |
+| S33 | E2E also runs a desktop WebKit project (`desktop-webkit`, Desktop Safari) to guard Safari's focus and scrolling quirks (UI20, UI29). Firefox is not in the suite (owner). In WebKit, keyboard tests use Option+Tab (Safari's Tab skips links by default), and the two "Load more" button tests stub IntersectionObserver so auto-load can't replace the button mid-click | 2026-09-30 |
 
 <!-- New decision sections go above this line; Follow-ups stays last. -->
 

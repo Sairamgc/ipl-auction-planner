@@ -33,7 +33,7 @@ Pin versions at setup and check each tool's current docs before using version-sp
 | `npm run lint` / `npm run lint:fix` | ESLint, including architecture boundary rules |
 | `npm run format` / `npm run format:check` | Prettier (Markdown and `routeTree.gen.ts` excluded) |
 | `npm test` / `npm run test:watch` / `npm run test:coverage` | Vitest unit and component tests |
-| `npm run test:e2e` | Playwright (desktop + mobile); starts both servers and resets the database from the seed |
+| `npm run test:e2e` | Playwright (desktop Chromium, mobile Chromium, desktop WebKit); starts both servers and resets the database from the seed |
 | `npm run build` / `npm run preview` | Production build and local preview |
 
 Add shadcn components with `npx shadcn@4.21.0 add <name>` (pinned CLI version), then run `npm run format` and `npm run lint`.

@@ -71,16 +71,19 @@ test.describe("team picker", () => {
     ).toBeVisible();
   });
 
-  test("opens a workspace with the keyboard", async ({ page }) => {
+  test("opens a workspace with the keyboard", async ({ page, browserName }) => {
+    // Safari's Tab skips links unless "Press Tab to highlight each item" is
+    // on; Option+Tab always does (S33)
+    const tab = browserName === "webkit" ? "Alt+Tab" : "Tab";
     await page.goto("/");
     await expect(
       page.getByRole("link", { name: "Delhi Capitals" }),
     ).toBeVisible();
 
     // Header link, then CSK, then DC (cards are alphabetical)
-    await page.keyboard.press("Tab");
-    await page.keyboard.press("Tab");
-    await page.keyboard.press("Tab");
+    await page.keyboard.press(tab);
+    await page.keyboard.press(tab);
+    await page.keyboard.press(tab);
     await expect(
       page.getByRole("link", { name: "Delhi Capitals" }),
     ).toBeFocused();
