@@ -1,4 +1,5 @@
 import { Money } from "@/components/common/Money";
+import { sortDescription, type SortOption } from "@/domain";
 import { cn } from "@/lib/utils";
 import type { PoolRow } from "@shared/contracts";
 
@@ -7,16 +8,24 @@ import { rowSummary } from "./rowDetails";
 
 interface PoolListProps {
   rows: PoolRow[];
+  /** Named with the sort, like the table's caption (UI35). */
+  sort: SortOption;
   auctionDate: string | undefined;
   busy: boolean;
   onOpen: (row: PoolRow, trigger: HTMLElement) => void;
 }
 
 /** The pool on mobile: one row per player (UI25). */
-export function PoolList({ rows, auctionDate, busy, onOpen }: PoolListProps) {
+export function PoolList({
+  rows,
+  sort,
+  auctionDate,
+  busy,
+  onOpen,
+}: PoolListProps) {
   return (
     <ul
-      aria-label="Players"
+      aria-label={`Players, ${sortDescription(sort)}`}
       aria-busy={busy || undefined}
       className={cn("transition-opacity", busy && "opacity-60")}
     >

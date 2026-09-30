@@ -44,3 +44,12 @@ export function sortOptionFor(
   if (!option) throw new Error(`No sort option for ${sort} ${order}`);
   return option;
 }
+
+/**
+ * The sort in words for screen readers, shared by the table caption and
+ * the mobile list's label: "sorted by name, Z to A" (UI35).
+ */
+export function sortDescription(option: SortOption): string {
+  const [field = "", direction = ""] = option.label.split(": ");
+  return `sorted by ${field.toLowerCase()}, ${direction}`;
+}

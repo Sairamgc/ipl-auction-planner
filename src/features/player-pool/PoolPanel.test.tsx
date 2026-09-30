@@ -45,6 +45,11 @@ describe("PoolPanel", () => {
 
       expect(within(pool()).getByText("30 players")).toBeVisible();
       expect(shownNames()[0]).toBe("Cameron Green");
+      expect(
+        within(pool()).getByRole("table", {
+          name: "Auction pool, sorted by base price, high to low",
+        }),
+      ).toBeInTheDocument();
       const headers = within(pool()).getAllByRole("columnheader");
       expect(headers.map((header) => header.textContent)).toEqual([
         "Player",
@@ -420,7 +425,9 @@ describe("PoolPanel", () => {
       await loaded();
 
       expect(
-        within(pool()).getByRole("list", { name: "Players" }),
+        within(pool()).getByRole("list", {
+          name: "Players, sorted by base price, high to low",
+        }),
       ).toBeVisible();
       await user.click(within(pool()).getByRole("button", { name: "Filters" }));
 
@@ -429,6 +436,19 @@ describe("PoolPanel", () => {
         within(sheet).getByRole("button", { name: "Show 30 players" }),
       ).toBeVisible();
     });
+  });
+
+  it("names the mobile list with its sort, like the table (UI35)", async () => {
+    setViewport("mobile");
+    mockApi();
+    renderRoute("/teams/csk?sort=name&order=desc");
+    await loaded();
+
+    expect(
+      within(pool()).getByRole("list", {
+        name: "Players, sorted by name, Z to A",
+      }),
+    ).toBeVisible();
   });
 
   describe("detail dialog", () => {

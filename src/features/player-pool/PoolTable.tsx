@@ -1,6 +1,6 @@
 import { Money } from "@/components/common/Money";
 import { Badge } from "@/components/ui/badge";
-import { ROLE_LABELS, type SortOption } from "@/domain";
+import { ROLE_LABELS, sortDescription, type SortOption } from "@/domain";
 import { cn } from "@/lib/utils";
 import type { PoolRow, PoolSortField } from "@shared/contracts";
 
@@ -47,7 +47,9 @@ export function PoolTable({
       aria-busy={busy || undefined}
       className={cn("w-full text-sm transition-opacity", busy && "opacity-60")}
     >
-      <caption className="sr-only">Auction pool, {sort.label}</caption>
+      <caption className="sr-only">
+        Auction pool, {sortDescription(sort)}
+      </caption>
       <thead>
         <tr>
           <th

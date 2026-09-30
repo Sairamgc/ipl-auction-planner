@@ -214,6 +214,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | UI32 | `ErrorState` has two modes: page-level errors move focus to the title; errors inside a panel are announced as an alert and leave focus where the user is | 2026-09-30 |
 | UI33 | Base-price filter: "From" and "Up to" selects of the eight official slabs (₹30 L, 40 L, 50 L, 75 L, ₹1 Cr, 1.25 Cr, 1.5 Cr, 2 Cr; verified on iplt20.com); the options never allow an inverted range | 2026-09-30 |
 | UI34 | The pool row's Add button is not shown until the add dialog exists (slice 3); rows have an action slot for it | 2026-09-30 |
+| UI35 | The current sort is part of the pool's accessible name at every width, in the same words: the table caption "Auction pool, sorted by name, Z to A" and the mobile list label "Players, sorted by name, Z to A" (`sortDescription`) | 2026-09-30 |
 
 ## Setup and tooling (continued)
 

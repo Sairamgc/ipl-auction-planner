@@ -1,7 +1,7 @@
 import { POOL_SORT_FIELDS, SORT_ORDERS } from "@shared/contracts";
 import { describe, expect, it } from "vitest";
 
-import { SORT_OPTIONS, sortOptionFor } from "./sortOptions";
+import { SORT_OPTIONS, sortDescription, sortOptionFor } from "./sortOptions";
 
 describe("sort options", () => {
   it("covers every sort field in both directions", () => {
@@ -26,5 +26,15 @@ describe("sort options", () => {
     expect(() => sortOptionFor("name", "sideways" as unknown as "asc")).toThrow(
       /No sort option/,
     );
+  });
+
+  it.each([
+    ["name-desc", "sorted by name, Z to A"],
+    ["basePrice-desc", "sorted by base price, high to low"],
+    ["age-asc", "sorted by age, youngest first"],
+  ])("describes %s as %j", (id, text) => {
+    const option = SORT_OPTIONS.find((candidate) => candidate.id === id);
+    if (!option) throw new Error(`missing ${id}`);
+    expect(sortDescription(option)).toBe(text);
   });
 });

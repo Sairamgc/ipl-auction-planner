@@ -153,6 +153,7 @@ export function PoolPanel({ layout, scrollable = false }: PoolPanelProps) {
         {layout === "list" ? (
           <PoolList
             rows={rows}
+            sort={sort}
             auctionDate={auctionDate}
             busy={busy}
             onOpen={openDetail}
