@@ -7,7 +7,7 @@ import type { SquadRules } from "@shared/contracts";
  *   slotsToFill = max(0, minSquadSize − (squadCount + 1))
  *   maxSafeBid  = remaining − slotsToFill × lowestBasePrice
  *
- * The raw value may be negative; see `displayedMaxSafeBid`.
+ * The raw value may be negative; `maxSafeBidView` decides what is shown.
  */
 export function maxSafeBid(
   remainingLakh: number,
@@ -16,9 +16,4 @@ export function maxSafeBid(
 ): number {
   const slotsToFill = Math.max(0, rules.minSquadSize - (squadCount + 1));
   return remainingLakh - slotsToFill * rules.lowestBasePriceLakh;
-}
-
-/** A negative max safe bid is shown as ₹0 (and raises a warning). */
-export function displayedMaxSafeBid(rawLakh: number): number {
-  return Math.max(0, rawLakh);
 }

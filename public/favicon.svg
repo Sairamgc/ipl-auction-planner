@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- The app's own mark (UI60): teal (--primary), "AP" for Auction Planner -->
+  <rect width="64" height="64" rx="14" fill="#0F766E"/>
+  <text x="32" y="42" text-anchor="middle" font-family="Inter, Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF">AP</text>
+</svg>

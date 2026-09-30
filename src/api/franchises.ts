@@ -26,12 +26,3 @@ export function franchisesQueryOptions() {
 export function useFranchises() {
   return useQuery(franchisesQueryOptions());
 }
-
-/** One franchise, selected from the cached list (no extra request). */
-export function useFranchise(franchiseId: string) {
-  return useQuery({
-    ...franchisesQueryOptions(),
-    select: (franchises) =>
-      franchises.find((franchise) => franchise.id === franchiseId) ?? null,
-  });
-}

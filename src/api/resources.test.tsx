@@ -13,11 +13,7 @@ import {
   auctionEntriesQueryOptions,
   useAuctionEntries,
 } from "./auctionEntries";
-import {
-  franchisesQueryOptions,
-  useFranchise,
-  useFranchises,
-} from "./franchises";
+import { franchisesQueryOptions, useFranchises } from "./franchises";
 import { playersQueryOptions, usePlayers } from "./players";
 import { retentionsQueryOptions, useRetentions } from "./retentions";
 
@@ -97,19 +93,6 @@ describe("read-only resources", () => {
     await waitFor(() => {
       expect(result.current.data).toEqual([csk]);
     });
-  });
-
-  it("selects one franchise from the cached list", async () => {
-    const { fetchMock, wrapper } = setup();
-    const { result } = renderHook(
-      () => ({ found: useFranchise("csk"), missing: useFranchise("mi") }),
-      { wrapper },
-    );
-    await waitFor(() => {
-      expect(result.current.found.data).toEqual(csk);
-    });
-    expect(result.current.missing.data).toBeNull();
-    expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
   it("surfaces contract violations as errors", async () => {

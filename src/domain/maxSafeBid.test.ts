@@ -1,7 +1,7 @@
 import { makeRules } from "@/test/factories";
 import { describe, expect, it } from "vitest";
 
-import { displayedMaxSafeBid, maxSafeBid } from "./maxSafeBid";
+import { maxSafeBid } from "./maxSafeBid";
 
 const rules = makeRules(); // min 18, lowest base 30
 
@@ -26,16 +26,5 @@ describe("maxSafeBid", () => {
   it("uses the auction's own rules", () => {
     const smaller = makeRules({ minSquadSize: 12, lowestBasePriceLakh: 20 });
     expect(maxSafeBid(1000, 5, smaller)).toBe(1000 - 6 * 20);
-  });
-});
-
-describe("displayedMaxSafeBid", () => {
-  it("shows negative values as zero", () => {
-    expect(displayedMaxSafeBid(-160)).toBe(0);
-  });
-
-  it("shows other values unchanged", () => {
-    expect(displayedMaxSafeBid(0)).toBe(0);
-    expect(displayedMaxSafeBid(4310)).toBe(4310);
   });
 });

@@ -84,7 +84,7 @@ test.describe("workspace", () => {
 });
 
 test.describe("workspace scrolling", () => {
-  /** Placeholder panels are short; add rows so the pool overflows. */
+  /** Adds rows so the pool is sure to overflow its panel at any size. */
   async function fillPool(page: import("@playwright/test").Page) {
     await page.evaluate(() => {
       const panel = document.querySelector(

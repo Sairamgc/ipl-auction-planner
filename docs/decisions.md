@@ -253,6 +253,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | UI57 | Pages whose only content is a message use a level-1 heading: "Page not found." and "Couldn't load this team." (`EmptyState`/`ErrorState` take `headingLevel`). Messages under a page title stay level 2 | 2026-09-30 |
 | UI58 | Amends UI24: the workspace URL keeps only known search params (a route middleware drops others, e.g. `?page=-1`), and `minBase`/`maxBase` accept only the eight official base-price amounts (UI33) | 2026-09-30 |
 | UI59 | When a pool list spans more than one page and is fully loaded, the end reads "All 98 players shown" in a polite status region, so screen readers hear it when the last page arrives. A single-page list has no end message (the count already says it) | 2026-09-30 |
+| UI60 | App favicon: `public/favicon.svg`, a teal (`#0F766E`) rounded square with white "AP" (Auction Planner). No IPL or team marks | 2026-09-30 |
 
 ## Setup and tooling (continued)
 
@@ -265,6 +266,7 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | S31 | E2E tests run one at a time (`workers: 1`) against the one shared mock server; tests that save plans reset them before and after | 2026-09-30 |
 | S32 | Features may expose a second, light public entry, `search.ts`, for route search params (workspace, player-pool), and features may import each other's `index.ts` or `search.ts` only. The `/teams/$teamId` route imports its schema from there, so the workspace is code-split: entry chunk 715 → 430 kB (222 → 133 kB gzip), workspace chunk 238 kB (72 kB gzip), no size warning | 2026-09-30 |
 | S33 | E2E also runs a desktop WebKit project (`desktop-webkit`, Desktop Safari) to guard Safari's focus and scrolling quirks (UI20, UI29). Firefox is not in the suite (owner). In WebKit, keyboard tests use Option+Tab (Safari's Tab skips links by default), and the two "Load more" button tests stub IntersectionObserver so auto-load can't replace the button mid-click | 2026-09-30 |
+| S34 | `shadcn` moves to devDependencies: the app uses only its `tailwind.css` at build time. Removed exports used only by their tests: `displayedMaxSafeBid` (replaced by `maxSafeBidView`) and `useFranchise` | 2026-09-30 |
 
 <!-- New decision sections go above this line; Follow-ups stays last. -->
 
