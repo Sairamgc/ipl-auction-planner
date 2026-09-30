@@ -26,14 +26,26 @@ export default defineConfig({
     },
   },
   test: {
-    environment: "jsdom",
-    setupFiles: ["./src/test/setup.ts"],
-    include: [
-      "src/**/*.test.{ts,tsx}",
-      "shared/**/*.test.ts",
-      "mock-server/**/*.test.ts",
-    ],
     // Undo vi.stubGlobal (e.g. fetch) after every test
     unstubGlobals: true,
+    projects: [
+      {
+        extends: true,
+        test: {
+          name: "app",
+          environment: "jsdom",
+          setupFiles: ["./src/test/setup.ts"],
+          include: ["src/**/*.test.{ts,tsx}"],
+        },
+      },
+      {
+        extends: true,
+        test: {
+          name: "node",
+          environment: "node",
+          include: ["shared/**/*.test.ts", "mock-server/**/*.test.ts"],
+        },
+      },
+    ],
   },
 });

@@ -45,7 +45,7 @@ A UI-only auction strategy tool. A franchise picks its team, reviews its squad b
 | `/` | Team picker. The app always opens here. |
 | `/teams/$teamId` | Team workspace |
 
-**Team picker:** one card per franchise showing logo (initials badge if the file is missing), purse left, open slots, open overseas slots, and plan status (not started, or number of targets). Clicking a card opens the workspace.
+**Team picker:** one card per franchise showing logo (initials badge when there is no logo path or the image fails to load), purse left, open slots, open overseas slots, and plan status (not started, or number of targets). Clicking a card opens the workspace.
 
 **Team workspace**
 - Header: franchise name and logo, team switcher, purse left, open slots, open overseas slots.
@@ -186,7 +186,9 @@ Request/response shapes are Zod schemas in `shared/contracts`, used by both the 
 - Replay of the latest real mini auction (2026 season): franchises, official pre-auction purses, squad rules, retention lists.
 - Pool: every player actually sold, plus unsold players with base price ₹1 Cr and above.
 - All facts to be verified from reliable sources while compiling the seed data.
-- `mock-server/db.seed.json` is committed; `db.json` is a git-ignored working copy restored by a reset script.
+- `mock-server/db.seed.json` is committed; `db.json` is a git-ignored working copy restored by a reset script. The reset script validates the seed first and refuses an invalid one.
+- All data is as of the auction date (16 Dec 2025); later changes are ignored. Sources, precedence and exceptions: `docs/data-sources.md`.
+- Current seed: provisional starter (CSK and RCB, their retained squads, 21 pool players) until the full dataset is verified.
 
 ## 11. Formatting and assets
 
@@ -195,7 +197,7 @@ Request/response shapes are Zod schemas in `shared/contracts`, used by both the 
 | ₹1 Cr and above | Crore, always 2 decimals | ₹2.40 Cr, ₹2.00 Cr |
 | Below ₹1 Cr | Lakh, whole number | ₹75 L |
 
-- Team logos: real logos, added by the project owner to `public/logos/`. Missing file → colour and initials badge. Franchise logos are trademarked: fine while private; revisit before any public deployment.
+- Team logos: real logos, added by the project owner to `public/logos/`. No logo path, or the image fails to load → colour and initials badge. Franchise logos are trademarked: fine while private; revisit before any public deployment.
 - Player images: none in v1; initials avatars.
 - Theme: light mode only.
 - Design tokens (decisions V1–V14):

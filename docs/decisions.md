@@ -153,3 +153,22 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | N12 | `Plan.updatedAt` is null on seeded plans and set by the mock server on every save. The PUT body (`SavePlanRequest`) omits `updatedAt` | 2026-09-29 |
 | N13 | Pool rows nest the player (`{ id, basePriceLakh, player }`); age and overseas are not in rows (derived in `domain/`). `HOME_NATIONALITY = "IND"` lives in the contracts so the server filter and `domain/` share it. Pool `pageSize` capped at 100 | 2026-09-29 |
 | N14 | Franchise colour-pair contrast (WCAG AA, 4.5:1) is enforced by seed validation, not by the contract, so the app never rejects a response over styling | 2026-09-29 |
+| N15 | The provisional status of the seed is stated in `docs/data-sources.md`, and `db:reset` prints a reminder; nothing extra is stored in the seed | 2026-09-30 |
+| N16 | Auction name: "IPL 2026 Player Auction" (no sponsor name) | 2026-09-30 |
+| N17 | Player names follow the official source (auction list for pool players, iplt20.com for retained), except where common usage clearly differs; every exception (official value, value used, reason) is listed in `docs/data-sources.md` | 2026-09-30 |
+| N18 | All data is as of the auction date (16 Dec 2025); later changes are ignored and, where sources disagree, the source closest to that date wins | 2026-09-30 |
+| N19 | Batting hand and bowling style from Cricbuzz (ESPNcricinfo where Cricbuzz has no profile). Mapping: fast and fast-medium → `*-fast`; medium-fast and medium → `*-medium`; part-timers keep their listed style. Livingstone (bowls both) stored as `off-spin` | 2026-09-30 |
+| N20 | Retained players' roles from iplt20.com as of the auction: squad page first, then player page | 2026-09-30 |
+| N21 | Capped status follows the IPL rule (Player Regulations 2025–27): an internationally capped Indian player is uncapped only with no starting-XI international in the preceding 5 calendar years AND no BCCI central contract. Contracts applied: the 2024–25 list, the latest published on the auction date. Overseas internationals are capped | 2026-09-30 |
+| N22 | Franchise colours from the official club websites. RCB secondary is gold `#E7C641` with `#101612` text | 2026-09-30 |
+| N23 | `logoPath` is left out until the owner adds logo files; the initials badge also shows when a logo image fails to load | 2026-09-30 |
+| N24 | Starter seed: sold results are checked against the fixed list of the 10 IPL franchise IDs, since only CSK and RCB are seeded as franchises. See follow-up FU1 | 2026-09-30 |
+| S25 | Vitest runs two projects: `app` (jsdom, browser setup) for `src/`, and `node` for `shared/` and `mock-server/` | 2026-09-30 |
+
+## Follow-ups
+
+Agreed work that is not done yet. Remove an entry when it is done, and reference the commit.
+
+| ID | Follow-up | Raised |
+|---|---|---|
+| FU1 | Once all 10 franchises are seeded, seed validation must require sold results to reference an existing franchise, replacing the fixed-list check from N24 | 2026-09-30 |

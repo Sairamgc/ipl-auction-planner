@@ -25,7 +25,8 @@ Pin versions at setup and check each tool's current docs before using version-sp
 |---|---|
 | `npm run dev` | App (Vite, :5173) and mock server (:3001) together; the app reaches the server via the `/api` proxy |
 | `npm run dev:app` / `npm run dev:mock` | Run one side only (`dev:mock` restarts on change) |
-| `npm run db:reset` | Restore `mock-server/db.json` from `db.seed.json` |
+| `npm run db:reset` | Validate `db.seed.json`, then restore `mock-server/db.json` from it (refuses an invalid seed) |
+| `npm run db:validate` | Check `db.seed.json` against the strict contracts and cross-record rules; sources in `docs/data-sources.md` |
 | `npm run check` | Typecheck, lint, format check and unit tests; run before every commit |
 | `npm run typecheck` | `tsc -b` across app, node config and mock server projects |
 | `npm run lint` / `npm run lint:fix` | ESLint, including architecture boundary rules |
