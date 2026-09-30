@@ -23,26 +23,22 @@ test.describe("workspace", () => {
     // Switch with the keyboard
     await page.getByRole("button", { name: /^Switch team/ }).focus();
     await page.keyboard.press("Enter");
-    await page
-      .getByRole("menuitemradio", { name: /Royal Challengers Bengaluru/ })
-      .waitFor();
-    // Type-ahead jumps to the team starting with R
-    await page.keyboard.press("r");
+    await page.getByRole("menuitemradio", { name: /Mumbai Indians/ }).waitFor();
+    // Type-ahead jumps to the only team starting with M
+    await page.keyboard.press("m");
     await expect(
-      page.getByRole("menuitemradio", { name: /Royal Challengers Bengaluru/ }),
+      page.getByRole("menuitemradio", { name: /Mumbai Indians/ }),
     ).toBeFocused();
     await page.keyboard.press("Enter");
 
-    await expect(page).toHaveURL("/teams/rcb");
+    await expect(page).toHaveURL("/teams/mi");
     const title = page.getByRole("heading", {
       level: 1,
-      name: "Royal Challengers Bengaluru",
+      name: "Mumbai Indians",
     });
     await expect(title).toBeFocused();
-    await expect(figure(page, "Purse")).toHaveText("₹16.40 Cr");
-    await expect(page).toHaveTitle(
-      "Royal Challengers Bengaluru · IPL Auction Planner",
-    );
+    await expect(figure(page, "Purse")).toHaveText("₹2.75 Cr");
+    await expect(page).toHaveTitle("Mumbai Indians · IPL Auction Planner");
 
     await page.getByRole("link", { name: "All teams" }).click();
     await expect(page).toHaveURL("/");

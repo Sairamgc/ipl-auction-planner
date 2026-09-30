@@ -97,7 +97,7 @@ src/
 
 ## Pending decisions (settle before building the related UI)
 
-- Final nationality code list (after compiling the data)
+None at the moment.
 
 ## Data task
 

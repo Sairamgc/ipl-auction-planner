@@ -4,24 +4,6 @@ import { contrastRatio, MIN_TEXT_CONTRAST } from "../shared/color/contrast.ts";
 import { type Database, DatabaseSchema } from "./dbSchema.ts";
 
 /**
- * All ten IPL franchises. Sold results may name a franchise that is not in
- * the (provisional, two-team) `franchises` resource, so they are checked
- * against this list instead.
- */
-export const IPL_FRANCHISE_IDS = new Set([
-  "csk",
-  "dc",
-  "gt",
-  "kkr",
-  "lsg",
-  "mi",
-  "pbks",
-  "rcb",
-  "rr",
-  "srh",
-]);
-
-/**
  * Validates seed data (N3): the strict contract shape first, then the
  * cross-record rules a schema cannot express. Returns human-readable
  * problems; an empty array means the seed is valid.
@@ -166,7 +148,8 @@ function checkIntegrity(db: Database): string[] {
       continue;
     }
     if (result.status === "sold") {
-      if (!IPL_FRANCHISE_IDS.has(result.franchiseId)) {
+      // Sales name a franchise in the data (FU1)
+      if (!franchiseIds.has(result.franchiseId)) {
         report(
           `auction result ${result.auctionEntryId}: unknown franchise ${result.franchiseId}`,
         );
@@ -181,9 +164,6 @@ function checkIntegrity(db: Database): string[] {
 
   // Plans are seeded empty, one per franchise (A2)
   for (const franchiseId of franchiseIds) {
-    if (!IPL_FRANCHISE_IDS.has(franchiseId)) {
-      report(`franchise ${franchiseId}: not an IPL franchise id`);
-    }
     if (!db.plans.some((plan) => plan.id === franchiseId)) {
       report(`franchise ${franchiseId}: no plan`);
     }

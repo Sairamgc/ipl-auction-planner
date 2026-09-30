@@ -24,7 +24,20 @@ test.describe("team picker", () => {
     const cards = page
       .getByRole("list", { name: "Teams" })
       .getByRole("listitem");
-    await expect(cards).toHaveCount(2);
+    await expect(cards).toHaveCount(10);
+    // Alphabetical by name (UI1); "Rajasthan" sorts before "Royal"
+    await expect(cards.getByRole("link")).toHaveText([
+      "Chennai Super Kings",
+      "Delhi Capitals",
+      "Gujarat Titans",
+      "Kolkata Knight Riders",
+      "Lucknow Super Giants",
+      "Mumbai Indians",
+      "Punjab Kings",
+      "Rajasthan Royals",
+      "Royal Challengers Bengaluru",
+      "Sunrisers Hyderabad",
+    ]);
 
     const csk = cards.filter({ hasText: "Chennai Super Kings" });
     await expect(figure(csk, "Purse")).toHaveText("₹43.40 Cr");
@@ -61,19 +74,19 @@ test.describe("team picker", () => {
   test("opens a workspace with the keyboard", async ({ page }) => {
     await page.goto("/");
     await expect(
-      page.getByRole("link", { name: "Royal Challengers Bengaluru" }),
+      page.getByRole("link", { name: "Delhi Capitals" }),
     ).toBeVisible();
 
-    // Header link, then CSK, then RCB
+    // Header link, then CSK, then DC (cards are alphabetical)
     await page.keyboard.press("Tab");
     await page.keyboard.press("Tab");
     await page.keyboard.press("Tab");
     await expect(
-      page.getByRole("link", { name: "Royal Challengers Bengaluru" }),
+      page.getByRole("link", { name: "Delhi Capitals" }),
     ).toBeFocused();
     await page.keyboard.press("Enter");
 
-    await expect(page).toHaveURL("/teams/rcb");
+    await expect(page).toHaveURL("/teams/dc");
     await page.getByRole("link", { name: "All teams" }).click();
     await expect(page).toHaveURL("/");
   });

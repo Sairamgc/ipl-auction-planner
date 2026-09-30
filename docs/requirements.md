@@ -223,11 +223,11 @@ Request/response shapes are Zod schemas in `shared/contracts`, used by both the 
 ## 10. Data
 
 - Replay of the latest real mini auction (2026 season): franchises, official pre-auction purses, squad rules, retention lists.
-- Pool: every player actually sold, plus unsold players with base price ₹1 Cr and above.
+- Pool: every player actually sold, plus players called at the auction and not bought with base price ₹1 Cr and above (N32).
 - All facts to be verified from reliable sources while compiling the seed data.
 - `mock-server/db.seed.json` is committed; `db.json` is a git-ignored working copy restored by a reset script. The reset script validates the seed first and refuses an invalid one.
 - All data is as of the auction date (16 Dec 2025); later changes are ignored. Sources, precedence and exceptions: `docs/data-sources.md`.
-- Current seed: provisional starter (CSK and RCB, their retained squads, 21 pool players) until the full dataset is verified.
+- Seed: all 10 franchises, 173 retained players and a 98-player pool (77 sold, 21 unsold) (N31).
 
 ## 11. Formatting and assets
 

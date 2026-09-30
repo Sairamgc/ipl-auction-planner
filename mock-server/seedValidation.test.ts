@@ -69,7 +69,7 @@ function validSeed(): Database {
       {
         auctionEntryId: "2026-pooled-two",
         status: "sold",
-        franchiseId: "kkr",
+        franchiseId: "csk",
         priceLakh: 2520,
       },
     ],
@@ -172,7 +172,7 @@ describe("validateSeed", () => {
       /unknown entry 2026-ghost/,
     ],
     [
-      "a sale to a franchise that is not in the IPL",
+      "a sale to a franchise that is not in the data (FU1)",
       (s) => {
         s.auctionResults = [
           {
@@ -192,7 +192,7 @@ describe("validateSeed", () => {
           {
             auctionEntryId: "2026-pooled-two",
             status: "sold",
-            franchiseId: "kkr",
+            franchiseId: "csk",
             priceLakh: 150,
           },
         ];
@@ -214,17 +214,6 @@ describe("validateSeed", () => {
         ];
       },
       /plan csk: seeded plans must be empty/,
-    ],
-    [
-      "a franchise id that is not an IPL franchise",
-      (s) => {
-        at(s.franchises, 0).id = "xyz";
-        s.plans = [
-          { id: "xyz", franchiseId: "xyz", targets: [], updatedAt: null },
-        ];
-        s.retentions = [{ franchiseId: "xyz", playerId: "retained-one" }];
-      },
-      /franchise xyz: not an IPL franchise id/,
     ],
   ];
 

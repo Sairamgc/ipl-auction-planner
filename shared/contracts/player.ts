@@ -3,8 +3,8 @@ import { z } from "zod";
 import { IdSchema, IsoDateSchema } from "./common.ts";
 
 /**
- * Cricket-nation codes (D3). Provisional: the 12 ICC Full Members, confirmed
- * or extended once the full dataset is compiled. Display names live in domain.
+ * Cricket-nation codes (D3): the 12 ICC Full Members. The full dataset needs
+ * no associate nations (N37). Display names live in domain.
  */
 export const NATIONALITIES = [
   "IND",

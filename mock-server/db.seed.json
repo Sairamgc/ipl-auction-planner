@@ -25,6 +25,78 @@
       }
     },
     {
+      "id": "dc",
+      "name": "Delhi Capitals",
+      "shortName": "DC",
+      "purseRemainingLakh": 2180,
+      "colors": {
+        "primary": "#06245F",
+        "onPrimary": "#FFFFFF",
+        "secondary": "#D71923",
+        "onSecondary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "gt",
+      "name": "Gujarat Titans",
+      "shortName": "GT",
+      "purseRemainingLakh": 1290,
+      "colors": {
+        "primary": "#0B1D34",
+        "onPrimary": "#FFFFFF",
+        "secondary": "#F3DC8A",
+        "onSecondary": "#0B1D34"
+      }
+    },
+    {
+      "id": "kkr",
+      "name": "Kolkata Knight Riders",
+      "shortName": "KKR",
+      "purseRemainingLakh": 6430,
+      "colors": {
+        "primary": "#3A225D",
+        "onPrimary": "#FFFFFF",
+        "secondary": "#F2BF26",
+        "onSecondary": "#3A225D"
+      }
+    },
+    {
+      "id": "lsg",
+      "name": "Lucknow Super Giants",
+      "shortName": "LSG",
+      "purseRemainingLakh": 2295,
+      "colors": {
+        "primary": "#002352",
+        "onPrimary": "#FFFFFF",
+        "secondary": "#A8003B",
+        "onSecondary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "mi",
+      "name": "Mumbai Indians",
+      "shortName": "MI",
+      "purseRemainingLakh": 275,
+      "colors": {
+        "primary": "#001848",
+        "onPrimary": "#FFFFFF",
+        "secondary": "#D1AB3E",
+        "onSecondary": "#001848"
+      }
+    },
+    {
+      "id": "pbks",
+      "name": "Punjab Kings",
+      "shortName": "PBKS",
+      "purseRemainingLakh": 1150,
+      "colors": {
+        "primary": "#ED1C24",
+        "onPrimary": "#000000",
+        "secondary": "#3F62AE",
+        "onSecondary": "#FFFFFF"
+      }
+    },
+    {
       "id": "rcb",
       "name": "Royal Challengers Bengaluru",
       "shortName": "RCB",
@@ -34,6 +106,30 @@
         "onPrimary": "#FFFFFF",
         "secondary": "#E7C641",
         "onSecondary": "#101612"
+      }
+    },
+    {
+      "id": "rr",
+      "name": "Rajasthan Royals",
+      "shortName": "RR",
+      "purseRemainingLakh": 1605,
+      "colors": {
+        "primary": "#E50693",
+        "onPrimary": "#000000",
+        "secondary": "#1226AB",
+        "onSecondary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "srh",
+      "name": "Sunrisers Hyderabad",
+      "shortName": "SRH",
+      "purseRemainingLakh": 2550,
+      "colors": {
+        "primary": "#EF4123",
+        "onPrimary": "#171717",
+        "secondary": "#171717",
+        "onSecondary": "#FFFFFF"
       }
     }
   ],
@@ -193,6 +289,1096 @@
       "name": "Dewald Brevis",
       "dateOfBirth": "2003-04-29",
       "nationality": "SA",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": true
+    },
+    {
+      "id": "ajay-mandal",
+      "name": "Ajay Mandal",
+      "dateOfBirth": "1996-02-25",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": false
+    },
+    {
+      "id": "tripurana-vijay",
+      "name": "Tripurana Vijay",
+      "dateOfBirth": "2001-09-05",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": false
+    },
+    {
+      "id": "madhav-tiwari",
+      "name": "Madhav Tiwari",
+      "dateOfBirth": "2003-09-28",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "karun-nair",
+      "name": "Karun Nair",
+      "dateOfBirth": "1991-12-06",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "vipraj-nigam",
+      "name": "Vipraj Nigam",
+      "dateOfBirth": "2004-07-28",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "dushmantha-chameera",
+      "name": "Dushmantha Chameera",
+      "dateOfBirth": "1992-01-11",
+      "nationality": "SL",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "sameer-rizvi",
+      "name": "Sameer Rizvi",
+      "dateOfBirth": "2003-12-06",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": false
+    },
+    {
+      "id": "ashutosh-sharma",
+      "name": "Ashutosh Sharma",
+      "dateOfBirth": "1998-09-15",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-medium",
+      "isCapped": false
+    },
+    {
+      "id": "abishek-porel",
+      "name": "Abishek Porel",
+      "dateOfBirth": "2002-10-17",
+      "nationality": "IND",
+      "role": "wicketkeeper",
+      "battingHand": "left",
+      "bowlingStyle": "none",
+      "isCapped": false
+    },
+    {
+      "id": "nitish-rana",
+      "name": "Nitish Rana",
+      "dateOfBirth": "1993-12-27",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "mukesh-kumar",
+      "name": "Mukesh Kumar",
+      "dateOfBirth": "1993-10-12",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "tristan-stubbs",
+      "name": "Tristan Stubbs",
+      "dateOfBirth": "2000-08-14",
+      "nationality": "SA",
+      "role": "wicketkeeper",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "t-natarajan",
+      "name": "T Natarajan",
+      "dateOfBirth": "1991-04-04",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "mitchell-starc",
+      "name": "Mitchell Starc",
+      "dateOfBirth": "1990-01-30",
+      "nationality": "AUS",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "kuldeep-yadav",
+      "name": "Kuldeep Yadav",
+      "dateOfBirth": "1994-12-14",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-wrist-spin",
+      "isCapped": true
+    },
+    {
+      "id": "kl-rahul",
+      "name": "KL Rahul",
+      "dateOfBirth": "1992-04-18",
+      "nationality": "IND",
+      "role": "wicketkeeper",
+      "battingHand": "right",
+      "bowlingStyle": "none",
+      "isCapped": true
+    },
+    {
+      "id": "axar-patel",
+      "name": "Axar Patel",
+      "dateOfBirth": "1994-01-20",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": true
+    },
+    {
+      "id": "manav-suthar",
+      "name": "Manav Suthar",
+      "dateOfBirth": "2002-08-03",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": false
+    },
+    {
+      "id": "nishant-sindhu",
+      "name": "Nishant Sindhu",
+      "dateOfBirth": "2004-04-09",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": false
+    },
+    {
+      "id": "anuj-rawat",
+      "name": "Anuj Rawat",
+      "dateOfBirth": "1999-10-17",
+      "nationality": "IND",
+      "role": "wicketkeeper",
+      "battingHand": "left",
+      "bowlingStyle": "none",
+      "isCapped": false
+    },
+    {
+      "id": "kumar-kushagra",
+      "name": "Kumar Kushagra",
+      "dateOfBirth": "2004-10-23",
+      "nationality": "IND",
+      "role": "wicketkeeper",
+      "battingHand": "right",
+      "bowlingStyle": "none",
+      "isCapped": false
+    },
+    {
+      "id": "jayant-yadav",
+      "name": "Jayant Yadav",
+      "dateOfBirth": "1990-01-22",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "ishant-sharma",
+      "name": "Ishant Sharma",
+      "dateOfBirth": "1988-09-02",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "gurnoor-singh-brar",
+      "name": "Gurnoor Singh Brar",
+      "dateOfBirth": "2000-05-25",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "arshad-khan",
+      "name": "Arshad Khan",
+      "dateOfBirth": "1997-12-20",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-medium",
+      "isCapped": false
+    },
+    {
+      "id": "sai-kishore",
+      "name": "Sai Kishore",
+      "dateOfBirth": "1996-11-06",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": true
+    },
+    {
+      "id": "glenn-phillips",
+      "name": "Glenn Phillips",
+      "dateOfBirth": "1996-12-06",
+      "nationality": "NZ",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "washington-sundar",
+      "name": "Washington Sundar",
+      "dateOfBirth": "1999-10-05",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "shahrukh-khan",
+      "name": "Shahrukh Khan",
+      "dateOfBirth": "1995-05-27",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": false
+    },
+    {
+      "id": "rahul-tewatia",
+      "name": "Rahul Tewatia",
+      "dateOfBirth": "1993-05-20",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "sai-sudharsan",
+      "name": "Sai Sudharsan",
+      "dateOfBirth": "2001-10-15",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "leg-spin",
+      "isCapped": true
+    },
+    {
+      "id": "prasidh-krishna",
+      "name": "Prasidh Krishna",
+      "dateOfBirth": "1996-02-19",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "kagiso-rabada",
+      "name": "Kagiso Rabada",
+      "dateOfBirth": "1995-05-25",
+      "nationality": "SA",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "jos-buttler",
+      "name": "Jos Buttler",
+      "dateOfBirth": "1990-09-08",
+      "nationality": "ENG",
+      "role": "wicketkeeper",
+      "battingHand": "right",
+      "bowlingStyle": "none",
+      "isCapped": true
+    },
+    {
+      "id": "mohammed-siraj",
+      "name": "Mohammed Siraj",
+      "dateOfBirth": "1994-03-13",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "shubman-gill",
+      "name": "Shubman Gill",
+      "dateOfBirth": "1999-09-08",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "rashid-khan",
+      "name": "Rashid Khan",
+      "dateOfBirth": "1998-09-20",
+      "nationality": "AFG",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": true
+    },
+    {
+      "id": "anukul-roy",
+      "name": "Anukul Roy",
+      "dateOfBirth": "1998-11-30",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": false
+    },
+    {
+      "id": "umran-malik",
+      "name": "Umran Malik",
+      "dateOfBirth": "1999-11-22",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "manish-pandey",
+      "name": "Manish Pandey",
+      "dateOfBirth": "1989-09-10",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-medium",
+      "isCapped": true
+    },
+    {
+      "id": "rovman-powell",
+      "name": "Rovman Powell",
+      "dateOfBirth": "1993-07-23",
+      "nationality": "WI",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "ajinkya-rahane",
+      "name": "Ajinkya Rahane",
+      "dateOfBirth": "1988-06-06",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-medium",
+      "isCapped": true
+    },
+    {
+      "id": "vaibhav-arora",
+      "name": "Vaibhav Arora",
+      "dateOfBirth": "1997-12-14",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "angkrish-raghuvanshi",
+      "name": "Angkrish Raghuvanshi",
+      "dateOfBirth": "2004-06-05",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": false
+    },
+    {
+      "id": "ramandeep-singh",
+      "name": "Ramandeep Singh",
+      "dateOfBirth": "1997-04-13",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-medium",
+      "isCapped": true
+    },
+    {
+      "id": "harshit-rana",
+      "name": "Harshit Rana",
+      "dateOfBirth": "2001-12-22",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "varun-chakaravarthy",
+      "name": "Varun Chakaravarthy",
+      "dateOfBirth": "1991-08-29",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": true
+    },
+    {
+      "id": "sunil-narine",
+      "name": "Sunil Narine",
+      "dateOfBirth": "1988-05-26",
+      "nationality": "WI",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "rinku-singh",
+      "name": "Rinku Singh",
+      "dateOfBirth": "1997-10-12",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "left",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "himmat-singh",
+      "name": "Himmat Singh",
+      "dateOfBirth": "1996-11-08",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": false
+    },
+    {
+      "id": "digvesh-rathi",
+      "name": "Digvesh Rathi",
+      "dateOfBirth": "1999-12-15",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "prince-yadav",
+      "name": "Prince Yadav",
+      "dateOfBirth": "2001-12-12",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "arshin-kulkarni",
+      "name": "Arshin Kulkarni",
+      "dateOfBirth": "2005-02-15",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "arjun-tendulkar",
+      "name": "Arjun Tendulkar",
+      "dateOfBirth": "1999-09-24",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "akash-singh",
+      "name": "Akash Singh",
+      "dateOfBirth": "2002-04-26",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "manimaran-siddharth",
+      "name": "Manimaran Siddharth",
+      "dateOfBirth": "1998-07-03",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": false
+    },
+    {
+      "id": "matthew-breetzke",
+      "name": "Matthew Breetzke",
+      "dateOfBirth": "1998-11-03",
+      "nationality": "SA",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "none",
+      "isCapped": true
+    },
+    {
+      "id": "aiden-markram",
+      "name": "Aiden Markram",
+      "dateOfBirth": "1994-10-04",
+      "nationality": "SA",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "shahbaz-ahmed",
+      "name": "Shahbaz Ahmed",
+      "dateOfBirth": "1994-12-11",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": true
+    },
+    {
+      "id": "mitchell-marsh",
+      "name": "Mitchell Marsh",
+      "dateOfBirth": "1991-10-20",
+      "nationality": "AUS",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "mohsin-khan",
+      "name": "Mohsin Khan",
+      "dateOfBirth": "1998-07-15",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "ayush-badoni",
+      "name": "Ayush Badoni",
+      "dateOfBirth": "1999-12-03",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": false
+    },
+    {
+      "id": "abdul-samad",
+      "name": "Abdul Samad",
+      "dateOfBirth": "2001-10-28",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "avesh-khan",
+      "name": "Avesh Khan",
+      "dateOfBirth": "1996-12-13",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "mohammed-shami",
+      "name": "Mohammed Shami",
+      "dateOfBirth": "1990-09-03",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "mayank-yadav",
+      "name": "Mayank Yadav",
+      "dateOfBirth": "2002-06-17",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "nicholas-pooran",
+      "name": "Nicholas Pooran",
+      "dateOfBirth": "1995-10-02",
+      "nationality": "WI",
+      "role": "wicketkeeper",
+      "battingHand": "left",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "rishabh-pant",
+      "name": "Rishabh Pant",
+      "dateOfBirth": "1997-10-04",
+      "nationality": "IND",
+      "role": "wicketkeeper",
+      "battingHand": "left",
+      "bowlingStyle": "none",
+      "isCapped": true
+    },
+    {
+      "id": "raghu-sharma",
+      "name": "Raghu Sharma",
+      "dateOfBirth": "1993-03-11",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "raj-angad-bawa",
+      "name": "Raj Angad Bawa",
+      "dateOfBirth": "2002-11-12",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "ashwani-kumar",
+      "name": "Ashwani Kumar",
+      "dateOfBirth": "2001-08-29",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "mayank-markande",
+      "name": "Mayank Markande",
+      "dateOfBirth": "1997-11-11",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "robin-minz",
+      "name": "Robin Minz",
+      "dateOfBirth": "2002-09-13",
+      "nationality": "IND",
+      "role": "wicketkeeper",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": false
+    },
+    {
+      "id": "corbin-bosch",
+      "name": "Corbin Bosch",
+      "dateOfBirth": "1994-09-10",
+      "nationality": "SA",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "ryan-rickelton",
+      "name": "Ryan Rickelton",
+      "dateOfBirth": "1996-07-11",
+      "nationality": "SA",
+      "role": "wicketkeeper",
+      "battingHand": "left",
+      "bowlingStyle": "none",
+      "isCapped": true
+    },
+    {
+      "id": "mitchell-santner",
+      "name": "Mitchell Santner",
+      "dateOfBirth": "1992-02-05",
+      "nationality": "NZ",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": true
+    },
+    {
+      "id": "shardul-thakur",
+      "name": "Shardul Thakur",
+      "dateOfBirth": "1991-10-16",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "sherfane-rutherford",
+      "name": "Sherfane Rutherford",
+      "dateOfBirth": "1998-08-15",
+      "nationality": "WI",
+      "role": "batter",
+      "battingHand": "left",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "allah-ghazanfar",
+      "name": "Allah Ghazanfar",
+      "dateOfBirth": "2006-03-20",
+      "nationality": "AFG",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "will-jacks",
+      "name": "Will Jacks",
+      "dateOfBirth": "1998-11-21",
+      "nationality": "ENG",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "naman-dhir",
+      "name": "Naman Dhir",
+      "dateOfBirth": "1999-12-31",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": false
+    },
+    {
+      "id": "tilak-varma",
+      "name": "Tilak Varma",
+      "dateOfBirth": "2002-11-08",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "left",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "deepak-chahar",
+      "name": "Deepak Chahar",
+      "dateOfBirth": "1992-08-07",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "trent-boult",
+      "name": "Trent Boult",
+      "dateOfBirth": "1989-07-22",
+      "nationality": "NZ",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "rohit-sharma",
+      "name": "Rohit Sharma",
+      "dateOfBirth": "1987-04-30",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "hardik-pandya",
+      "name": "Hardik Pandya",
+      "dateOfBirth": "1993-10-11",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "suryakumar-yadav",
+      "name": "Suryakumar Yadav",
+      "dateOfBirth": "1990-09-14",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "jasprit-bumrah",
+      "name": "Jasprit Bumrah",
+      "dateOfBirth": "1993-12-06",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "musheer-khan",
+      "name": "Musheer Khan",
+      "dateOfBirth": "2005-02-27",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": false
+    },
+    {
+      "id": "suryansh-shedge",
+      "name": "Suryansh Shedge",
+      "dateOfBirth": "2003-01-29",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "harnoor-pannu",
+      "name": "Harnoor Pannu",
+      "dateOfBirth": "2003-01-30",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "left",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "pyla-avinash",
+      "name": "Pyla Avinash",
+      "dateOfBirth": "2000-07-07",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "xavier-bartlett",
+      "name": "Xavier Bartlett",
+      "dateOfBirth": "1998-12-17",
+      "nationality": "AUS",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "vishnu-vinod",
+      "name": "Vishnu Vinod",
+      "dateOfBirth": "1993-12-02",
+      "nationality": "IND",
+      "role": "wicketkeeper",
+      "battingHand": "right",
+      "bowlingStyle": "none",
+      "isCapped": false
+    },
+    {
+      "id": "harpreet-brar",
+      "name": "Harpreet Brar",
+      "dateOfBirth": "1995-09-16",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": false
+    },
+    {
+      "id": "yash-thakur",
+      "name": "Yash Thakur",
+      "dateOfBirth": "1998-12-28",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "vyshak-vijaykumar",
+      "name": "Vyshak Vijaykumar",
+      "dateOfBirth": "1997-01-31",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-medium",
+      "isCapped": false
+    },
+    {
+      "id": "lockie-ferguson",
+      "name": "Lockie Ferguson",
+      "dateOfBirth": "1991-06-13",
+      "nationality": "NZ",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "azmatullah-omarzai",
+      "name": "Azmatullah Omarzai",
+      "dateOfBirth": "2000-03-24",
+      "nationality": "AFG",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "mitch-owen",
+      "name": "Mitch Owen",
+      "dateOfBirth": "2001-09-16",
+      "nationality": "AUS",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-medium",
+      "isCapped": true
+    },
+    {
+      "id": "priyansh-arya",
+      "name": "Priyansh Arya",
+      "dateOfBirth": "2001-09-18",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "off-spin",
+      "isCapped": false
+    },
+    {
+      "id": "prabhsimran-singh",
+      "name": "Prabhsimran Singh",
+      "dateOfBirth": "2000-08-10",
+      "nationality": "IND",
+      "role": "wicketkeeper",
+      "battingHand": "right",
+      "bowlingStyle": "none",
+      "isCapped": false
+    },
+    {
+      "id": "nehal-wadhera",
+      "name": "Nehal Wadhera",
+      "dateOfBirth": "2000-09-04",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "left",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "shashank-singh",
+      "name": "Shashank Singh",
+      "dateOfBirth": "1991-11-21",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-medium",
+      "isCapped": false
+    },
+    {
+      "id": "marco-jansen",
+      "name": "Marco Jansen",
+      "dateOfBirth": "2000-05-01",
+      "nationality": "SA",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "marcus-stoinis",
+      "name": "Marcus Stoinis",
+      "dateOfBirth": "1989-08-16",
+      "nationality": "AUS",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-medium",
+      "isCapped": true
+    },
+    {
+      "id": "yuzvendra-chahal",
+      "name": "Yuzvendra Chahal",
+      "dateOfBirth": "1990-07-23",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": true
+    },
+    {
+      "id": "arshdeep-singh",
+      "name": "Arshdeep Singh",
+      "dateOfBirth": "1999-02-05",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "shreyas-iyer",
+      "name": "Shreyas Iyer",
+      "dateOfBirth": "1994-12-06",
+      "nationality": "IND",
       "role": "batter",
       "battingHand": "right",
       "bowlingStyle": "leg-spin",
@@ -366,6 +1552,316 @@
       "role": "bowler",
       "battingHand": "right",
       "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "lhuan-dre-pretorius",
+      "name": "Lhuan-dre Pretorius",
+      "dateOfBirth": "2006-03-27",
+      "nationality": "SA",
+      "role": "batter",
+      "battingHand": "left",
+      "bowlingStyle": "none",
+      "isCapped": true
+    },
+    {
+      "id": "yudhvir-singh-charak",
+      "name": "Yudhvir Singh Charak",
+      "dateOfBirth": "1997-09-13",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "shubham-dubey",
+      "name": "Shubham Dubey",
+      "dateOfBirth": "1994-08-27",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "left",
+      "bowlingStyle": "off-spin",
+      "isCapped": false
+    },
+    {
+      "id": "donovan-ferreira",
+      "name": "Donovan Ferreira",
+      "dateOfBirth": "1998-07-21",
+      "nationality": "SA",
+      "role": "wicketkeeper",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "vaibhav-suryavanshi",
+      "name": "Vaibhav Suryavanshi",
+      "dateOfBirth": "2011-03-27",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": false
+    },
+    {
+      "id": "kwena-maphaka",
+      "name": "Kwena Maphaka",
+      "dateOfBirth": "2006-04-08",
+      "nationality": "SA",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "sam-curran",
+      "name": "Sam Curran",
+      "dateOfBirth": "1998-06-03",
+      "nationality": "ENG",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "nandre-burger",
+      "name": "Nandre Burger",
+      "dateOfBirth": "1995-08-11",
+      "nationality": "SA",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "sandeep-sharma",
+      "name": "Sandeep Sharma",
+      "dateOfBirth": "1993-05-18",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "tushar-deshpande",
+      "name": "Tushar Deshpande",
+      "dateOfBirth": "1995-05-15",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "shimron-hetmyer",
+      "name": "Shimron Hetmyer",
+      "dateOfBirth": "1996-12-26",
+      "nationality": "WI",
+      "role": "batter",
+      "battingHand": "left",
+      "bowlingStyle": "none",
+      "isCapped": true
+    },
+    {
+      "id": "jofra-archer",
+      "name": "Jofra Archer",
+      "dateOfBirth": "1995-04-01",
+      "nationality": "ENG",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "dhruv-jurel",
+      "name": "Dhruv Jurel",
+      "dateOfBirth": "2001-01-21",
+      "nationality": "IND",
+      "role": "wicketkeeper",
+      "battingHand": "right",
+      "bowlingStyle": "none",
+      "isCapped": true
+    },
+    {
+      "id": "riyan-parag",
+      "name": "Riyan Parag",
+      "dateOfBirth": "2001-11-10",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": true
+    },
+    {
+      "id": "ravindra-jadeja",
+      "name": "Ravindra Jadeja",
+      "dateOfBirth": "1988-12-06",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": true
+    },
+    {
+      "id": "yashasvi-jaiswal",
+      "name": "Yashasvi Jaiswal",
+      "dateOfBirth": "2001-12-28",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "left",
+      "bowlingStyle": "leg-spin",
+      "isCapped": true
+    },
+    {
+      "id": "smaran-ravichandran",
+      "name": "Smaran Ravichandran",
+      "dateOfBirth": "2003-05-05",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "left",
+      "bowlingStyle": "off-spin",
+      "isCapped": false
+    },
+    {
+      "id": "harsh-dubey",
+      "name": "Harsh Dubey",
+      "dateOfBirth": "2002-07-23",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": false
+    },
+    {
+      "id": "aniket-verma",
+      "name": "Aniket Verma",
+      "dateOfBirth": "2002-02-05",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-medium",
+      "isCapped": false
+    },
+    {
+      "id": "zeeshan-ansari",
+      "name": "Zeeshan Ansari",
+      "dateOfBirth": "1999-12-16",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "kamindu-mendis",
+      "name": "Kamindu Mendis",
+      "dateOfBirth": "1998-09-30",
+      "nationality": "SL",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "brydon-carse",
+      "name": "Brydon Carse",
+      "dateOfBirth": "1995-07-31",
+      "nationality": "ENG",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "jaydev-unadkat",
+      "name": "Jaydev Unadkat",
+      "dateOfBirth": "1991-10-18",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "eshan-malinga",
+      "name": "Eshan Malinga",
+      "dateOfBirth": "2001-02-04",
+      "nationality": "SL",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "nitish-kumar-reddy",
+      "name": "Nitish Kumar Reddy",
+      "dateOfBirth": "2003-05-26",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "harshal-patel",
+      "name": "Harshal Patel",
+      "dateOfBirth": "1990-11-23",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "ishan-kishan",
+      "name": "Ishan Kishan",
+      "dateOfBirth": "1998-07-18",
+      "nationality": "IND",
+      "role": "wicketkeeper",
+      "battingHand": "left",
+      "bowlingStyle": "none",
+      "isCapped": true
+    },
+    {
+      "id": "travis-head",
+      "name": "Travis Head",
+      "dateOfBirth": "1993-12-29",
+      "nationality": "AUS",
+      "role": "batter",
+      "battingHand": "left",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "abhishek-sharma",
+      "name": "Abhishek Sharma",
+      "dateOfBirth": "2000-09-04",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": true
+    },
+    {
+      "id": "pat-cummins",
+      "name": "Pat Cummins",
+      "dateOfBirth": "1993-05-08",
+      "nationality": "AUS",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "heinrich-klaasen",
+      "name": "Heinrich Klaasen",
+      "dateOfBirth": "1991-07-30",
+      "nationality": "SA",
+      "role": "wicketkeeper",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
       "isCapped": true
     },
     {
@@ -577,6 +2073,776 @@
       "battingHand": "right",
       "bowlingStyle": "right-arm-medium",
       "isCapped": true
+    },
+    {
+      "id": "david-miller",
+      "name": "David Miller",
+      "dateOfBirth": "1989-06-10",
+      "nationality": "SA",
+      "role": "batter",
+      "battingHand": "left",
+      "bowlingStyle": "none",
+      "isCapped": true
+    },
+    {
+      "id": "prithvi-shaw",
+      "name": "Prithvi Shaw",
+      "dateOfBirth": "1999-11-09",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "gus-atkinson",
+      "name": "Gus Atkinson",
+      "dateOfBirth": "1998-01-19",
+      "nationality": "ENG",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "wanindu-hasaranga",
+      "name": "Wanindu Hasaranga",
+      "dateOfBirth": "1997-07-29",
+      "nationality": "SL",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": true
+    },
+    {
+      "id": "wiaan-mulder",
+      "name": "Wiaan Mulder",
+      "dateOfBirth": "1998-02-19",
+      "nationality": "SA",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-medium",
+      "isCapped": true
+    },
+    {
+      "id": "rachin-ravindra",
+      "name": "Rachin Ravindra",
+      "dateOfBirth": "1999-11-18",
+      "nationality": "NZ",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": true
+    },
+    {
+      "id": "finn-allen",
+      "name": "Finn Allen",
+      "dateOfBirth": "1999-04-22",
+      "nationality": "NZ",
+      "role": "wicketkeeper",
+      "battingHand": "right",
+      "bowlingStyle": "none",
+      "isCapped": true
+    },
+    {
+      "id": "quinton-de-kock",
+      "name": "Quinton de Kock",
+      "dateOfBirth": "1992-12-17",
+      "nationality": "SA",
+      "role": "wicketkeeper",
+      "battingHand": "left",
+      "bowlingStyle": "none",
+      "isCapped": true
+    },
+    {
+      "id": "ben-duckett",
+      "name": "Ben Duckett",
+      "dateOfBirth": "1994-10-17",
+      "nationality": "ENG",
+      "role": "wicketkeeper",
+      "battingHand": "left",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "jamie-smith",
+      "name": "Jamie Smith",
+      "dateOfBirth": "2000-07-12",
+      "nationality": "ENG",
+      "role": "wicketkeeper",
+      "battingHand": "right",
+      "bowlingStyle": "none",
+      "isCapped": true
+    },
+    {
+      "id": "gerald-coetzee",
+      "name": "Gerald Coetzee",
+      "dateOfBirth": "2000-10-02",
+      "nationality": "SA",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "akash-deep",
+      "name": "Akash Deep",
+      "dateOfBirth": "1996-12-15",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "fazalhaq-farooqi",
+      "name": "Fazalhaq Farooqi",
+      "dateOfBirth": "2000-09-22",
+      "nationality": "AFG",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "shivam-mavi",
+      "name": "Shivam Mavi",
+      "dateOfBirth": "1998-11-26",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "anrich-nortje",
+      "name": "Anrich Nortje",
+      "dateOfBirth": "1993-11-16",
+      "nationality": "SA",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "mujeeb-ur-rahman",
+      "name": "Mujeeb Ur Rahman",
+      "dateOfBirth": "2001-03-28",
+      "nationality": "AFG",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "maheesh-theekshana",
+      "name": "Maheesh Theekshana",
+      "dateOfBirth": "2000-08-01",
+      "nationality": "SL",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "shivang-kumar",
+      "name": "Shivang Kumar",
+      "dateOfBirth": "2002-05-26",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "left-arm-wrist-spin",
+      "isCapped": false
+    },
+    {
+      "id": "mukul-choudhary",
+      "name": "Mukul Choudhary",
+      "dateOfBirth": "2004-08-06",
+      "nationality": "IND",
+      "role": "wicketkeeper",
+      "battingHand": "right",
+      "bowlingStyle": "none",
+      "isCapped": false
+    },
+    {
+      "id": "tejasvi-singh-dahiya",
+      "name": "Tejasvi Singh Dahiya",
+      "dateOfBirth": "2002-04-18",
+      "nationality": "IND",
+      "role": "wicketkeeper",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": false
+    },
+    {
+      "id": "sushant-mishra",
+      "name": "Sushant Mishra",
+      "dateOfBirth": "2000-12-23",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "ashok-sharma",
+      "name": "Ashok Sharma",
+      "dateOfBirth": "2002-06-17",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "naman-tiwari",
+      "name": "Naman Tiwari",
+      "dateOfBirth": "2005-11-08",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "kartik-tyagi",
+      "name": "Kartik Tyagi",
+      "dateOfBirth": "2000-11-08",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "yash-raj-punja",
+      "name": "Yash Raj Punja",
+      "dateOfBirth": "2006-06-26",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "vignesh-puthur",
+      "name": "Vignesh Puthur",
+      "dateOfBirth": "2001-03-02",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "left-arm-wrist-spin",
+      "isCapped": false
+    },
+    {
+      "id": "prashant-solanki",
+      "name": "Prashant Solanki",
+      "dateOfBirth": "2000-02-22",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "pathum-nissanka",
+      "name": "Pathum Nissanka",
+      "dateOfBirth": "1998-05-18",
+      "nationality": "SL",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "none",
+      "isCapped": true
+    },
+    {
+      "id": "rahul-tripathi",
+      "name": "Rahul Tripathi",
+      "dateOfBirth": "1991-03-02",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-medium",
+      "isCapped": true
+    },
+    {
+      "id": "sean-abbott",
+      "name": "Sean Abbott",
+      "dateOfBirth": "1992-02-29",
+      "nationality": "AUS",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "michael-bracewell",
+      "name": "Michael Bracewell",
+      "dateOfBirth": "1991-02-14",
+      "nationality": "NZ",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "ben-dwarshuis",
+      "name": "Ben Dwarshuis",
+      "dateOfBirth": "1994-06-23",
+      "nationality": "AUS",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "zak-foulkes",
+      "name": "Zak Foulkes",
+      "dateOfBirth": "2002-06-05",
+      "nationality": "NZ",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-medium",
+      "isCapped": true
+    },
+    {
+      "id": "jason-holder",
+      "name": "Jason Holder",
+      "dateOfBirth": "1991-11-05",
+      "nationality": "WI",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "daryl-mitchell",
+      "name": "Daryl Mitchell",
+      "dateOfBirth": "1991-05-20",
+      "nationality": "NZ",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-medium",
+      "isCapped": true
+    },
+    {
+      "id": "matthew-short",
+      "name": "Matthew Short",
+      "dateOfBirth": "1995-11-08",
+      "nationality": "AUS",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "tom-banton",
+      "name": "Tom Banton",
+      "dateOfBirth": "1998-11-11",
+      "nationality": "ENG",
+      "role": "wicketkeeper",
+      "battingHand": "right",
+      "bowlingStyle": "none",
+      "isCapped": true
+    },
+    {
+      "id": "tim-seifert",
+      "name": "Tim Seifert",
+      "dateOfBirth": "1994-12-14",
+      "nationality": "NZ",
+      "role": "wicketkeeper",
+      "battingHand": "right",
+      "bowlingStyle": "none",
+      "isCapped": true
+    },
+    {
+      "id": "kyle-jamieson",
+      "name": "Kyle Jamieson",
+      "dateOfBirth": "1994-12-30",
+      "nationality": "NZ",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "adam-milne",
+      "name": "Adam Milne",
+      "dateOfBirth": "1992-04-13",
+      "nationality": "NZ",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "lungi-ngidi",
+      "name": "Lungi Ngidi",
+      "dateOfBirth": "1996-03-29",
+      "nationality": "SA",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "mustafizur-rahman",
+      "name": "Mustafizur Rahman",
+      "dateOfBirth": "1995-09-06",
+      "nationality": "BAN",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "kuldeep-sen",
+      "name": "Kuldeep Sen",
+      "dateOfBirth": "1996-10-22",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "waqar-salamkheil",
+      "name": "Waqar Salamkheil",
+      "dateOfBirth": "2001-10-02",
+      "nationality": "AFG",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "left-arm-wrist-spin",
+      "isCapped": true
+    },
+    {
+      "id": "danish-malewar",
+      "name": "Danish Malewar",
+      "dateOfBirth": "2003-10-08",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "aman-rao-perala",
+      "name": "Aman Rao Perala",
+      "dateOfBirth": "2004-06-02",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "none",
+      "isCapped": false
+    },
+    {
+      "id": "akshat-raghuwanshi",
+      "name": "Akshat Raghuwanshi",
+      "dateOfBirth": "2003-09-15",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "right",
+      "bowlingStyle": "none",
+      "isCapped": false
+    },
+    {
+      "id": "satvik-deswal",
+      "name": "Satvik Deswal",
+      "dateOfBirth": "2007-03-23",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "left-arm-wrist-spin",
+      "isCapped": false
+    },
+    {
+      "id": "aman-khan",
+      "name": "Aman Khan",
+      "dateOfBirth": "1996-11-23",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "vicky-ostwal",
+      "name": "Vicky Ostwal",
+      "dateOfBirth": "2002-09-01",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": false
+    },
+    {
+      "id": "mayank-rawat",
+      "name": "Mayank Rawat",
+      "dateOfBirth": "1999-12-04",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": false
+    },
+    {
+      "id": "salil-arora",
+      "name": "Salil Arora",
+      "dateOfBirth": "2002-11-07",
+      "nationality": "IND",
+      "role": "wicketkeeper",
+      "battingHand": "right",
+      "bowlingStyle": "none",
+      "isCapped": false
+    },
+    {
+      "id": "ravi-singh",
+      "name": "Ravi Singh",
+      "dateOfBirth": "2001-05-25",
+      "nationality": "IND",
+      "role": "wicketkeeper",
+      "battingHand": "left",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "sakib-hussain",
+      "name": "Sakib Hussain",
+      "dateOfBirth": "2004-12-14",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "mohammad-izhar",
+      "name": "Mohammad Izhar",
+      "dateOfBirth": "2004-01-01",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "onkar-tarmale",
+      "name": "Onkar Tarmale",
+      "dateOfBirth": "2002-08-22",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "prithviraj-yarra",
+      "name": "Prithviraj Yarra",
+      "dateOfBirth": "1998-02-20",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "pravin-dubey",
+      "name": "Pravin Dubey",
+      "dateOfBirth": "1993-07-01",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "cooper-connolly",
+      "name": "Cooper Connolly",
+      "dateOfBirth": "2003-08-22",
+      "nationality": "AUS",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": true
+    },
+    {
+      "id": "dan-lawrence",
+      "name": "Dan Lawrence",
+      "dateOfBirth": "1997-07-12",
+      "nationality": "ENG",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": true
+    },
+    {
+      "id": "will-sutherland",
+      "name": "Will Sutherland",
+      "dateOfBirth": "1999-10-27",
+      "nationality": "AUS",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "alzarri-joseph",
+      "name": "Alzarri Joseph",
+      "dateOfBirth": "1996-11-20",
+      "nationality": "WI",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "riley-meredith",
+      "name": "Riley Meredith",
+      "dateOfBirth": "1996-06-21",
+      "nationality": "AUS",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "jhye-richardson",
+      "name": "Jhye Richardson",
+      "dateOfBirth": "1996-09-20",
+      "nationality": "AUS",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "luke-wood",
+      "name": "Luke Wood",
+      "dateOfBirth": "1995-08-02",
+      "nationality": "ENG",
+      "role": "bowler",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-fast",
+      "isCapped": true
+    },
+    {
+      "id": "sahil-parakh",
+      "name": "Sahil Parakh",
+      "dateOfBirth": "2007-06-07",
+      "nationality": "IND",
+      "role": "batter",
+      "battingHand": "left",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "amit-kumar",
+      "name": "Amit Kumar",
+      "dateOfBirth": "2002-11-02",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "vishal-nishad",
+      "name": "Vishal Nishad",
+      "dateOfBirth": "2005-04-01",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "atharva-ankolekar",
+      "name": "Atharva Ankolekar",
+      "dateOfBirth": "2000-09-26",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "left-arm-orthodox",
+      "isCapped": false
+    },
+    {
+      "id": "praful-hinge",
+      "name": "Praful Hinge",
+      "dateOfBirth": "2002-01-18",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-fast",
+      "isCapped": false
+    },
+    {
+      "id": "krains-fuletra",
+      "name": "Krains Fuletra",
+      "dateOfBirth": "2004-06-19",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "left-arm-wrist-spin",
+      "isCapped": false
+    },
+    {
+      "id": "vihaan-malhotra",
+      "name": "Vihaan Malhotra",
+      "dateOfBirth": "2007-01-01",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "left",
+      "bowlingStyle": "off-spin",
+      "isCapped": false
+    },
+    {
+      "id": "sarthak-ranjan",
+      "name": "Sarthak Ranjan",
+      "dateOfBirth": "1996-09-25",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": false
+    },
+    {
+      "id": "brijesh-sharma",
+      "name": "Brijesh Sharma",
+      "dateOfBirth": "1998-12-16",
+      "nationality": "IND",
+      "role": "bowler",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-medium",
+      "isCapped": false
+    },
+    {
+      "id": "kanishk-chouhan",
+      "name": "Kanishk Chouhan",
+      "dateOfBirth": "2006-09-26",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "off-spin",
+      "isCapped": false
+    },
+    {
+      "id": "daksh-kamra",
+      "name": "Daksh Kamra",
+      "dateOfBirth": "2003-01-09",
+      "nationality": "IND",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "leg-spin",
+      "isCapped": false
+    },
+    {
+      "id": "jack-edwards",
+      "name": "Jack Edwards",
+      "dateOfBirth": "2000-04-19",
+      "nationality": "AUS",
+      "role": "all-rounder",
+      "battingHand": "right",
+      "bowlingStyle": "right-arm-medium",
+      "isCapped": false
     }
   ],
   "retentions": [
@@ -645,6 +2911,442 @@
       "playerId": "dewald-brevis"
     },
     {
+      "franchiseId": "dc",
+      "playerId": "ajay-mandal"
+    },
+    {
+      "franchiseId": "dc",
+      "playerId": "tripurana-vijay"
+    },
+    {
+      "franchiseId": "dc",
+      "playerId": "madhav-tiwari"
+    },
+    {
+      "franchiseId": "dc",
+      "playerId": "karun-nair"
+    },
+    {
+      "franchiseId": "dc",
+      "playerId": "vipraj-nigam"
+    },
+    {
+      "franchiseId": "dc",
+      "playerId": "dushmantha-chameera"
+    },
+    {
+      "franchiseId": "dc",
+      "playerId": "sameer-rizvi"
+    },
+    {
+      "franchiseId": "dc",
+      "playerId": "ashutosh-sharma"
+    },
+    {
+      "franchiseId": "dc",
+      "playerId": "abishek-porel"
+    },
+    {
+      "franchiseId": "dc",
+      "playerId": "nitish-rana"
+    },
+    {
+      "franchiseId": "dc",
+      "playerId": "mukesh-kumar"
+    },
+    {
+      "franchiseId": "dc",
+      "playerId": "tristan-stubbs"
+    },
+    {
+      "franchiseId": "dc",
+      "playerId": "t-natarajan"
+    },
+    {
+      "franchiseId": "dc",
+      "playerId": "mitchell-starc"
+    },
+    {
+      "franchiseId": "dc",
+      "playerId": "kuldeep-yadav"
+    },
+    {
+      "franchiseId": "dc",
+      "playerId": "kl-rahul"
+    },
+    {
+      "franchiseId": "dc",
+      "playerId": "axar-patel"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "manav-suthar"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "nishant-sindhu"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "anuj-rawat"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "kumar-kushagra"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "jayant-yadav"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "ishant-sharma"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "gurnoor-singh-brar"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "arshad-khan"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "sai-kishore"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "glenn-phillips"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "washington-sundar"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "shahrukh-khan"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "rahul-tewatia"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "sai-sudharsan"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "prasidh-krishna"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "kagiso-rabada"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "jos-buttler"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "mohammed-siraj"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "shubman-gill"
+    },
+    {
+      "franchiseId": "gt",
+      "playerId": "rashid-khan"
+    },
+    {
+      "franchiseId": "kkr",
+      "playerId": "anukul-roy"
+    },
+    {
+      "franchiseId": "kkr",
+      "playerId": "umran-malik"
+    },
+    {
+      "franchiseId": "kkr",
+      "playerId": "manish-pandey"
+    },
+    {
+      "franchiseId": "kkr",
+      "playerId": "rovman-powell"
+    },
+    {
+      "franchiseId": "kkr",
+      "playerId": "ajinkya-rahane"
+    },
+    {
+      "franchiseId": "kkr",
+      "playerId": "vaibhav-arora"
+    },
+    {
+      "franchiseId": "kkr",
+      "playerId": "angkrish-raghuvanshi"
+    },
+    {
+      "franchiseId": "kkr",
+      "playerId": "ramandeep-singh"
+    },
+    {
+      "franchiseId": "kkr",
+      "playerId": "harshit-rana"
+    },
+    {
+      "franchiseId": "kkr",
+      "playerId": "varun-chakaravarthy"
+    },
+    {
+      "franchiseId": "kkr",
+      "playerId": "sunil-narine"
+    },
+    {
+      "franchiseId": "kkr",
+      "playerId": "rinku-singh"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "himmat-singh"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "digvesh-rathi"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "prince-yadav"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "arshin-kulkarni"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "arjun-tendulkar"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "akash-singh"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "manimaran-siddharth"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "matthew-breetzke"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "aiden-markram"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "shahbaz-ahmed"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "mitchell-marsh"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "mohsin-khan"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "ayush-badoni"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "abdul-samad"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "avesh-khan"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "mohammed-shami"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "mayank-yadav"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "nicholas-pooran"
+    },
+    {
+      "franchiseId": "lsg",
+      "playerId": "rishabh-pant"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "raghu-sharma"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "raj-angad-bawa"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "ashwani-kumar"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "mayank-markande"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "robin-minz"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "corbin-bosch"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "ryan-rickelton"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "mitchell-santner"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "shardul-thakur"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "sherfane-rutherford"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "allah-ghazanfar"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "will-jacks"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "naman-dhir"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "tilak-varma"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "deepak-chahar"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "trent-boult"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "rohit-sharma"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "hardik-pandya"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "suryakumar-yadav"
+    },
+    {
+      "franchiseId": "mi",
+      "playerId": "jasprit-bumrah"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "musheer-khan"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "suryansh-shedge"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "harnoor-pannu"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "pyla-avinash"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "xavier-bartlett"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "vishnu-vinod"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "harpreet-brar"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "yash-thakur"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "vyshak-vijaykumar"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "lockie-ferguson"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "azmatullah-omarzai"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "mitch-owen"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "priyansh-arya"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "prabhsimran-singh"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "nehal-wadhera"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "shashank-singh"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "marco-jansen"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "marcus-stoinis"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "yuzvendra-chahal"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "arshdeep-singh"
+    },
+    {
+      "franchiseId": "pbks",
+      "playerId": "shreyas-iyer"
+    },
+    {
       "franchiseId": "rcb",
       "playerId": "virat-kohli"
     },
@@ -711,6 +3413,130 @@
     {
       "franchiseId": "rcb",
       "playerId": "nuwan-thushara"
+    },
+    {
+      "franchiseId": "rr",
+      "playerId": "lhuan-dre-pretorius"
+    },
+    {
+      "franchiseId": "rr",
+      "playerId": "yudhvir-singh-charak"
+    },
+    {
+      "franchiseId": "rr",
+      "playerId": "shubham-dubey"
+    },
+    {
+      "franchiseId": "rr",
+      "playerId": "donovan-ferreira"
+    },
+    {
+      "franchiseId": "rr",
+      "playerId": "vaibhav-suryavanshi"
+    },
+    {
+      "franchiseId": "rr",
+      "playerId": "kwena-maphaka"
+    },
+    {
+      "franchiseId": "rr",
+      "playerId": "sam-curran"
+    },
+    {
+      "franchiseId": "rr",
+      "playerId": "nandre-burger"
+    },
+    {
+      "franchiseId": "rr",
+      "playerId": "sandeep-sharma"
+    },
+    {
+      "franchiseId": "rr",
+      "playerId": "tushar-deshpande"
+    },
+    {
+      "franchiseId": "rr",
+      "playerId": "shimron-hetmyer"
+    },
+    {
+      "franchiseId": "rr",
+      "playerId": "jofra-archer"
+    },
+    {
+      "franchiseId": "rr",
+      "playerId": "dhruv-jurel"
+    },
+    {
+      "franchiseId": "rr",
+      "playerId": "riyan-parag"
+    },
+    {
+      "franchiseId": "rr",
+      "playerId": "ravindra-jadeja"
+    },
+    {
+      "franchiseId": "rr",
+      "playerId": "yashasvi-jaiswal"
+    },
+    {
+      "franchiseId": "srh",
+      "playerId": "smaran-ravichandran"
+    },
+    {
+      "franchiseId": "srh",
+      "playerId": "harsh-dubey"
+    },
+    {
+      "franchiseId": "srh",
+      "playerId": "aniket-verma"
+    },
+    {
+      "franchiseId": "srh",
+      "playerId": "zeeshan-ansari"
+    },
+    {
+      "franchiseId": "srh",
+      "playerId": "kamindu-mendis"
+    },
+    {
+      "franchiseId": "srh",
+      "playerId": "brydon-carse"
+    },
+    {
+      "franchiseId": "srh",
+      "playerId": "jaydev-unadkat"
+    },
+    {
+      "franchiseId": "srh",
+      "playerId": "eshan-malinga"
+    },
+    {
+      "franchiseId": "srh",
+      "playerId": "nitish-kumar-reddy"
+    },
+    {
+      "franchiseId": "srh",
+      "playerId": "harshal-patel"
+    },
+    {
+      "franchiseId": "srh",
+      "playerId": "ishan-kishan"
+    },
+    {
+      "franchiseId": "srh",
+      "playerId": "travis-head"
+    },
+    {
+      "franchiseId": "srh",
+      "playerId": "abhishek-sharma"
+    },
+    {
+      "franchiseId": "srh",
+      "playerId": "pat-cummins"
+    },
+    {
+      "franchiseId": "srh",
+      "playerId": "heinrich-klaasen"
     }
   ],
   "auctionEntries": [
@@ -818,6 +3644,391 @@
       "id": "2026-jonny-bairstow",
       "playerId": "jonny-bairstow",
       "basePriceLakh": 100
+    },
+    {
+      "id": "2026-david-miller",
+      "playerId": "david-miller",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-prithvi-shaw",
+      "playerId": "prithvi-shaw",
+      "basePriceLakh": 75
+    },
+    {
+      "id": "2026-gus-atkinson",
+      "playerId": "gus-atkinson",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-wanindu-hasaranga",
+      "playerId": "wanindu-hasaranga",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-wiaan-mulder",
+      "playerId": "wiaan-mulder",
+      "basePriceLakh": 100
+    },
+    {
+      "id": "2026-rachin-ravindra",
+      "playerId": "rachin-ravindra",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-finn-allen",
+      "playerId": "finn-allen",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-quinton-de-kock",
+      "playerId": "quinton-de-kock",
+      "basePriceLakh": 100
+    },
+    {
+      "id": "2026-ben-duckett",
+      "playerId": "ben-duckett",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-jamie-smith",
+      "playerId": "jamie-smith",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-gerald-coetzee",
+      "playerId": "gerald-coetzee",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-akash-deep",
+      "playerId": "akash-deep",
+      "basePriceLakh": 100
+    },
+    {
+      "id": "2026-fazalhaq-farooqi",
+      "playerId": "fazalhaq-farooqi",
+      "basePriceLakh": 100
+    },
+    {
+      "id": "2026-shivam-mavi",
+      "playerId": "shivam-mavi",
+      "basePriceLakh": 75
+    },
+    {
+      "id": "2026-anrich-nortje",
+      "playerId": "anrich-nortje",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-mujeeb-ur-rahman",
+      "playerId": "mujeeb-ur-rahman",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-maheesh-theekshana",
+      "playerId": "maheesh-theekshana",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-shivang-kumar",
+      "playerId": "shivang-kumar",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-mukul-choudhary",
+      "playerId": "mukul-choudhary",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-tejasvi-singh-dahiya",
+      "playerId": "tejasvi-singh-dahiya",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-sushant-mishra",
+      "playerId": "sushant-mishra",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-ashok-sharma",
+      "playerId": "ashok-sharma",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-naman-tiwari",
+      "playerId": "naman-tiwari",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-kartik-tyagi",
+      "playerId": "kartik-tyagi",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-yash-raj-punja",
+      "playerId": "yash-raj-punja",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-vignesh-puthur",
+      "playerId": "vignesh-puthur",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-prashant-solanki",
+      "playerId": "prashant-solanki",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-pathum-nissanka",
+      "playerId": "pathum-nissanka",
+      "basePriceLakh": 75
+    },
+    {
+      "id": "2026-rahul-tripathi",
+      "playerId": "rahul-tripathi",
+      "basePriceLakh": 75
+    },
+    {
+      "id": "2026-sean-abbott",
+      "playerId": "sean-abbott",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-michael-bracewell",
+      "playerId": "michael-bracewell",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-ben-dwarshuis",
+      "playerId": "ben-dwarshuis",
+      "basePriceLakh": 100
+    },
+    {
+      "id": "2026-zak-foulkes",
+      "playerId": "zak-foulkes",
+      "basePriceLakh": 75
+    },
+    {
+      "id": "2026-jason-holder",
+      "playerId": "jason-holder",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-daryl-mitchell",
+      "playerId": "daryl-mitchell",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-matthew-short",
+      "playerId": "matthew-short",
+      "basePriceLakh": 150
+    },
+    {
+      "id": "2026-tom-banton",
+      "playerId": "tom-banton",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-tim-seifert",
+      "playerId": "tim-seifert",
+      "basePriceLakh": 150
+    },
+    {
+      "id": "2026-kyle-jamieson",
+      "playerId": "kyle-jamieson",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-adam-milne",
+      "playerId": "adam-milne",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-lungi-ngidi",
+      "playerId": "lungi-ngidi",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-mustafizur-rahman",
+      "playerId": "mustafizur-rahman",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-kuldeep-sen",
+      "playerId": "kuldeep-sen",
+      "basePriceLakh": 75
+    },
+    {
+      "id": "2026-waqar-salamkheil",
+      "playerId": "waqar-salamkheil",
+      "basePriceLakh": 100
+    },
+    {
+      "id": "2026-danish-malewar",
+      "playerId": "danish-malewar",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-aman-rao-perala",
+      "playerId": "aman-rao-perala",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-akshat-raghuwanshi",
+      "playerId": "akshat-raghuwanshi",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-satvik-deswal",
+      "playerId": "satvik-deswal",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-aman-khan",
+      "playerId": "aman-khan",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-vicky-ostwal",
+      "playerId": "vicky-ostwal",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-mayank-rawat",
+      "playerId": "mayank-rawat",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-salil-arora",
+      "playerId": "salil-arora",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-ravi-singh",
+      "playerId": "ravi-singh",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-sakib-hussain",
+      "playerId": "sakib-hussain",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-mohammad-izhar",
+      "playerId": "mohammad-izhar",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-onkar-tarmale",
+      "playerId": "onkar-tarmale",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-prithviraj-yarra",
+      "playerId": "prithviraj-yarra",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-pravin-dubey",
+      "playerId": "pravin-dubey",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-cooper-connolly",
+      "playerId": "cooper-connolly",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-dan-lawrence",
+      "playerId": "dan-lawrence",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-will-sutherland",
+      "playerId": "will-sutherland",
+      "basePriceLakh": 100
+    },
+    {
+      "id": "2026-alzarri-joseph",
+      "playerId": "alzarri-joseph",
+      "basePriceLakh": 200
+    },
+    {
+      "id": "2026-riley-meredith",
+      "playerId": "riley-meredith",
+      "basePriceLakh": 150
+    },
+    {
+      "id": "2026-jhye-richardson",
+      "playerId": "jhye-richardson",
+      "basePriceLakh": 150
+    },
+    {
+      "id": "2026-luke-wood",
+      "playerId": "luke-wood",
+      "basePriceLakh": 75
+    },
+    {
+      "id": "2026-sahil-parakh",
+      "playerId": "sahil-parakh",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-amit-kumar",
+      "playerId": "amit-kumar",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-vishal-nishad",
+      "playerId": "vishal-nishad",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-atharva-ankolekar",
+      "playerId": "atharva-ankolekar",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-praful-hinge",
+      "playerId": "praful-hinge",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-krains-fuletra",
+      "playerId": "krains-fuletra",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-vihaan-malhotra",
+      "playerId": "vihaan-malhotra",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-sarthak-ranjan",
+      "playerId": "sarthak-ranjan",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-brijesh-sharma",
+      "playerId": "brijesh-sharma",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-kanishk-chouhan",
+      "playerId": "kanishk-chouhan",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-daksh-kamra",
+      "playerId": "daksh-kamra",
+      "basePriceLakh": 30
+    },
+    {
+      "id": "2026-jack-edwards",
+      "playerId": "jack-edwards",
+      "basePriceLakh": 50
     }
   ],
   "auctionResults": [
@@ -936,6 +4147,436 @@
     {
       "auctionEntryId": "2026-jonny-bairstow",
       "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-david-miller",
+      "status": "sold",
+      "franchiseId": "dc",
+      "priceLakh": 200
+    },
+    {
+      "auctionEntryId": "2026-prithvi-shaw",
+      "status": "sold",
+      "franchiseId": "dc",
+      "priceLakh": 75
+    },
+    {
+      "auctionEntryId": "2026-gus-atkinson",
+      "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-wanindu-hasaranga",
+      "status": "sold",
+      "franchiseId": "lsg",
+      "priceLakh": 200
+    },
+    {
+      "auctionEntryId": "2026-wiaan-mulder",
+      "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-rachin-ravindra",
+      "status": "sold",
+      "franchiseId": "kkr",
+      "priceLakh": 200
+    },
+    {
+      "auctionEntryId": "2026-finn-allen",
+      "status": "sold",
+      "franchiseId": "kkr",
+      "priceLakh": 200
+    },
+    {
+      "auctionEntryId": "2026-quinton-de-kock",
+      "status": "sold",
+      "franchiseId": "mi",
+      "priceLakh": 100
+    },
+    {
+      "auctionEntryId": "2026-ben-duckett",
+      "status": "sold",
+      "franchiseId": "dc",
+      "priceLakh": 200
+    },
+    {
+      "auctionEntryId": "2026-jamie-smith",
+      "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-gerald-coetzee",
+      "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-akash-deep",
+      "status": "sold",
+      "franchiseId": "kkr",
+      "priceLakh": 100
+    },
+    {
+      "auctionEntryId": "2026-fazalhaq-farooqi",
+      "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-shivam-mavi",
+      "status": "sold",
+      "franchiseId": "srh",
+      "priceLakh": 75
+    },
+    {
+      "auctionEntryId": "2026-anrich-nortje",
+      "status": "sold",
+      "franchiseId": "lsg",
+      "priceLakh": 200
+    },
+    {
+      "auctionEntryId": "2026-mujeeb-ur-rahman",
+      "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-maheesh-theekshana",
+      "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-shivang-kumar",
+      "status": "sold",
+      "franchiseId": "srh",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-mukul-choudhary",
+      "status": "sold",
+      "franchiseId": "lsg",
+      "priceLakh": 260
+    },
+    {
+      "auctionEntryId": "2026-tejasvi-singh-dahiya",
+      "status": "sold",
+      "franchiseId": "kkr",
+      "priceLakh": 300
+    },
+    {
+      "auctionEntryId": "2026-sushant-mishra",
+      "status": "sold",
+      "franchiseId": "rr",
+      "priceLakh": 90
+    },
+    {
+      "auctionEntryId": "2026-ashok-sharma",
+      "status": "sold",
+      "franchiseId": "gt",
+      "priceLakh": 90
+    },
+    {
+      "auctionEntryId": "2026-naman-tiwari",
+      "status": "sold",
+      "franchiseId": "lsg",
+      "priceLakh": 100
+    },
+    {
+      "auctionEntryId": "2026-kartik-tyagi",
+      "status": "sold",
+      "franchiseId": "kkr",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-yash-raj-punja",
+      "status": "sold",
+      "franchiseId": "rr",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-vignesh-puthur",
+      "status": "sold",
+      "franchiseId": "rr",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-prashant-solanki",
+      "status": "sold",
+      "franchiseId": "kkr",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-pathum-nissanka",
+      "status": "sold",
+      "franchiseId": "dc",
+      "priceLakh": 400
+    },
+    {
+      "auctionEntryId": "2026-rahul-tripathi",
+      "status": "sold",
+      "franchiseId": "kkr",
+      "priceLakh": 75
+    },
+    {
+      "auctionEntryId": "2026-sean-abbott",
+      "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-michael-bracewell",
+      "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-ben-dwarshuis",
+      "status": "sold",
+      "franchiseId": "pbks",
+      "priceLakh": 440
+    },
+    {
+      "auctionEntryId": "2026-zak-foulkes",
+      "status": "sold",
+      "franchiseId": "csk",
+      "priceLakh": 75
+    },
+    {
+      "auctionEntryId": "2026-jason-holder",
+      "status": "sold",
+      "franchiseId": "gt",
+      "priceLakh": 700
+    },
+    {
+      "auctionEntryId": "2026-daryl-mitchell",
+      "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-matthew-short",
+      "status": "sold",
+      "franchiseId": "csk",
+      "priceLakh": 150
+    },
+    {
+      "auctionEntryId": "2026-tom-banton",
+      "status": "sold",
+      "franchiseId": "gt",
+      "priceLakh": 200
+    },
+    {
+      "auctionEntryId": "2026-tim-seifert",
+      "status": "sold",
+      "franchiseId": "kkr",
+      "priceLakh": 150
+    },
+    {
+      "auctionEntryId": "2026-kyle-jamieson",
+      "status": "sold",
+      "franchiseId": "dc",
+      "priceLakh": 200
+    },
+    {
+      "auctionEntryId": "2026-adam-milne",
+      "status": "sold",
+      "franchiseId": "rr",
+      "priceLakh": 240
+    },
+    {
+      "auctionEntryId": "2026-lungi-ngidi",
+      "status": "sold",
+      "franchiseId": "dc",
+      "priceLakh": 200
+    },
+    {
+      "auctionEntryId": "2026-mustafizur-rahman",
+      "status": "sold",
+      "franchiseId": "kkr",
+      "priceLakh": 920
+    },
+    {
+      "auctionEntryId": "2026-kuldeep-sen",
+      "status": "sold",
+      "franchiseId": "rr",
+      "priceLakh": 75
+    },
+    {
+      "auctionEntryId": "2026-waqar-salamkheil",
+      "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-danish-malewar",
+      "status": "sold",
+      "franchiseId": "mi",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-aman-rao-perala",
+      "status": "sold",
+      "franchiseId": "rr",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-akshat-raghuwanshi",
+      "status": "sold",
+      "franchiseId": "lsg",
+      "priceLakh": 220
+    },
+    {
+      "auctionEntryId": "2026-satvik-deswal",
+      "status": "sold",
+      "franchiseId": "rcb",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-aman-khan",
+      "status": "sold",
+      "franchiseId": "csk",
+      "priceLakh": 40
+    },
+    {
+      "auctionEntryId": "2026-vicky-ostwal",
+      "status": "sold",
+      "franchiseId": "rcb",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-mayank-rawat",
+      "status": "sold",
+      "franchiseId": "mi",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-salil-arora",
+      "status": "sold",
+      "franchiseId": "srh",
+      "priceLakh": 150
+    },
+    {
+      "auctionEntryId": "2026-ravi-singh",
+      "status": "sold",
+      "franchiseId": "rr",
+      "priceLakh": 95
+    },
+    {
+      "auctionEntryId": "2026-sakib-hussain",
+      "status": "sold",
+      "franchiseId": "srh",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-mohammad-izhar",
+      "status": "sold",
+      "franchiseId": "mi",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-onkar-tarmale",
+      "status": "sold",
+      "franchiseId": "srh",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-prithviraj-yarra",
+      "status": "sold",
+      "franchiseId": "gt",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-pravin-dubey",
+      "status": "sold",
+      "franchiseId": "pbks",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-cooper-connolly",
+      "status": "sold",
+      "franchiseId": "pbks",
+      "priceLakh": 300
+    },
+    {
+      "auctionEntryId": "2026-dan-lawrence",
+      "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-will-sutherland",
+      "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-alzarri-joseph",
+      "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-riley-meredith",
+      "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-jhye-richardson",
+      "status": "unsold"
+    },
+    {
+      "auctionEntryId": "2026-luke-wood",
+      "status": "sold",
+      "franchiseId": "gt",
+      "priceLakh": 75
+    },
+    {
+      "auctionEntryId": "2026-sahil-parakh",
+      "status": "sold",
+      "franchiseId": "dc",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-amit-kumar",
+      "status": "sold",
+      "franchiseId": "srh",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-vishal-nishad",
+      "status": "sold",
+      "franchiseId": "pbks",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-atharva-ankolekar",
+      "status": "sold",
+      "franchiseId": "mi",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-praful-hinge",
+      "status": "sold",
+      "franchiseId": "srh",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-krains-fuletra",
+      "status": "sold",
+      "franchiseId": "srh",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-vihaan-malhotra",
+      "status": "sold",
+      "franchiseId": "rcb",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-sarthak-ranjan",
+      "status": "sold",
+      "franchiseId": "kkr",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-brijesh-sharma",
+      "status": "sold",
+      "franchiseId": "rr",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-kanishk-chouhan",
+      "status": "sold",
+      "franchiseId": "rcb",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-daksh-kamra",
+      "status": "sold",
+      "franchiseId": "kkr",
+      "priceLakh": 30
+    },
+    {
+      "auctionEntryId": "2026-jack-edwards",
+      "status": "sold",
+      "franchiseId": "srh",
+      "priceLakh": 300
     }
   ],
   "plans": [
@@ -946,8 +4587,56 @@
       "updatedAt": null
     },
     {
+      "id": "dc",
+      "franchiseId": "dc",
+      "targets": [],
+      "updatedAt": null
+    },
+    {
+      "id": "gt",
+      "franchiseId": "gt",
+      "targets": [],
+      "updatedAt": null
+    },
+    {
+      "id": "kkr",
+      "franchiseId": "kkr",
+      "targets": [],
+      "updatedAt": null
+    },
+    {
+      "id": "lsg",
+      "franchiseId": "lsg",
+      "targets": [],
+      "updatedAt": null
+    },
+    {
+      "id": "mi",
+      "franchiseId": "mi",
+      "targets": [],
+      "updatedAt": null
+    },
+    {
+      "id": "pbks",
+      "franchiseId": "pbks",
+      "targets": [],
+      "updatedAt": null
+    },
+    {
       "id": "rcb",
       "franchiseId": "rcb",
+      "targets": [],
+      "updatedAt": null
+    },
+    {
+      "id": "rr",
+      "franchiseId": "rr",
+      "targets": [],
+      "updatedAt": null
+    },
+    {
+      "id": "srh",
+      "franchiseId": "srh",
       "targets": [],
       "updatedAt": null
     }

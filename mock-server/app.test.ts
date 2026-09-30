@@ -52,7 +52,7 @@ describe("mock server", () => {
         total: number;
         pageSize: number;
       };
-      expect(page).toMatchObject({ total: 21, page: 1, pageSize: 25 });
+      expect(page).toMatchObject({ total: 98, page: 1, pageSize: 25 });
     });
 
     it("filters and sorts real data", async () => {
@@ -65,6 +65,10 @@ describe("mock server", () => {
       };
       expect(page.items.map((row) => row.player.name)).toEqual([
         "Kartik Sharma",
+        "Mukul Choudhary",
+        "Ravi Singh",
+        "Salil Arora",
+        "Tejasvi Singh Dahiya",
       ]);
     });
 
@@ -134,8 +138,8 @@ describe("mock server", () => {
     it("returns 404 for a franchise that does not exist", async () => {
       const api = await start();
       const response = await api(
-        "/plans/mi",
-        put({ ...cskPlan, id: "mi", franchiseId: "mi" }),
+        "/plans/xyz",
+        put({ ...cskPlan, id: "xyz", franchiseId: "xyz" }),
       );
       expect(response.status).toBe(404);
     });

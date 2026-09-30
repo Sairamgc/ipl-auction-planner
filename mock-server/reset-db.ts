@@ -8,6 +8,3 @@ if (!validateSeedFile()) process.exit(1);
 
 copyFileSync(SEED_DB_PATH, DB_PATH);
 console.log("Mock database reset from db.seed.json");
-console.warn(
-  "Note: provisional starter seed (CSK and RCB only). See docs/data-sources.md.",
-);

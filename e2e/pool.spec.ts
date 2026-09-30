@@ -11,7 +11,7 @@ test.describe("pool", () => {
     page,
   }) => {
     await page.goto("/teams/csk");
-    await expect(pool(page).getByText("21 players")).toBeVisible();
+    await expect(pool(page).getByText("98 players")).toBeVisible();
 
     // Filter: Indian wicketkeepers
     await pool(page)
@@ -22,15 +22,23 @@ test.describe("pool", () => {
     await page.keyboard.press("Escape");
 
     await expect(page).toHaveURL("/teams/csk?role=wicketkeeper&overseas=false");
+    // All ₹30 L base, so the default sort falls back to name (N11)
+    const indianKeepers = [
+      "Kartik Sharma",
+      "Mukul Choudhary",
+      "Ravi Singh",
+      "Salil Arora",
+      "Tejasvi Singh Dahiya",
+    ];
     await expect(
-      pool(page).getByText("1 player", { exact: true }),
+      pool(page).getByText("5 players", { exact: true }),
     ).toBeVisible();
-    await expect(playerButtons(page)).toHaveText(["Kartik Sharma"]);
+    await expect(playerButtons(page)).toHaveText(indianKeepers);
 
     // Reload keeps the filters and results
     await page.reload();
     await expect(page).toHaveURL("/teams/csk?role=wicketkeeper&overseas=false");
-    await expect(playerButtons(page)).toHaveText(["Kartik Sharma"]);
+    await expect(playerButtons(page)).toHaveText(indianKeepers);
     await expect(
       pool(page).getByRole("button", {
         name: "Remove filter: Role: Wicketkeeper",
@@ -56,7 +64,7 @@ test.describe("pool", () => {
 
   test("search narrows the pool after typing stops", async ({ page }) => {
     await page.goto("/teams/csk");
-    await expect(pool(page).getByText("21 players")).toBeVisible();
+    await expect(pool(page).getByText("98 players")).toBeVisible();
 
     await pool(page)
       .getByRole("searchbox", { name: "Search players" })

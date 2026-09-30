@@ -177,6 +177,17 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | N28 | `GET /auctionEntries` added as static reference data (never stale); with `/players` it resolves any plan target on the client, so optimistic adds show immediately | 2026-09-30 |
 | N29 | Reads retry twice with TanStack Query's default backoff, only for network errors and 5xx; never for 4xx or contract mismatches | 2026-09-30 |
 | N30 | Plan saves: whole plan per save, optimistic, serialised with a TanStack Query mutation scope per plan. Latest wins: roll back to the last server-confirmed plan only when the failed save is the latest; "Try again" resends the failed plan (user-initiated). Plan refetches (mount, focus, reconnect) are skipped while saves are queued | 2026-09-30 |
+| N31 | Full dataset replaces the provisional starter seed (supersedes N1 and N15): 10 franchises, 173 retained players, a pool of 98 (77 sold + 21 unsold), 271 players in all. Compiled in four owner-reviewed batches; details in `docs/data-sources.md` | 2026-09-30 |
+| N32 | "Unsold" means called at the auction and not bought (Wisden's complete table; ESPNcricinfo's total of 79). The 23 players on the final list with base ≥ ₹1 Cr who were never called are left out of the pool. Pool = sold + called-and-unsold with base ≥ ₹1 Cr | 2026-09-30 |
+| N33 | Closes FU1: seed validation requires every sold result to name a franchise in the data. The fixed list of IPL franchise IDs (N24) and its "not an IPL franchise id" check are removed | 2026-09-30 |
+| N34 | Amends N20: retained roles and names come from the latest iplt20.com squad snapshot on or before the auction; a post-auction snapshot fills in only players missing from it | 2026-09-30 |
+| N35 | Retained players' capped status applies N21 using Cricbuzz debut and last-match dates per format, plus the 2024–25 central contracts | 2026-09-30 |
+| N36 | Team colours: primary is the club CSS's main brand colour; secondary is the most-used second brand colour, whatever the CSS names it; text is white where it reaches 4.5:1, otherwise a dark colour from the same CSS or black. Values for all 10 teams in `docs/data-sources.md` | 2026-09-30 |
+| N37 | Nationality codes are final: the 12 ICC Full Members. Every player comes from a Full Member, so no associate nation is needed | 2026-09-30 |
+| N38 | Name exceptions under N17: common usage for Tilak Varma, Suryakumar Yadav, Digvesh Rathi, Manimaran Siddharth, Shahbaz Ahmed, Mohammed Shami, Arshad Khan, Lungi Ngidi, Quinton de Kock, Tejasvi Singh Dahiya, Mujeeb Ur Rahman, Dan Lawrence, Will Sutherland and Waqar Salamkheil; initials without full stops (T Natarajan). Satvik Deswal is stored right-handed (ESPNcricinfo and the official list agree, over Cricbuzz) | 2026-09-30 |
+| N39 | Conflicts follow the precedence rules: Cricbuzz for batting hand and bowling style, including a style of "none" where ESPNcricinfo lists one; ESPNcricinfo and Cricbuzz for date of birth over the official list | 2026-09-30 |
+| N40 | New player IDs are slugs of the final (post-exception) name; existing IDs are kept (N6) | 2026-09-30 |
+| N41 | iplt20.com roles are kept even where they differ from common descriptions (Sai Sudharsan: all-rounder; Rahul Tewatia: bowler) | 2026-09-30 |
 
 ## UI
 
@@ -253,5 +264,4 @@ Agreed work that is not done yet. Remove an entry when it is done, and reference
 
 | ID | Follow-up | Raised |
 |---|---|---|
-| FU1 | Once all 10 franchises are seeded, seed validation must require sold results to reference an existing franchise, replacing the fixed-list check from N24 | 2026-09-30 |
 | FU2 | If the E2E run gets slow, give each Playwright worker its own mock server and database, then run tests in parallel again (replaces the serial run in S31) | 2026-09-30 |
