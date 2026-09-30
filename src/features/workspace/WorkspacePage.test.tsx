@@ -302,6 +302,17 @@ describe("WorkspacePage", () => {
       expect(spacer).toHaveAttribute("inert");
     });
 
+    it("shows a focus ring on the focusable mobile tab panel (UI56)", async () => {
+      setViewport("mobile");
+      mockApi();
+      renderRoute("/teams/csk");
+      await workspaceTitle("Chennai Super Kings");
+      expect(screen.getByRole("tabpanel")).toHaveClass(
+        "focus-visible:ring-2",
+        "focus-visible:ring-ring",
+      );
+    });
+
     it("keeps the mobile tab in the URL", async () => {
       setViewport("mobile");
       mockApi();
@@ -337,6 +348,21 @@ describe("WorkspacePage", () => {
         );
       },
     );
+  });
+
+  describe("search params", () => {
+    it("drops unknown keys and base prices that aren't official amounts", async () => {
+      mockApi();
+      const { router } = renderRoute(
+        "/teams/csk?page=-1&minBase=7&maxBase=150&role=batter",
+      );
+      await workspaceTitle("Chennai Super Kings");
+      await waitFor(() => {
+        expect(router.state.location.href).toBe(
+          "/teams/csk?maxBase=150&role=batter",
+        );
+      });
+    });
   });
 
   describe("states", () => {

@@ -8,11 +8,14 @@ interface PoolFooterProps {
   onLoadMore: () => void;
   /** Polite announcement, e.g. "25 more players loaded". */
   announcement: string;
+  /** "All 98 players shown" once a multi-page list is complete (UI59). */
+  endMessage: string;
 }
 
 /**
- * Below the rows: "Loading more", the load-more error with retry, or the
- * "Load more" button (I3). The sentinel (ref) triggers auto-load (A7).
+ * Below the rows: "Loading more", the load-more error with retry, the
+ * "Load more" button (I3), or the end-of-list message (UI59). The sentinel
+ * (ref) triggers auto-load (A7).
  */
 export const PoolFooter = forwardRef<HTMLDivElement, PoolFooterProps>(
   function PoolFooter(
@@ -22,6 +25,7 @@ export const PoolFooter = forwardRef<HTMLDivElement, PoolFooterProps>(
       isFetchNextPageError,
       onLoadMore,
       announcement,
+      endMessage,
     },
     sentinelRef,
   ) {
@@ -51,6 +55,13 @@ export const PoolFooter = forwardRef<HTMLDivElement, PoolFooterProps>(
             </Button>
           )
         )}
+        {/* Always mounted, so the message is announced when it appears */}
+        <p
+          role="status"
+          className={endMessage ? "text-muted-foreground" : "sr-only"}
+        >
+          {endMessage}
+        </p>
         {hasNextPage && !isFetchNextPageError && (
           <div ref={sentinelRef} aria-hidden="true" className="h-px w-full" />
         )}

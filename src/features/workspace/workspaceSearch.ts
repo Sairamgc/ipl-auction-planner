@@ -18,3 +18,22 @@ export const workspaceSearchSchema = z.object({
   ...poolSearchShape,
 });
 export type WorkspaceSearch = z.infer<typeof workspaceSearchSchema>;
+
+const WORKSPACE_SEARCH_KEYS = new Set(Object.keys(workspaceSearchSchema.shape));
+
+/**
+ * Route search middleware: drops keys the schema doesn't know (e.g. a stray
+ * `?page=-1`), which the router would otherwise carry over from the raw URL.
+ */
+export function dropUnknownSearchKeys<T extends object>({
+  search,
+  next,
+}: {
+  search: T;
+  next: (search: T) => T;
+}): T {
+  const result = next(search);
+  return Object.fromEntries(
+    Object.entries(result).filter(([key]) => WORKSPACE_SEARCH_KEYS.has(key)),
+  ) as T;
+}

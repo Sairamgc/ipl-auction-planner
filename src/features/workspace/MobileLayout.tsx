@@ -89,7 +89,13 @@ export function MobileLayout() {
           ))}
         </TabsList>
         {WORKSPACE_TABS.map((value) => (
-          <TabsContent key={value} value={value}>
+          <TabsContent
+            key={value}
+            value={value}
+            // Radix makes the panel a tab stop: show it, and keep its heading
+            // clear of the sticky tabs when focus scrolls it into view (UI56)
+            className="scroll-mt-[calc(env(safe-area-inset-top)+3.5rem)] rounded-lg focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+          >
             {value === "pool" ? (
               <PoolPanel layout="list" />
             ) : value === "plan" ? (

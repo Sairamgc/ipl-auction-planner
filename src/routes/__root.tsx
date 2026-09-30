@@ -40,7 +40,7 @@ function RootLayout() {
 function NotFound() {
   useDocumentTitle("Page not found");
   return (
-    <EmptyState title="Page not found." className="max-w-xl">
+    <EmptyState title="Page not found." headingLevel={1} className="max-w-xl">
       <Link to="/" className="text-primary underline underline-offset-4">
         Back to all teams
       </Link>

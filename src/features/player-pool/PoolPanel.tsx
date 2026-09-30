@@ -68,6 +68,7 @@ export function PoolPanel({ layout, scrollable = false }: PoolPanelProps) {
 
   const rows = pool.data?.pages.flatMap((page) => page.items) ?? [];
   const total = pool.data?.pages[0]?.total ?? null;
+  const pageCount = pool.data?.pages.length ?? 0;
   const busy = pool.isPlaceholderData;
   const { hasNextPage, isFetchingNextPage, isFetchNextPageError } = pool;
 
@@ -198,6 +199,11 @@ export function PoolPanel({ layout, scrollable = false }: PoolPanelProps) {
           isFetchNextPageError={isFetchNextPageError}
           onLoadMore={() => void loadMore()}
           announcement={announcement}
+          endMessage={
+            !hasNextPage && pageCount > 1 && total !== null
+              ? `All ${playersLabel(total)} shown`
+              : ""
+          }
         />
       </>
     );

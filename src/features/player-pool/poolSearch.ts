@@ -1,5 +1,6 @@
 import type { PoolFilters } from "@/api";
 import {
+  BASE_PRICE_SLABS,
   BATTING_HAND_LABELS,
   BOWLING_STYLE_LABELS,
   formatLakh,
@@ -34,11 +35,16 @@ function listOf<const T extends readonly [string, ...string[]]>(values: T) {
 
 const flag = z.union([z.boolean(), z.stringbool()]).optional().catch(undefined);
 
+/** One of the eight official base-price amounts (UI33), in lakh. */
 const lakh = z
-  .union([
-    z.number().int().nonnegative(),
-    z.string().regex(/^\d+$/).transform(Number),
-  ])
+  .union([z.number(), z.string().regex(/^\d+$/).transform(Number)])
+  .pipe(
+    z
+      .number()
+      .refine((value) =>
+        (BASE_PRICE_SLABS as readonly number[]).includes(value),
+      ),
+  )
   .optional()
   .catch(undefined);
 

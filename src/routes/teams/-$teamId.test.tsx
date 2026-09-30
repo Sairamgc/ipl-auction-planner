@@ -13,8 +13,9 @@ describe("/teams/$teamId route", () => {
     mockApi();
     renderRoute("/teams/xyz");
 
+    // The page's only heading, so level 1
     expect(
-      await screen.findByRole("heading", { name: "Page not found." }),
+      await screen.findByRole("heading", { level: 1, name: "Page not found." }),
     ).toBeVisible();
     await waitFor(() => {
       expect(document.title).toBe("Page not found · IPL Auction Planner");
@@ -29,7 +30,10 @@ describe("/teams/$teamId route", () => {
     mockApi(responses);
     renderRoute("/teams/csk");
 
-    await screen.findByRole("heading", { name: "Couldn't load this team." });
+    await screen.findByRole("heading", {
+      level: 1,
+      name: "Couldn't load this team.",
+    });
     responses["/api/franchises"] = defaultResponses()["/api/franchises"];
     await userEvent
       .setup()

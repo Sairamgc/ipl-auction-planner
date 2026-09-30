@@ -83,6 +83,21 @@ describe("PoolPanel", () => {
       expect(
         within(pool()).queryByRole("button", { name: "Load more" }),
       ).not.toBeInTheDocument();
+      // The end of a multi-page list is said, visibly and to screen readers (UI59)
+      const end = within(pool()).getByText("All 30 players shown");
+      expect(end).toBeVisible();
+      expect(end).toHaveAttribute("role", "status");
+    });
+
+    it("has no end message while one page holds every player", async () => {
+      mockApi();
+      renderRoute("/teams/csk?role=wicketkeeper");
+      await waitFor(() => {
+        expect(shownNames().length).toBeGreaterThan(0);
+      });
+      expect(
+        within(pool()).queryByText(/^All \d+ players? shown$/),
+      ).not.toBeInTheDocument();
     });
 
     it("keeps loaded players and offers a retry when the next page fails", async () => {

@@ -1,11 +1,15 @@
 import { franchisesQueryOptions } from "@/api";
 import { ErrorState } from "@/components/common/ErrorState";
 import { WorkspacePage } from "@/features/workspace";
-import { workspaceSearchSchema } from "@/features/workspace/search";
+import {
+  dropUnknownSearchKeys,
+  workspaceSearchSchema,
+} from "@/features/workspace/search";
 import { createFileRoute, notFound, useRouter } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/teams/$teamId")({
   validateSearch: workspaceSearchSchema,
+  search: { middlewares: [dropUnknownSearchKeys] },
   loader: async ({ context, params }) => {
     // Cached data if present, otherwise fetch (replaces ensureQueryData)
     const franchises = await context.queryClient.query({
@@ -30,6 +34,7 @@ function WorkspaceLoadError() {
   const router = useRouter();
   return (
     <ErrorState
+      headingLevel={1}
       title="Couldn't load this team."
       description="Check your connection and try again."
       className="max-w-xl"

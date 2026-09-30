@@ -249,6 +249,10 @@ Every decision is agreed with the project owner before it is applied. Add new en
 | UI53 | Primary buttons (and linked badges) darken to a solid `--primary-hover` (teal-800, 7.58:1 with white) on hover instead of fading to 80% opacity, which dropped white text to 3.76:1 (below AA) | 2026-09-30 |
 | UI54 | Amends UI41 and N30. A failed save's error names the change it dropped ("Couldn’t add Devon Conway.", "Couldn’t change Cameron Green’s price to ₹2.50 Cr.", or a list). The dropped change is kept (plan-feature store) until dismissed, re-applied, or found in a plan the server confirmed, so a later unrelated save no longer clears it. Try again re-applies the dropped change on top of the current plan (keeping edits made since), instead of resending the failed plan. Several dropped changes merge; for the same player the later wins | 2026-09-30 |
 | UI55 | Tablet and desktop workspaces start with skip links, hidden until focused: "Skip to player pool", "Skip to My plan", "Skip to summary" (in a nav "Skip to a panel"). They focus the panel region (UI20); on tablet, "Skip to summary" focuses the strip's Show summary button while it's collapsed. Mobile has none (tabs) | 2026-09-30 |
+| UI56 | Mobile tab panels (a tab stop, from Radix) show the teal focus ring and keep their heading clear of the sticky tabs when focus scrolls them into view (`scroll-margin-top`) | 2026-09-30 |
+| UI57 | Pages whose only content is a message use a level-1 heading: "Page not found." and "Couldn't load this team." (`EmptyState`/`ErrorState` take `headingLevel`). Messages under a page title stay level 2 | 2026-09-30 |
+| UI58 | Amends UI24: the workspace URL keeps only known search params (a route middleware drops others, e.g. `?page=-1`), and `minBase`/`maxBase` accept only the eight official base-price amounts (UI33) | 2026-09-30 |
+| UI59 | When a pool list spans more than one page and is fully loaded, the end reads "All 98 players shown" in a polite status region, so screen readers hear it when the last page arrives. A single-page list has no end message (the count already says it) | 2026-09-30 |
 
 ## Setup and tooling (continued)
 

@@ -220,6 +220,8 @@ Request/response shapes are Zod schemas in `shared/contracts`, used by both the 
 - Rows: desktop table (player with Overseas / Uncapped tags, role, age, base price), tablet table (player with a "Bowler · AUS · 25" line, base price), mobile list. Clicking anywhere on a row opens the detail dialog (UI25, UI30) The current sort is announced with the table or list, e.g. "Players, sorted by name, Z to A" (UI35).
 - States: skeleton rows on first load; previous results stay (dimmed, with "Updating results…" announced) while a new search or filter loads; "Loading more players…" for later pages; "No players match these filters." with "Clear filters"; a panel error with retry; a failed "Load more" keeps loaded rows and retries only the next page (UI28).
 - "Load more" moves focus to the first newly loaded player and announces how many loaded (UI31).
+- Once a multi-page list is fully loaded, it ends with "All 98 players shown", also announced (UI59).
+- The URL keeps only known search params; base-price filters accept only the eight official amounts (UI58).
 
 ## 10. Data
 
